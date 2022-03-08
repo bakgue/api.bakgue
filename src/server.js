@@ -6,10 +6,13 @@ import MongoStore from "connect-mongo";
 import { localsMiddleware } from "./middlewares";
 
 import rootRouter from "./routers/rootRouter";
+import assignmentRouter from "./routers/assignmentRouter";
+import teacherRouter from "./routers/teacherRouter";
 import docRouter from "./routers/docRouter";
 import apiRouter from "./routers/apiRouter";
 
 const app = express();
+
 app.use(morgan("dev"));
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
@@ -43,3 +46,7 @@ app.use("/static", express.static("assets"));
 app.use("/", rootRouter);
 app.use("/doc", docRouter);
 app.use("/api", apiRouter);
+app.use("/assignment", assignmentRouter);
+app.use("/teacher", teacherRouter);
+
+export default app;
