@@ -3,9 +3,9 @@
 import { STATUS_CODE } from "./rootController";
 import { BASE_PUG_PATH } from "./rootController";
 
-const TEACHER_PUG_PATH = BASE_PUG_PATH + "teacher/";
+const SUBJECT_PUG_PATH = BASE_PUG_PATH + "subject/";
 
-export const getTeacher = (req, res) => {
+export const getSubject = (req, res) => {
   // Render the Teacher Page
-  return res.render(TEACHER_PUG_PATH + "home");
+  return res.render(SUBJECT_PUG_PATH + "home");
 };

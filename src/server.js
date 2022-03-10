@@ -7,9 +7,10 @@ import { localsMiddleware } from "./middlewares";
 
 import rootRouter from "./routers/rootRouter";
 import assignmentRouter from "./routers/assignmentRouter";
-import teacherRouter from "./routers/teacherRouter";
+import subjectRouter from "./routers/subjectRouter";
 import docRouter from "./routers/docRouter";
 import apiRouter from "./routers/apiRouter";
+import classRouter from "./routers/classRouter";
 
 const app = express();
 
@@ -47,7 +48,8 @@ app.use("/static", express.static("assets"));
 app.use("/", rootRouter);
 app.use("/doc", docRouter);
 app.use("/api", apiRouter);
+app.use("/class", classRouter);
 app.use("/assignment", assignmentRouter);
-app.use("/teacher", teacherRouter);
+app.use("/subject", subjectRouter);
 
 export default app;

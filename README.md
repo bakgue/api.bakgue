@@ -29,3 +29,8 @@
 
 /assignment/:assname/delete
 => Delete the Assignment Page : 해당 공지를 삭제하는 페이지
+
+---
+
+/doc
+=> Show the Documentation Page : 아직 내용은 없음.
