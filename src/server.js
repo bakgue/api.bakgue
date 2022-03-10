@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import flash from "express-flash";
-import session, { Store } from "express-session";
+import session from "express-session";
 import MongoStore from "connect-mongo";
 import { localsMiddleware } from "./middlewares";
 
