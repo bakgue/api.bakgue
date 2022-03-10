@@ -17,9 +17,8 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/public", express.static(__dirname + "/public"));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
   session({
@@ -43,6 +42,7 @@ app.use((_, res, next) => {
 
 app.use(flash());
 app.use(localsMiddleware);
+app.use("/public", express.static(__dirname + "/public"));
 app.use("/static", express.static("assets"));
 
 app.use("/", rootRouter);
