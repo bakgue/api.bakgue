@@ -4,7 +4,7 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Page Two
+    title #{pageTitle}
   body
     if loggedIn
       include ../includes/header
@@ -12,6 +12,12 @@ html(lang="en")
       include ../includes/header-not-login
 
     main
+      .page-top
+        #gradient
+        .page-top__header
+          h1 #{pageTitle}
+          p #{pageDescription}
+
       block content
 
     include ../includes/footer

@@ -1,4 +1,13 @@
 extends ../base/base
 
 block content
-  h1 Login Page
+  div
+    if errorMessage
+      span=errorMessage
+    form(method="POST")
+      label(for="key") Key #{accessArea}
+      input(type="text", id="key", placeholder="Key", name="key", required)
+      label(for="email") Email
+      input(type="email", id="email", placeholder="School Email", name="email", required)
+
+      input(type="submit", value="Submit")
