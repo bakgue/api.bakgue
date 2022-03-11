@@ -2,7 +2,9 @@ import dotenv from "dotenv/config";
 import "regenerator-runtime";
 import "./db";
 
-// TODO: Import Models
+import Student from "./model/Student";
+import Assignment from "./model/Assignment";
+import Subject from "./model/Subject";
 
 import app from "./server";
 
