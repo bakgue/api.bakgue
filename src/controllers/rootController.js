@@ -8,6 +8,24 @@ import studentInfo from "../public/json/student.json";
 export const BASE_PUG_PATH = "../views/";
 const ROOT_PUG_PATH = BASE_PUG_PATH + "root/";
 
+export const checkGrad = (value) => {
+  const keys = {
+    masterKey: process.env.MASTER_KEY,
+    presidentKey: process.env.PRESIDENT_KEY,
+    clientKey: process.env.CLIENT_KEY,
+  };
+
+  if (value === keys.clientKey) {
+    return "C";
+  } else if (value === keys.presidentKey) {
+    return "P";
+  } else if (value === keys.masterKey) {
+    return "M";
+  } else {
+    return false;
+  }
+};
+
 export const STATUS_CODE = {
   OK_CODE: 200,
   CREATED_CODE: 201,
@@ -117,5 +135,54 @@ export const postSignup = async (req, res) => {
   }
 };
 
+export const getSignin = (req, res) => {
+  // Render the Signin page
+  return res.render(ROOT_PUG_PATH + "signin", {
+    pageTitle: "Signin",
+    pageDescription: "This is Page Description",
+  });
+};
+
+export const postSignin = async (req, res) => {
+  // Render the Signin page
+
+  const {
+    body: { idAndName, password },
+  } = req;
+
+  const studentIdAndName = idAndName.replace(/\s/g, "");
+  const studentId = studentIdAndName.substr(0, 5);
+  const studentName = studentIdAndName.substr(5, studentIdAndName.length);
+
+  const student = await Student.findOne({
+    number: studentId,
+    name: studentName,
+  });
+
+  if (!student) {
+    return res
+      .status(STATUS_CODE.BAD_REQUEST_CODE)
+      .render(ROOT_PUG_PATH + "signin", {
+        pageTitle: "Signin",
+        pageDescription: "This is Page Description",
+        errorMessage: "학생을 찾지 못했습니다. 다시 입력해 주시기 바랍니다.",
+      });
+  }
+
+  const comparePassword = await bcrypt.compare(password, student.password);
+  console.log(comparePassword);
+
+  if (!comparePassword) {
+    return res
+      .status(STATUS_CODE.BAD_REQUEST_CODE)
+      .render(ROOT_PUG_PATH + "signin", {
+        pageTitle: "Signin",
+        pageDescription: "This is Page Description",
+        errorMessage: "비밀번호가 맞지 않습니다.",
+      });
+  }
+
+  req.session.accessArea = checkGrad(student.key);
+  req.session.loggedIn = true;
   return res.redirect("/");
 };
