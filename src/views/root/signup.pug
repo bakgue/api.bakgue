@@ -1,0 +1,19 @@
+extends ../base/base
+
+block content
+  div
+    if errorMessage
+      span=errorMessage
+    form(method="POST")
+      label(for="key") Key
+      input(type="text", id="key", placeholder="Key", name="key", required)
+      label(for="idAndName") 학번 이름
+      input(type="text", id="idAndName", placeholder="학번 이름", name="idAndName", required)
+      label(for="username") 유져 이름
+      input(type="text", id="username", placeholder="유져 이름", name="username", required)
+      label(for="password") 비밀번호
+      input(type="password", id="password", placeholder="비밀번호", name="password", required)
+      label(for="confirmPassword") 비밀번호 확인
+      input(type="password", id="confirmPassword", placeholder="비밀번호 확인", name="confirmPassword", required)
+
+      input(type="submit", value="Submit")
