@@ -3,8 +3,8 @@
 /
 => Root Page : 소개 및 설명하는 페이지
 
-/check
-=> Check Page : Client or President or Dev 인지 확인하는 페이지
+/signup & /signin
+=> signup & signin Page
 
 /class?type={type}
 => Show Class Info Page : 학급에 대한 것을 확인하는 페이지

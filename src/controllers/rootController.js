@@ -1,4 +1,9 @@
 // Import Models
+import Student from "../model/Student";
+
+import fs from "fs";
+import bcrypt from "bcrypt";
+import studentInfo from "../public/json/student.json";
 
 export const BASE_PUG_PATH = "../views/";
 const ROOT_PUG_PATH = BASE_PUG_PATH + "root/";
@@ -19,67 +24,98 @@ export const getHome = (req, res) => {
   return res.render(ROOT_PUG_PATH + "home");
 };
 
-export const getLogin = (req, res) => {
-  // Render the Login page
-  return res.render(ROOT_PUG_PATH + "login", {
-    pageTitle: "Check",
-    pageDescription:
-      "이 절차는 당신이 늘푸른 중학교 2학년 2반인지 확인하는 절차 입니다. 카카오톡 단체방에 올라온 비밀번호를 넣어 주시고, 학번을 알기 위해 학교에서 제공한 이메일 주소를 검증해 주세요.",
+export const getSignup = (req, res) => {
+  // Render the Signup page
+  return res.render(ROOT_PUG_PATH + "signup", {
+    pageTitle: "Signup",
+    pageDescription: "This is Page Description",
   });
 };
 
-export const postLogin = (req, res) => {
-  // Login processing
+export const postSignup = async (req, res) => {
+  // Signup processing
   const {
-    body: { key, email },
+    body: { key, idAndName, username, password, confirmPassword },
   } = req;
 
-  const passEmailKeys = ["npr.", "@ggm.goe.go.kr"];
+  const studentIdAndName = idAndName.replace(/\s/g, "");
+  let studentId;
+  let studentName;
 
-  if (
-    email.indexOf(passEmailKeys[0]) === -1 ||
-    email.indexOf(passEmailKeys[1]) === -1
-  ) {
+  try {
+    studentId = studentIdAndName.substr(0, 5);
+    studentName = studentIdAndName.substr(5, studentIdAndName.length);
+  } catch (error) {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
-      .render(ROOT_PUG_PATH + "login", {
-        errorMessage: "학교에서 제공한 이메일 주소를 넣어주시기 바랍니다.",
-        pageTitle: "Check",
-        pageDescription:
-          "이 절차는 당신이 늘푸른 중학교 2학년 2반인지 확인하는 절차 입니다. 카카오톡 단체방에 올라온 비밀번호를 넣어 주시고, 학번을 알기 위해 학교에서 제공한 이메일 주소를 검증해 주세요.",
+      .render(ROOT_PUG_PATH + "signup", {
+        pageTitle: "Signup",
+        pageDescription: "This is Page Description",
+        errorMessage: "반 번호를 알맞게 넣어주시기 바랍니다. ex) 20214 소설",
       });
   }
 
-  if (email.indexOf("s") !== -1) {
-    req.session.grad = "Student";
-  } else if (email.indexOf("t") !== -1) {
-    req.session.grad = "Teacher";
-  }
-
-  const keys = {
-    masterKey: process.env.MASTER_KEY,
-    presidentKey: process.env.PRESIDENT_KEY,
-    clientKey: process.env.CLIENT_KEY,
-  };
-
-  if (key === keys.clientKey) {
-    req.session.accessArea = "Client";
-  } else if (key === keys.presidentKey) {
-    req.session.accessArea = "President";
-  } else if (key === keys.masterKey) {
-    req.session.accessArea = "Master";
-  } else {
+  if (password !== confirmPassword) {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
-      .render(ROOT_PUG_PATH + "login", {
-        errorMessage: "Key 가 맞지 않습니다. 다시 시도해 주세요.",
-        pageTitle: "Check",
-        pageDescription:
-          "이 절차는 당신이 늘푸른 중학교 2학년 2반인지 확인하는 절차 입니다. 카카오톡 단체방에 올라온 비밀번호를 넣어 주시고, 학번을 알기 위해 학교에서 제공한 이메일 주소를 검증해 주세요.",
+      .render(ROOT_PUG_PATH + "signup", {
+        pageTitle: "Signup",
+        pageDescription: "This is Page Description",
+        errorMessage: "비밀번호가 일치하지 않습니다.",
       });
   }
 
-  req.session.loggedIn = true;
+  let no = true;
+  for (let i = 0; i < studentInfo.length; i++) {
+    const element = studentInfo[i];
+    if (element.id === studentId && element.name === studentName) {
+      no = false;
+    }
+  }
+
+  if (no) {
+    return res
+      .status(STATUS_CODE.BAD_REQUEST_CODE)
+      .render(ROOT_PUG_PATH + "signup", {
+        pageTitle: "Signup",
+        pageDescription: "This is Page Description",
+        errorMessage:
+          "해당 반 번호와 이름이 서로 일치하는 것이 없습니다. 자신의 반 번호와 이름으로 다시 시도해 주시기 바랍니다.",
+      });
+  }
+
+  const sameIdStudent = await Student.findOne({ number: studentId });
+  const sameUsernameStudent = await Student.findOne({ username });
+
+  if (sameIdStudent || sameUsernameStudent) {
+    return res
+      .status(STATUS_CODE.BAD_REQUEST_CODE)
+      .render(ROOT_PUG_PATH + "signup", {
+        pageTitle: "Signup",
+        pageDescription: "This is Page Description",
+        errorMessage: "입력하신 정보의 학생은 이미 로그인된 상태 입니다.",
+      });
+  }
+
+  try {
+    const createdStudent = await Student.create({
+      username,
+      password,
+      key,
+      name: studentName,
+      number: studentId,
+    });
+    return res.status(STATUS_CODE.CREATED_CODE).redirect("/signin");
+  } catch (error) {
+    return res
+      .status(STATUS_CODE.BAD_REQUEST_CODE)
+      .render(ROOT_PUG_PATH + "signup", {
+        pageTitle: "Signup",
+        pageDescription: "This is Page Description",
+        errorMessage: `DataBase Error : ${err}`,
+      });
+  }
+};
 
   return res.redirect("/");
 };

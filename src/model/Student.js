@@ -1,12 +1,14 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const studentSchema = new mongoose.Schema({
-  number: {
-    type: Number,
+  username: {
+    type: String,
     required: true,
-    minlength: 6,
-    maxlength: 6,
+    minlength: 3,
+    maxlength: 20,
     trim: true,
+    unique: true,
   },
   name: {
     type: String,
@@ -14,6 +16,24 @@ const studentSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 3,
     trim: true,
+  },
+  number: {
+    type: Number,
+    required: true,
+    minlength: 6,
+    maxlength: 6,
+    min: 20201,
+    max: 20231,
+    trim: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  key: {
+    type: String,
+    required: true,
   },
   createdAssignments: [
     {
@@ -27,6 +47,10 @@ const studentSchema = new mongoose.Schema({
       ref: "Assignment",
     },
   ],
+});
+
+studentSchema.pre("save", async function () {
+  this.password = await bcrypt.hash(this.password, 5);
 });
 
 const Student = mongoose.model("Student", studentSchema);
