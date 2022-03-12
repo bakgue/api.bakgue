@@ -38,7 +38,9 @@
   "subject": {
     "home": {
       "title": "Subject Information",
-      "description": "이 페이지에서 학교 내의 교과과목에 대한 정보들을 확인해 볼 수 있습니다. 과목의 구글 클래스룸 정보들 같은 것 말이죠!"
+      "description": "이 페이지에서 학교 내의 교과과목에 대한 정보들을 확인해 볼 수 있습니다. 과목의 구글 클래스룸 정보들 같은 것 말이죠!",
+      "subtitle": "Shourtcut",
+      "additionalDescription": "아래에 있는 카드나 버튼을 클릭하면, 바로가기가 됩니다."
     }
   },
 

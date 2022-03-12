@@ -4,7 +4,6 @@ import "./db";
 
 import Student from "./model/Student";
 import Assignment from "./model/Assignment";
-import Subject from "./model/Subject";
 
 import app from "./server";
 
