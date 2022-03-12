@@ -14,12 +14,13 @@ html(lang="en")
 
     main
       .page-top
-        #gradient
+        canvas#gradient
         .page-top__header
           h1 #{pageTitle}
           p #{pageDescription}
 
-      block content
+      #main
+        block content
 
     include ../includes/footer
 

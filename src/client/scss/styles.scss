@@ -1,7 +1,9 @@
 $brand-color: #000000;
+$text-color: #fff5f0;
 
 html {
-  background-color: red;
+  background-color: $brand-color;
+  color: $text-color;
   img {
     width: 100px;
     height: 100px;
