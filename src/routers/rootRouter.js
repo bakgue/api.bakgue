@@ -9,8 +9,6 @@ import {
 } from "../controllers/rootController";
 import { protectorMiddleware, publicOnlyMiddleware } from "../middlewares";
 
-// TODO: Import Controllers
-
 const rootRouter = express.Router();
 
 rootRouter.route("/").get(getHome);

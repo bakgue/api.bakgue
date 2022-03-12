@@ -1,0 +1,47 @@
+{
+  "home": {
+    "homeNotLogin": {
+      "title": "The Study Management Service for 2-2 Student",
+      "description": "Page Two is school management service. This service is only used by Neulpuleun Middleschool student. So, if you are attending on Neulpuleun Middleschool, click below button to signup or signin and enjoy this service."
+    },
+    "home": {
+      "title": "The Study Management Service for 2-2 Student",
+      "description": "Page Two is school management service. If you want to check assignment of school test, watch below cards to check!"
+    }
+  },
+  "sign": {
+    "signup": {
+      "title": "Sign Up",
+      "description": "This process is for check if you are attending Neulpuleun Middleschool or not. If you have an Account? Login!"
+    },
+    "signin": {
+      "title": "Sign In",
+      "description": "If you sign in here, you can enjoy this service. If you don't have an Account? Create an Account first!"
+    }
+  },
+
+  "assignment": {
+    "home": {
+      "title": "Assignment Information",
+      "description": "Here, you can see information of school test"
+    },
+    "new": {
+      "title": "Create a New Assignment for 2-2 Students",
+      "description": "You can create a new assignment here. The more detailed the content, the better."
+    }
+  },
+
+  "subject": {
+    "home": {
+      "title": "Subject Information",
+      "description": "Here, you can see information of school subject"
+    }
+  },
+
+  "class": {
+    "home": {
+      "title": "Class Information",
+      "description": "Here, you can see information of school class"
+    }
+  }
+}

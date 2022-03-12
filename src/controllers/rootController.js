@@ -1,4 +1,3 @@
-// Import Models
 import Student from "../model/Student";
 
 import fs from "fs";
@@ -39,16 +38,17 @@ export const STATUS_CODE = {
 };
 
 export const getHome = (req, res) => {
-  // Render the Home page
+  const homeNotLogin = pageInfo.home.homeNotLogin;
+  const home = pageInfo.home.home;
   let pageTitle;
   let pageDescription;
 
   if (!req.session.loggedIn) {
-    pageTitle = pageInfo.homeNotLogin.title;
-    pageDescription = pageInfo.homeNotLogin.description;
+    pageTitle = homeNotLogin.title;
+    pageDescription = homeNotLogin.description;
   } else if (req.session.loggedIn) {
-    pageTitle = pageInfo.home.title;
-    pageDescription = pageInfo.home.description;
+    pageTitle = home.title;
+    pageDescription = home.description;
   }
 
   return res.render(ROOT_PUG_PATH + "home", {
@@ -58,20 +58,20 @@ export const getHome = (req, res) => {
 };
 
 export const getSignup = (req, res) => {
-  // Render the Signup page
   return res.render(ROOT_PUG_PATH + "signup", {
-    pageTitle: pageInfo.signup.title,
-    pageDescription: pageInfo.signup.description,
+    pageTitle: pageInfo.sign.signup.title,
+    pageDescription: pageInfo.sign.signup.description,
   });
 };
 
 export const postSignup = async (req, res) => {
-  // Signup processing
   const {
     body: { key, idAndName, username, password, confirmPassword },
   } = req;
 
   const studentIdAndName = idAndName.replace(/\s/g, "");
+
+  const signupInfo = pageInfo.sign.signup;
   let studentId;
   let studentName;
 
@@ -82,8 +82,8 @@ export const postSignup = async (req, res) => {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signup", {
-        pageTitle: pageInfo.signup.title,
-        pageDescription: pageInfo.signup.description,
+        pageTitle: signupInfo.title,
+        pageDescription: signupInfo.description,
         errorMessage: "반 번호를 알맞게 넣어주시기 바랍니다. ex) 20214 소설",
       });
   }
@@ -92,8 +92,8 @@ export const postSignup = async (req, res) => {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signup", {
-        pageTitle: pageInfo.signup.title,
-        pageDescription: pageInfo.signup.description,
+        pageTitle: signupInfo.title,
+        pageDescription: signupInfo.description,
         errorMessage: "비밀번호가 일치하지 않습니다.",
       });
   }
@@ -110,8 +110,8 @@ export const postSignup = async (req, res) => {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signup", {
-        pageTitle: pageInfo.signup.title,
-        pageDescription: pageInfo.signup.description,
+        pageTitle: signupInfo.title,
+        pageDescription: signupInfo.description,
         errorMessage:
           "해당 반 번호와 이름이 서로 일치하는 것이 없습니다. 자신의 반 번호와 이름으로 다시 시도해 주시기 바랍니다.",
       });
@@ -124,8 +124,8 @@ export const postSignup = async (req, res) => {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signup", {
-        pageTitle: pageInfo.signup.title,
-        pageDescription: pageInfo.signup.description,
+        pageTitle: signupInfo.title,
+        pageDescription: signupInfo.description,
         errorMessage: "입력하신 정보의 학생은 이미 로그인된 상태 입니다.",
       });
   }
@@ -143,28 +143,26 @@ export const postSignup = async (req, res) => {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signup", {
-        pageTitle: pageInfo.signup.title,
-        pageDescription: pageInfo.signup.description,
+        pageTitle: signupInfo.title,
+        pageDescription: signupInfo.description,
         errorMessage: `DataBase Error : ${err}`,
       });
   }
 };
 
 export const getSignin = (req, res) => {
-  // Render the Signin page
   return res.render(ROOT_PUG_PATH + "signin", {
-    pageTitle: pageInfo.signin.title,
-    pageDescription: pageInfo.signin.description,
+    pageTitle: pageInfo.sign.signin.title,
+    pageDescription: pageInfo.sign.signin.description,
   });
 };
 
 export const postSignin = async (req, res) => {
-  // Render the Signin page
-
   const {
     body: { idAndName, password },
   } = req;
 
+  const signinInfo = pageInfo.sign.signin;
   const studentIdAndName = idAndName.replace(/\s/g, "");
   const studentId = studentIdAndName.substr(0, 5);
   const studentName = studentIdAndName.substr(5, studentIdAndName.length);
@@ -178,8 +176,8 @@ export const postSignin = async (req, res) => {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signin", {
-        pageTitle: pageInfo.signin.title,
-        pageDescription: pageInfo.signin.description,
+        pageTitle: signinInfo.title,
+        pageDescription: signinInfo.description,
         errorMessage: "학생을 찾지 못했습니다. 다시 입력해 주시기 바랍니다.",
       });
   }
@@ -191,8 +189,8 @@ export const postSignin = async (req, res) => {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signin", {
-        pageTitle: pageInfo.signin.title,
-        pageDescription: pageInfo.signin.description,
+        pageTitle: signinInfo.title,
+        pageDescription: signinInfo.description,
         errorMessage: "비밀번호가 맞지 않습니다.",
       });
   }
@@ -203,8 +201,6 @@ export const postSignin = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-  // Logout processing
-
   req.session.destroy();
   return res.redirect("/");
 };

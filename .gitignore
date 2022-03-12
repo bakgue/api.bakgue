@@ -1,6 +1,7 @@
 /.vscode
 /assets
 /node_modules
-/src/json
+/src/json/student.json
+/src/json/subject.json
 .env
 plan.txt
