@@ -2,46 +2,46 @@
   "home": {
     "homeNotLogin": {
       "title": "The Study Management Service for 2-2 Student",
-      "description": "Page Two is school management service. This service is only used by Neulpuleun Middleschool student. So, if you are attending on Neulpuleun Middleschool, click below button to signup or signin and enjoy this service."
+      "description": "Page Two 는 늘푸른 중학교 2학년 2반 을 위한 학업 관리 서비스입니다. 만약 늘푸른 중학교 2학년 2반이라면, 밑의 버튼을 클릭해서 Signup 또는 Signin 해주시기 바랍니다."
     },
     "home": {
       "title": "The Study Management Service for 2-2 Student",
-      "description": "Page Two is school management service. If you want to check assignment of school test, watch below cards to check!"
+      "description": "Page Two 는 학업 관리 서비스 입니다. 만약 학교 수행이나 시험을 확인해 보고 싶다면 밑의 카드를 클릭해 확인하세요!"
     }
   },
   "sign": {
     "signup": {
       "title": "Sign Up",
-      "description": "This process is for check if you are attending Neulpuleun Middleschool or not. If you have an Account? Login!"
+      "description": "해당 절차는 당신이 늘푸른 중학교 2학년 2반 학생인지 확인하고, 아무나 회원가입을 하지 못하게 비밀번호를 설정하는 것입니다. 그런데, 이미 있으신가요? 그렇다면 로그인 하세요!"
     },
     "signin": {
       "title": "Sign In",
-      "description": "If you sign in here, you can enjoy this service. If you don't have an Account? Create an Account first!"
+      "description": "로그인해, 이 서비스를 이용해 보세요. 아직 계정이 없으신가요? 그렇다면 하나 만드세요!"
     }
   },
 
   "assignment": {
     "home": {
       "title": "Assignment Information",
-      "description": "Here, you can see information of school test"
+      "description": "이 페이지에서 과제나 시험에 관한 공지를 확인해 보세요."
     },
     "new": {
       "title": "Create a New Assignment for 2-2 Students",
-      "description": "You can create a new assignment here. The more detailed the content, the better."
+      "description": "늘푸른 중학교 2학년 2반을 위한 과제나 시험에 관한 공지를 만들어 보세요. 해당 공지는 나중에 편집도 할 수 있고, 삭제도 할 수 있습니다."
     }
   },
 
   "subject": {
     "home": {
       "title": "Subject Information",
-      "description": "Here, you can see information of school subject"
+      "description": "이 페이지에서 학교 내의 교과과목에 대한 정보들을 확인해 볼 수 있습니다. 과목의 구글 클래스룸 정보들 같은 것 말이죠!"
     }
   },
 
   "class": {
     "home": {
       "title": "Class Information",
-      "description": "Here, you can see information of school class"
+      "description": "이 페이지에서 학급 내의 정보들을 확인해 볼 수 있습니다. 학생들의 학번 이름, 자리 배치도, 시간표 등등"
     }
   }
 }

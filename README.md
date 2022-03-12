@@ -1,5 +1,21 @@
 # Page Two
 
+<p align="center">
+  <a href="">
+    <img src="https://user-images.githubusercontent.com/96553411/158017020-62d2ce32-9365-4169-b8d6-f53e058d86f0.png" alt="Page Two Logo">
+  </a>
+</p>
+
+<h1 align="center">
+  Page Two
+</h1>
+
+<p align="center">
+  Page Two 는 늘푸른 중학교 학생들을 위한 학업 관리 서비스 입니다.
+</p>
+
+##
+
 /
 => Root Page : 소개 및 설명하는 페이지
 
