@@ -201,3 +201,10 @@ export const postSignin = async (req, res) => {
   req.session.loggedIn = true;
   return res.redirect("/");
 };
+
+export const logout = (req, res) => {
+  // Logout processing
+
+  req.session.destroy();
+  return res.redirect("/");
+};

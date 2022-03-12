@@ -3,16 +3,18 @@ import {
   getHome,
   getSignin,
   getSignup,
+  logout,
   postSignin,
   postSignup,
 } from "../controllers/rootController";
-import { publicOnlyMiddleware } from "../middlewares";
+import { protectorMiddleware, publicOnlyMiddleware } from "../middlewares";
 
 // TODO: Import Controllers
 
 const rootRouter = express.Router();
 
 rootRouter.route("/").get(getHome);
+rootRouter.route("/logout").all(protectorMiddleware).get(logout);
 rootRouter
   .route("/signup")
   .all(publicOnlyMiddleware)
