@@ -1,4 +1,11 @@
 extends ../base/base
+include ../components/subject-cards
 
 block content
-  h1 Subject Page
+  .subject-home
+    .subject-home__top
+      h2=pageSubtitle
+      p=pageAdditionalDescription
+    .subject-home__main
+      for subject in subjects
+        +subjectCard(subject)
