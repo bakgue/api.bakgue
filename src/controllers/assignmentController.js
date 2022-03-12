@@ -39,3 +39,14 @@ export const getEditAss = (req, res) => {
 export const postEditAss = (req, res) => {
   return res.redirect("/");
 };
+
+export const getDeleteAss = (req, res) => {
+  return res.render(ASS_PUG_PATH + "delete", {
+    pageTitle: pageInfo.assignment.delete.title,
+    pageDescription: pageInfo.assignment.delete.description,
+  });
+};
+
+export const deleteAss = (req, res) => {
+  return res.redirect("/");
+};
