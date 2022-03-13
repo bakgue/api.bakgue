@@ -13,11 +13,12 @@ html(lang="en")
       include ../includes/header-not-login
 
     main
-      .page-top
-        canvas#gradient
-        .page-top__header
-          h1 #{pageTitle}
-          p #{pageDescription}
+      if !noShowTop
+        .page-top
+          canvas#gradient
+          .page-top__header
+            h1 #{pageTitle}
+            p #{pageDescription}
 
       block content
 
