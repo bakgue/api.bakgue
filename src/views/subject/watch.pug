@@ -1,4 +1,25 @@
 extends ../base/base
+include ../components/buttons 
 
 block content
-  h1 Watch Subject Page
+  .subject
+    .subject__top
+      h2=subtitle
+      p=pageAdditionalDescription
+    .subject__main
+      .subject__main__default
+        .subject__main__default__top
+          h3 Default Information
+        .subject__main__default__name
+          span 이름
+          span.separator  | 
+          span=subjectObj.name
+        .subject__main__default__teacher
+          span 선생님
+          span.separator  | 
+          span=subjectObj.teacher
+      .subject__main__linked
+        h3 Link Information
+        +mailBtn(subjectObj.email)
+        +googleClassroomBtn(subjectObj.googleClassroomId)
+        +zoomBtn(subjectObj.zoomLink)
