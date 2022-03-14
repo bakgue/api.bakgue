@@ -8,8 +8,17 @@ block content
         input(type="button", value="Sign In")
     .meta-info
       span.license LICENSE : MIT
+      span.separator  | 
       input(type="button", value="Github")
+
   if loggedIn
     .main-bottom
       .main-bottom__cards
         span Here is card section
+  else
+    .main-bottom
+      .main-bottom__cards
+        p
+          | 당신이 이 서비를 사용하시고 싶다면, 
+          a(href="/signin") 로그인
+          |  하세요

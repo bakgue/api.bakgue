@@ -9,10 +9,11 @@ html(lang="en")
     include ../includes/header-not-login
 
     main
-      canvase#gradient
-      .not-page-top__header
-        h1 NOT ALLOW
-        p
-          | 당신은 이 페이지로 접근 할 수 없습니다. 만약 늘푸른 중학교 2학년 2반이시라면, 
-          a(href="/login") 로그인
-          |  하세요
+      #notAllow
+        canvase#gradient
+        .not-page-top__header
+          h1 NOT ALLOW
+          p
+            | 당신은 이 페이지로 접근 할 수 없습니다. 만약 늘푸른 중학교 2학년 2반이시라면, 
+            a(href="/signin") 로그인
+            |  하세요
