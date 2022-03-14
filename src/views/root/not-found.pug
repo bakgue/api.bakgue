@@ -1,11 +1,18 @@
-extends ../base/base
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title NOT FOUND
+  body
+    if loggedIn
+      include ../includes/header
+    else
+      include ../includes/header-not-login
 
-block content
-  .not-found
-    .not-found__gradient
-      canvas#gradient
-    .not-found__main
-      h1 Not Found
-      p=paragraph
-      a(href=to)
-        spa=suggestionParagraph
+    main
+      canvase#gradient
+      .not-page-top__header
+        h1 404 NOT FOUND
+        p 해당 #{type}을(를) 찾지 못했습니다.

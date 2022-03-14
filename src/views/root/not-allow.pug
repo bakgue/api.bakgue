@@ -1,11 +1,18 @@
-extends ../base/base
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title=pageTitle
+  body
+    include ../includes/header-not-login
 
-block content
-  .not-allow
-    .not-allow__gradient
-      canvas#gradient
-    .not-allow__main
-      h1 NOT ALLOW
-      p 당신은 이곳에 들어올 권한이 없습니다.
-      a(href="/")
-        span 순수히 홈페이지로 가시죠??
+    main
+      canvase#gradient
+      .not-page-top__header
+        h1 NOT ALLOW
+        p
+          | 당신은 이 페이지로 접근 할 수 없습니다. 만약 늘푸른 중학교 2학년 2반이시라면, 
+          a(href="/login") 로그인
+          |  하세요

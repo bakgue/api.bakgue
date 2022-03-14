@@ -46,10 +46,10 @@ app.use("/public", express.static(__dirname + "/public"));
 app.use("/static", express.static("assets"));
 
 app.use("/", rootRouter);
-app.use("/doc", docRouter);
-app.use("/api", apiRouter);
-app.use("/class", classRouter);
 app.use("/assignment", assignmentRouter);
+app.use("/class", classRouter);
 app.use("/subject", subjectRouter);
+app.use("/api", apiRouter);
+app.use("/doc", docRouter);
 
 export default app;
