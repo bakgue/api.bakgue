@@ -1,4 +1,13 @@
 extends ../base/base
+include ../components/assignments-cards
 
 block content
-  h1 Watch All of the Assignment of subject Page
+  .subject-ass
+    .subject-ass__top
+      h2=subtitle
+      p=pageAdditionalDescription
+    .subject-ass__main
+      for assignment in assignments
+        +assignmentsCard(assignment)
+      else
+        h3 NOT FOUND
