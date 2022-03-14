@@ -1,3 +1,5 @@
+import Assignment from "../model/Assignment";
+
 import { STATUS_CODE } from "./rootController";
 import { BASE_PUG_PATH } from "./rootController";
 
@@ -38,13 +40,12 @@ export const watchSubject = (req, res) => {
   }
 
   if (!subjectObj) {
-    return res.render(BASE_PUG_PATH + "root/not-found", {
-      noShowTop: true,
-      pageTitle: "Not Found - 404",
-      paragraph: `"${subname}" 이라는 과목을 찾지 못했습니다`,
-      to: "/subject",
-      suggestionParagraph: "그냥 과목 홈페이지로 갈까요?",
-    });
+    return res
+      .status(STATUS_CODE.NOT_FOUND_CODE)
+      .render(BASE_PUG_PATH + "root/not-found", {
+        noShowTop: true,
+        type: "과목",
+      });
   }
 
   subjectObj.englishName = toUppercaseOnlyFirstLetter(subjectObj.englishName);
@@ -57,10 +58,42 @@ export const watchSubject = (req, res) => {
   });
 };
 
-export const watchSubjectAss = (req, res) => {
+export const watchSubjectAss = async (req, res) => {
+  const {
+    params: { subname },
+  } = req;
+
+  let sameSubjectName;
+  for (let i = 0; i < subjectsInfo.length; i++) {
+    const element = subjectsInfo[i];
+    if (element.englishName === subname) {
+      sameSubjectName = element;
+    }
+  }
+
+  if (!sameSubjectName) {
+    return res
+      .status(STATUS_CODE.NOT_FOUND_CODE)
+      .render(BASE_PUG_PATH + "root/not-found", {
+        type: "과목",
+      });
+  }
+
+  const subjectAss = await Assignment.find({ subject: subname });
+
+  if (subjectAss.length === 0) {
+    return res
+      .status(STATUS_CODE.NOT_FOUND_CODE)
+      .render(BASE_PUG_PATH + "root/not-found", {
+        type: "과제나 시험",
+      });
+  }
+
   return res.render(SUBJECT_PUG_PATH + "assignment", {
-    pageTitle: "All of the assignments of this {Subject Name}",
-    pageDescription:
-      "여기에서 {Subject Name} 에 관한 모든 수행 및 시험들을 보실 수 있습니다.",
+    pageTitle: `All of the assignments of this ${subname}`,
+    pageDescription: `여기에서 ${subname} 에 관한 모든 수행 및 시험들을 보실 수 있습니다`,
+    subtitle: `${subname}`,
+    pageAdditionalDescription: `${subname} 에 대한 모든 과제와 시험들을 보실 수 있습니다`,
+    assignments: subjectAss,
   });
 };

@@ -8,7 +8,7 @@ const assignmentSchema = new mongoose.Schema({
     trim: true,
   },
   subject: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: "Subject",
     required: true,
   },
