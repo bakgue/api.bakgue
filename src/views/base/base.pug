@@ -6,7 +6,7 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="/static/css/styles.css")
     script(src="https://kit.fontawesome.com/68ddeafba5.js", crossorigin="anonymous")
-    title=pageTitle
+    title=siteName
   body
     if loggedIn
       include ../includes/header
@@ -14,13 +14,6 @@ html(lang="en")
       include ../includes/header-not-login
 
     main
-      if !noShowTop
-        .page-top
-          canvas#gradient
-          .page-top__header
-            h1=pageTitle
-            p=pageDescription
-
       block content
 
     include ../includes/footer

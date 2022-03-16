@@ -1,5 +1,11 @@
 extends ../base/base
 include ../components/page-top
+include ../components/assignments-cards
 
 block content
   +pageTop("Assignment Information", "이 페이지에서 과제나 시험에 관한 것들을 확인해 보세요.")
+  .ass
+    for ass in asss
+      +assignmentsCard(assignment)
+    else
+      h3 NOT FOUND

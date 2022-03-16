@@ -1,6 +1,7 @@
 mixin subjectCard(subjectObj)
   include ./buttons
   #subjectCard
+    div(style=`background-color: ${subjectObj.uniqueColor}`)
     span.subject-card__name=subjectObj.name
     span.subject-card__teacher=subjectObj.teacher
     +googleClassroomBtn(subjectObj.googleClassroomId)

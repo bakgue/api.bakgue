@@ -2,10 +2,12 @@ mixin assignmentsCard(ass)
   #assignmentsCard
     .assignments-card__top
       i.fa-solid.fa-heading
-      h4=ass.title
+      a(href=`/assignment/${ass.title}`)
+        h4=ass.title
     .assignments-card__mid
       i.fa-solid.fa-book
-      span=ass.subject
+      a(href=`/subject/${ass.subject}`)
+        span=ass.subject
     .assignments-card__bottom
       .assignments-card__bottom__left
         i.fa-solid.fa-timer
