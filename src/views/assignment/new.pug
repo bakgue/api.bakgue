@@ -7,3 +7,10 @@ block content
   .ass-new
     //- TItle, subject, content 에 관한 정보를 받을 수 있는 form.
     form(method="POST")
+      label(for="title") Title
+      input(type="text", name="title", id="title", placeholder="7월 중순에 볼 국어 집필 평가")
+      label(for="subject") Subject
+      input(type="text", name="subject", id="subject", placeholder="Korean(영어로)")
+      p 내용은 다 만드신 후, 편집하실 수 있습니다.
+
+      input(type="submit")
