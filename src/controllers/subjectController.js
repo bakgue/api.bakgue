@@ -47,8 +47,8 @@ export const watchSubject = (req, res) => {
   subjectObj.englishName = toUppercaseOnlyFirstLetter(subjectObj.englishName);
 
   return res.render(SUBJECT_PUG_PATH + "watch", {
-    subtitle: `${subjectObj.englishName}`,
-    additionalDescription: `${subjectObj.name} 에 대한 정보입니다.`,
+    pageTitle: `${subjectObj.englishName}`,
+    pageDescription: `${subjectObj.name} 에 대한 정보입니다.`,
     subjectObj,
   });
 };
@@ -91,8 +91,6 @@ export const watchSubjectAss = async (req, res) => {
   return res.render(SUBJECT_PUG_PATH + "assignment", {
     pageTitle: `All of the assignments of this ${subname}`,
     pageDescription: `여기에서 ${subname} 에 관한 모든 수행 및 시험들을 보실 수 있습니다`,
-    subtitle: `${subname}`,
-    pageAdditionalDescription: `${subname} 에 대한 모든 과제와 시험들을 보실 수 있습니다`,
     assignments: subjectAss,
   });
 };

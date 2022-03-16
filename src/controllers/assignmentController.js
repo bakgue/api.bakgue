@@ -39,9 +39,24 @@ export const postNewAss = (req, res) => {
 };
 
 export const watchAss = async (req, res) => {
+  const {
+    params: { assname },
+  } = req;
+
   // Title 이 같은 Assignment 찾기
+  const ass = await Assignment.findOne({ title: assname });
+
+  // 없으면 NOT FOUND
+  if (!ass) {
+    return res
+      .status(STATUS_CODE.NOT_FOUND_CODE)
+      .render(BASE_PUG_PATH + "root/not-found", {
+        type: "과제나 수행",
+      });
+  }
 
   return res.render(ASS_PUG_PATH + "watch", {
+    ass,
   });
 };
 
@@ -51,9 +66,19 @@ export const getEditAss = async (req, res) => {
   } = req;
 
   // Title 같은 Assignment 찾기
+  const ass = await Assignment.findOne({ title: assname }, { title });
 
   // 없으면 NOT FOUND
+  if (!ass) {
+    return res
+      .status(STATUS_CODE.NOT_FOUND_CODE)
+      .render(BASE_PUG_PATH + "root/not-found", {
+        type: "과제나 수행",
+      });
+  }
+
   return res.render(ASS_PUG_PATH + "edit", {
+    ass,
   });
 };
 
@@ -88,6 +113,7 @@ export const getDeleteAss = (req, res) => {
 
   // 있으면
   return res.render(ASS_PUG_PATH + "delete", {
+    assname,
   });
 };
 

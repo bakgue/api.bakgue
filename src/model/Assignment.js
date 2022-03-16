@@ -6,6 +6,7 @@ const assignmentSchema = new mongoose.Schema({
     required: true,
     maxlength: 20,
     trim: true,
+    unique: true,
   },
   subject: {
     type: String,
