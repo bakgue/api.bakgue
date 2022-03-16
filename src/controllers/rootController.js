@@ -55,6 +55,7 @@ export const getHome = (req, res) => {
     pageTitle,
     pageDescription,
   });
+  // Rendering Home Page
 };
 
 export const getSignup = (req, res) => {
@@ -62,19 +63,24 @@ export const getSignup = (req, res) => {
     pageTitle: pageInfo.sign.signup.title,
     pageDescription: pageInfo.sign.signup.description,
   });
+  // Rendering Sign Up Page
 };
 
 export const postSignup = async (req, res) => {
+  // Sign Up 에 필요한 모든 정보들을 Client 로 부터 가지고 옴
   const {
     body: { key, idAndName, username, password, confirmPassword },
   } = req;
 
+  // Password 와 Confirm Password 가 같지 않다면 ErrorMessage 를 보내 다시 Rendering
+  // 공백을 제거한 학번 이름 저장
   const studentIdAndName = idAndName.replace(/\s/g, "");
 
   const signupInfo = pageInfo.sign.signup;
   let studentId;
   let studentName;
 
+  // 공백을 제거한 학번 이름을 가지고 학번과 이름을 각각 구함 에러가 날 여지가 있어, 에러가 났다면, ErrorMessage 를 보내 다시 Rendering
   try {
     studentId = studentIdAndName.substr(0, 5);
     studentName = studentIdAndName.substr(5, studentIdAndName.length);
@@ -98,6 +104,7 @@ export const postSignup = async (req, res) => {
       });
   }
 
+  // JSON 를 통해 이 학번 이름이 있는지 없는지 확인
   let no = true;
   for (let i = 0; i < studentInfo.length; i++) {
     const element = studentInfo[i];
@@ -106,6 +113,7 @@ export const postSignup = async (req, res) => {
     }
   }
 
+  // 없다면 ErrorMessage 를 보내 다시 Rendering
   if (no) {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
@@ -117,9 +125,11 @@ export const postSignup = async (req, res) => {
       });
   }
 
+  // 위의 절차를 모두 통과시 해당 학번과 Username 이 같은 유저를 MongoDB 로 부터 긇어옴
   const sameIdStudent = await Student.findOne({ number: studentId });
   const sameUsernameStudent = await Student.findOne({ username });
 
+  // 둘 중에 하나라도 있다면 ErrorMessage 를 보내 다시 Rendering
   if (sameIdStudent || sameUsernameStudent) {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
@@ -130,6 +140,7 @@ export const postSignup = async (req, res) => {
       });
   }
 
+  // DB 에 없다면 처음 온 Client 이므로, MongoDB 에서 만듦. 에러가 날 여지가 있으므로, 에러가 났다면 ErrorMessage 를 보내 다시 Rendering
   try {
     const createdStudent = await Student.create({
       username,
@@ -155,23 +166,28 @@ export const getSignin = (req, res) => {
     pageTitle: pageInfo.sign.signin.title,
     pageDescription: pageInfo.sign.signin.description,
   });
+  // Rendering Sign In Page
 };
 
 export const postSignin = async (req, res) => {
+  // Sign In 에 필요한 모든 정보들을 가지고 옴
   const {
     body: { idAndName, password },
   } = req;
 
   const signinInfo = pageInfo.sign.signin;
+  // 학번과 이름 변수에 저장
   const studentIdAndName = idAndName.replace(/\s/g, "");
   const studentId = studentIdAndName.substr(0, 5);
   const studentName = studentIdAndName.substr(5, studentIdAndName.length);
 
+  // DB 에서 같은 학번과 이름을 가진 계정 긇어옴
   const student = await Student.findOne({
     number: studentId,
     name: studentName,
   });
 
+  // 없으면, ErrorMessage 를 보내 다시 Rendering
   if (!student) {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
@@ -182,9 +198,11 @@ export const postSignin = async (req, res) => {
       });
   }
 
+  // Password 를 DB 에 있는 Hashing 된 Password 와 Compare
   const comparePassword = await bcrypt.compare(password, student.password);
   console.log(comparePassword);
 
+  // Compared 된 Password 가 서로 같지 않다면, ErrorMessage 를 보내 다시 Rendering
   if (!comparePassword) {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
@@ -195,12 +213,14 @@ export const postSignin = async (req, res) => {
       });
   }
 
+  // 위의 절차를 모두 통과시 Request 의 Sessison 에 로그인 확인 변수 저장
   req.session.accessArea = checkGrad(student.key);
   req.session.loggedIn = true;
   return res.redirect("/");
 };
 
 export const logout = (req, res) => {
+  // Request 의 Session 에 로그인 확인 변수가 있으므로 삭제 후 HomePage 로 이동
   req.session.destroy();
   return res.redirect("/");
 };

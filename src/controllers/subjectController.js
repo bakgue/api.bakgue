@@ -14,6 +14,7 @@ const toUppercaseOnlyFirstLetter = (str) => {
 
 export const getSubject = (req, res) => {
   const subjectHomeObj = pageInfo.subject.home;
+  // Subject Home Page 를 Rendering
   const allSubject = subjectsInfo;
 
   return res.render(SUBJECT_PUG_PATH + "home", {
@@ -30,6 +31,7 @@ export const watchSubject = (req, res) => {
     params: { subname },
   } = req;
 
+  // JSON 에 Subname 에 해당하는 Subject 가 있는지 확인
   let subjectObj;
 
   for (let i = 0; i < subjectsInfo.length; i++) {
@@ -39,6 +41,7 @@ export const watchSubject = (req, res) => {
     }
   }
 
+  // 없으면 NOT FOUND Page Rendering 함
   if (!subjectObj) {
     return res
       .status(STATUS_CODE.NOT_FOUND_CODE)
@@ -48,6 +51,7 @@ export const watchSubject = (req, res) => {
       });
   }
 
+  // 있으면, 해당 englishName 의 첫 글자를 대문자로 치환
   subjectObj.englishName = toUppercaseOnlyFirstLetter(subjectObj.englishName);
 
   return res.render(SUBJECT_PUG_PATH + "watch", {
@@ -63,6 +67,7 @@ export const watchSubjectAss = async (req, res) => {
     params: { subname },
   } = req;
 
+  // subname 이 Subject JSON 에 있는지 여부 확인
   let sameSubjectName;
   for (let i = 0; i < subjectsInfo.length; i++) {
     const element = subjectsInfo[i];
@@ -71,6 +76,7 @@ export const watchSubjectAss = async (req, res) => {
     }
   }
 
+  // 없으면 NOT FOUND
   if (!sameSubjectName) {
     return res
       .status(STATUS_CODE.NOT_FOUND_CODE)
@@ -79,8 +85,10 @@ export const watchSubjectAss = async (req, res) => {
       });
   }
 
+  // DB 에 있는 모든 Assignment 들을 긇어옴
   const subjectAss = await Assignment.find({ subject: subname });
 
+  // 없으면 NOT FOUND
   if (subjectAss.length === 0) {
     return res
       .status(STATUS_CODE.NOT_FOUND_CODE)
