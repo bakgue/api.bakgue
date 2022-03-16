@@ -5,10 +5,10 @@ import Assignment from "../model/Assignment";
 
 const ASS_PUG_PATH = BASE_PUG_PATH + "assignment/";
 
-export const getAss = (req, res) => {
-  return res.render(ASS_PUG_PATH + "watch", {
-    pageTitle: pageInfo.assignment.home.title,
-    pageDescription: pageInfo.assignment.home.description,
+export const getAss = async (req, res) => {
+  const asss = await Assignment.find({});
+  return res.render(ASS_PUG_PATH + "home", {
+    asss,
   });
 };
 

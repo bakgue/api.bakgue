@@ -3,7 +3,6 @@ import Assignment from "../model/Assignment";
 import { STATUS_CODE } from "./rootController";
 import { BASE_PUG_PATH } from "./rootController";
 
-import pageInfo from "../json/page.json";
 import subjectsInfo from "../json/subject.json";
 
 const SUBJECT_PUG_PATH = BASE_PUG_PATH + "subject/";
@@ -13,15 +12,10 @@ const toUppercaseOnlyFirstLetter = (str) => {
 };
 
 export const getSubject = (req, res) => {
-  const subjectHomeObj = pageInfo.subject.home;
   // Subject Home Page 를 Rendering
   const allSubject = subjectsInfo;
 
   return res.render(SUBJECT_PUG_PATH + "home", {
-    pageTitle: subjectHomeObj.title,
-    pageDescription: subjectHomeObj.description,
-    pageSubtitle: subjectHomeObj.subtitle,
-    pageAdditionalDescription: subjectHomeObj.additionalDescription,
     subjects: allSubject,
   });
 };
@@ -33,7 +27,6 @@ export const watchSubject = (req, res) => {
 
   // JSON 에 Subname 에 해당하는 Subject 가 있는지 확인
   let subjectObj;
-
   for (let i = 0; i < subjectsInfo.length; i++) {
     const element = subjectsInfo[i];
     if (String(element.englishName) === String(subname)) {
@@ -46,7 +39,6 @@ export const watchSubject = (req, res) => {
     return res
       .status(STATUS_CODE.NOT_FOUND_CODE)
       .render(BASE_PUG_PATH + "root/not-found", {
-        noShowTop: true,
         type: "과목",
       });
   }
@@ -55,7 +47,6 @@ export const watchSubject = (req, res) => {
   subjectObj.englishName = toUppercaseOnlyFirstLetter(subjectObj.englishName);
 
   return res.render(SUBJECT_PUG_PATH + "watch", {
-    noShowTop: true,
     subtitle: `${subjectObj.englishName}`,
     additionalDescription: `${subjectObj.name} 에 대한 정보입니다.`,
     subjectObj,
