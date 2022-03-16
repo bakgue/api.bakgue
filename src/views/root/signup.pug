@@ -1,22 +1,26 @@
 extends ../base/base
+include ../components/page-top
 
 block content
-  if errorMessage
-    span#errorMessage=errorMessage
-  form.signup-form(method="POST")
-    label(for="key") Key
-    input(type="text", id="key", placeholder="Key", name="key", required)
-    label(for="idAndName") 학번 이름
-    input(type="text", id="idAndName", placeholder="학번 이름", name="idAndName", required)
-    label(for="username") 유져 이름
-    input(type="text", id="username", placeholder="유져 이름", name="username", required)
-    label(for="password") 비밀번호
-    input(type="password", id="password", placeholder="비밀번호", name="password", required)
-    label(for="confirmPassword") 비밀번호 확인
-    input(type="password", id="confirmPassword", placeholder="비밀번호 확인", name="confirmPassword", required)
+  +pageTop("Sign Up", "해당 절차는 당신이 늘푸른 중학교 2학년 2반 학생인지 확인하고, 비밀번호를 설정하는 절차입니다. 만약 이미 회원가입된 학생이라고 에러 메세지로 뜰 경우, novelier.webbelier@gmail.com 으로 문위해 주시기 바랍니다.")
 
-    input(type="submit", value="Submit")
+  .signup
+    if errorMessage
+      span#errorMessage=errorMessage
+    form.signup-form(method="POST")
+      label(for="key") Key
+      input(type="text", id="key", placeholder="Key", name="key", required)
+      label(for="idAndName") 학번 이름
+      input(type="text", id="idAndName", placeholder="학번 이름", name="idAndName", required)
+      label(for="username") 유져 이름
+      input(type="text", id="username", placeholder="유져 이름", name="username", required)
+      label(for="password") 비밀번호
+      input(type="password", id="password", placeholder="비밀번호", name="password", required)
+      label(for="confirmPassword") 비밀번호 확인
+      input(type="password", id="confirmPassword", placeholder="비밀번호 확인", name="confirmPassword", required)
 
-  span 이미 계정을 가지고 계신가요?
-  a(href="/signin")
-    span 그렇다면, 바로 로그인하세요 &rarr;
+      input(type="submit", value="Submit")
+
+    span 이미 계정을 가지고 계신가요?
+    a(href="/signin")
+      span 그렇다면, 바로 로그인하세요 &rarr;

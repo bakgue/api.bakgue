@@ -1,4 +1,11 @@
 extends ../base/base
+include ../components/page-top
 
 block content
-  h1 Edit Assignment Page
+  +pageTop(ass.title)
+
+  .ass-edit
+
+    //- Edit Section
+    form(method="POST")
+        //- Resize  변경하지 못하게

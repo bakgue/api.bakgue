@@ -1,11 +1,10 @@
 extends ../base/base
+include ../components/page-top
 include ../components/assignments-cards
 
 block content
+  +pageTop(pageTitle, pageDescription)
   .subject-ass
-    .subject-ass__top
-      h2=subtitle
-      p=pageAdditionalDescription
     .subject-ass__main
       for assignment in assignments
         +assignmentsCard(assignment)

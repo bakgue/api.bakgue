@@ -1,16 +1,20 @@
 extends ../base/base
+include ../components/page-top
 
 block content
-  if errorMessage
-    span#errorMessage=errorMessage
-  form.signin-form(method="POST")
-    label(for="idAndName") 학번 이름
-    input(type="text", id="idAndName", placeholder="학번 이름", name="idAndName", required)
-    label(for="password") 비밀번호
-    input(type="password", id="password", placeholder="비밀번호", name="password", required)
+  +pageTop("Sign In", "로그인하여, 이 서비스를 이용해 보세요.")
 
-    input(type="submit", value="Submit")
+  .signin
+    if errorMessage
+      span#errorMessage=errorMessage
+    form.signin-form(method="POST")
+      label(for="idAndName") 학번 이름
+      input(type="text", id="idAndName", placeholder="학번 이름", name="idAndName", required)
+      label(for="password") 비밀번호
+      input(type="password", id="password", placeholder="비밀번호", name="password", required)
 
-  span 계정이 없으신가요?
-  a(href="/signin")
-    span 그렇다면, 바로 만드세요 &rarr;
+      input(type="submit", value="Submit")
+
+    span 계정이 없으신가요?
+    a(href="/signin")
+      span 그렇다면, 바로 만드세요 &rarr;
