@@ -13,10 +13,8 @@ const toUppercaseOnlyFirstLetter = (str) => {
 
 export const getSubject = (req, res) => {
   // Subject Home Page 를 Rendering
-  const allSubject = subjectsInfo;
-
   return res.render(SUBJECT_PUG_PATH + "home", {
-    subjects: allSubject,
+    subjects: subjectsInfo,
   });
 };
 
@@ -83,8 +81,10 @@ export const watchSubjectAss = async (req, res) => {
   if (subjectAss.length === 0) {
     return res
       .status(STATUS_CODE.NOT_FOUND_CODE)
-      .render(BASE_PUG_PATH + "root/not-found", {
-        type: "과제나 시험",
+      .render(SUBJECT_PUG_PATH + "assignment", {
+        pageTitle: `Here has no information about the ${subname}`,
+        pageDescription: `여기에서 ${subname} 에 관한 모든 수행 및 시험들을 보실 수 있습니다만, 현재 이 과목에 대한 수행이나 시험이 없습니다.`,
+        assignments: subjectAss,
       });
   }
 

@@ -6,11 +6,27 @@ block content
 
   .ass-new
     //- TItle, subject, content 에 관한 정보를 받을 수 있는 form.
+    if errorMessage
+      span#errorMessage=errorMessage
     form(method="POST")
       label(for="title") Title
       input(type="text", name="title", id="title", placeholder="7월 중순에 볼 국어 집필 평가")
+      //- Vjs 로 Subject 가 Subject JSON 안에 있는지 여부 판단
       label(for="subject") Subject
-      input(type="text", name="subject", id="subject", placeholder="Korean(영어로)")
+      select(id="subject", name="subject") 
+        option(value="class-room") Class Room
+        option(value="korean") Korean
+        option(value="english") English
+        option(value="math") Math
+        option(value="history") History
+        option(value="science-A") Science A
+        option(value="science-B") Science B
+        option(value="music") Music
+        option(value="athletic") Athletic
+        option(value="giga") Giga
+        option(value="chinese") Chinese
+        option(value="moral") Moral
+
       p 내용은 다 만드신 후, 편집하실 수 있습니다.
 
-      input(type="submit")
+      input(type="submit", value="Create!")

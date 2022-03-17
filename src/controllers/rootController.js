@@ -106,11 +106,12 @@ export const postSignup = async (req, res) => {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signup", {
-        errorMessage: "입력하신 정보의 학생은 이미 회원가입된 상태 입니다.",
+        errorMessage:
+          "입력하신 정보의 학생은 이미 회원가입된 상태 입니다. 혹시 회원가입을 하지 않으셨습니까? novelier.webbelier@gmail.com 으로 문의해 주시기 바랍니다.",
       });
   }
 
-  // DB 에 없다면 처음 온 Client 이므로, MongoDB 에서 만듦. 에러가 날 여지가 있으므로, 에러가 났다면 ErrorMessage 를 보내 다시 Rendering
+  // DB 에 없다면 처음 온 Client 이므로, DB 에서 만듦. 에러가 날 여지가 있으므로, 에러가 났다면 ErrorMessage 를 보내 다시 Rendering
   try {
     const createdStudent = await Student.create({
       username,
@@ -135,7 +136,6 @@ export const getSignin = (req, res) => {
 };
 
 export const postSignin = async (req, res) => {
-  // Sign In 에 필요한 모든 정보들을 가지고 옴
   const {
     body: { idAndName, password },
   } = req;
@@ -175,6 +175,7 @@ export const postSignin = async (req, res) => {
   // 위의 절차를 모두 통과시 Request 의 Sessison 에 로그인 확인 변수 저장
   req.session.accessArea = checkGrad(student.key);
   req.session.loggedIn = true;
+  req.session.loggedInUser = student;
   return res.redirect("/");
 };
 

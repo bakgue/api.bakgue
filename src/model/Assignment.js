@@ -10,12 +10,12 @@ const assignmentSchema = new mongoose.Schema({
   },
   subject: {
     type: String,
-    ref: "Subject",
     required: true,
   },
   content: {
     type: String,
     required: true,
+    default: " ",
     maxlength: 2000,
   },
   createdAt: {

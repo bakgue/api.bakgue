@@ -44,6 +44,7 @@ app.use(flash());
 app.use(localsMiddleware);
 app.use("/public", express.static(__dirname + "/public"));
 app.use("/static", express.static("assets"));
+app.use(`/${process.env.JSON_FILE_NAME}`, express.static(__dirname + "/json"));
 
 app.use("/", rootRouter);
 app.use("/assignment", assignmentRouter);
