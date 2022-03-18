@@ -8,16 +8,16 @@ block content
     if errorMessage
       span#errorMessage=errorMessage
     form.signup-form(method="POST")
-      .signup-form__key.signup-form__element
+      .signup-form__element
         label(for="key") Key
         input(type="text", id="key", placeholder="Key", name="key", required)
-      .signup-form__student-id-box.signup-form__element
+      .signup-form__element
         label(for="idAndName") 학번 이름
         input(type="text", id="idAndName", placeholder="학번 이름", name="idAndName", required)
-      .signup-form__username.signup-form__element
+      .signup-form__element
         label(for="username") 유져 이름
         input(type="text", id="username", placeholder="유져 이름", name="username", required)
-      .signup-form__password.signup-form__element
+      .signup-form__element
         label(for="password") 비밀번호
         input(type="password", id="password", placeholder="비밀번호", name="password", required)
         label(for="confirmPassword") 비밀번호 확인

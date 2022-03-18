@@ -8,10 +8,10 @@ block content
     if errorMessage
       span#errorMessage=errorMessage
     form.signin-form(method="POST")
-      .signin-form__student-id-box
+      .signin-form__element
         label(for="idAndName") 학번 이름
         input(type="text", id="idAndName", placeholder="학번 이름", name="idAndName", required)
-      .signin-form__password
+      .signin-form__element
         label(for="password") 비밀번호
         input(type="password", id="password", placeholder="비밀번호", name="password", required)
         input(type="submit", value="Submit")
