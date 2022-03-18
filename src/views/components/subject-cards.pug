@@ -1,8 +1,73 @@
 mixin subjectCard(subjectObj)
   include ./buttons
   #subjectCard
-    div(style=`background-color: ${subjectObj.uniqueColor}`)
+    div(style=`background-color: ${subjectObj.uniqueColor}`, id="subjectColor")
     span.subject-card__name=subjectObj.name
     span.subject-card__teacher=subjectObj.teacher
     +googleClassroomBtn(subjectObj.googleClassroomId)
     +zoomBtn(subjectObj.zoomLink)
+
+mixin subjectOptions(select)
+  //- 나중에 refactoring
+  label(for="subject") Subject
+  select(id="subject", name="subject")
+
+    if select == "class-room"
+      option(value="class-room", selected) Class Room
+    else
+      option(value="class-room") Class Room
+
+    if select == "korean"
+      option(value="korean", selected) Korean
+    else
+      option(value="korean") Korean
+
+    if select == "english"
+      option(value="english", selected) English
+    else
+      option(value="english") English
+
+    if select == "math"
+      option(value="math", selected) Math
+    else
+      option(value="math") Math
+
+    if select == "history"
+      option(value="history", selected) History
+    else
+      option(value="history") History
+
+    if select == "science-a"
+      option(value="science-a", selected) Science A
+    else
+      option(value="science-a") Science A
+
+    if select == "science-b"
+      option(value="science-b", selected) Science B
+    else 
+      option(value="science-b") Science B
+
+    if select == "music"
+      option(value="music", selected) Music
+    else
+      option(value="music") Music
+
+    if select == "athletic"
+      option(value="athletic", selected) Athletic
+    else
+      option(value="athletic") Athletic
+
+    if select == "giga"
+      option(value="giga", selected) Giga
+    else
+      option(value="giga") Giga
+
+    if select == "chinese"
+      option(value="chinese", selected) Chinese
+    else
+      option(value="chinese") Chinese
+
+    if select == "moral"
+      option(value="moral", selected) Moral
+    else
+      option(value="moral") Moral
