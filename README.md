@@ -14,39 +14,39 @@
   Page Two 는 늘푸른 중학교 학생들을 위한 학업 관리 서비스 입니다.
 </p>
 
-##
+## 할 수 있는 것들
 
-/
-=> Root Page : 소개 및 설명하는 페이지
+Page Two 에서 아래와 같은 것을 할 수 있을 것입니다.
 
-/signup & /signin
-=> signup & signin Page
+1. 정보 확인
 
-/class?type={type}
-=> Show Class Info Page : 학급에 대한 것을 확인하는 페이지
+- 학급에 대한 정보
 
-/subject
-=> Subject Page : 과목을 확인하는 페이지
+  - 학생들의 모든 학번 이름
+  - 학생들의 자리 배치도
+  - 시간표
+  - 급식 시간표 및 급식 계획
+  - 청소 당번
 
-/subject/:subname
-=> Show Subject Page : 해당 과목을 확인하는 페이지
+- 과목에 대한 정보
 
-/assignment
-=> Assignment Page : 시간 순서대로 공지들을 보여주는 페이지
+  - 선생님 정보
+    - Google Classroom 정보
+    - Zoom 정보
+    - Email 정보
 
-/assignment/new
-=> Create a New Assignment Page : 공지를 만드는 페이지
+- 과제나 수행이나 시험에 대한 정보
+  - 과목
+  - 실시하는 날
+  - 내용
 
-/assignment/:assname
-=> Show Assignment Page : 해당 공지를 확인하는 페이지
+2. 정보 올리기
+   - 말 그대로 과제나 수행이나 시험에 대한 정보를 올릴 수 있음
 
-/assignment/:assname/edit
-=> Edit the Assignment Page : 해당 공지를 편집하는 페이지
+하지만, 위의 모든 것들은 회원 가입으로 늘푸른 중학교 학생인 것을 인증해야 사용할 수 있습니다.
 
-/assignment/:assname/delete
-=> Delete the Assignment Page : 해당 공지를 삭제하는 페이지
+## 현재 개발 계획
 
----
-
-/doc
-=> Show the Documentation Page : 아직 내용은 없음.
+1. ~3월 말까지 서버 구축
+2. ~4월 2주째 까지 스타일링
+3. 4월 중후반 정도에 배포
