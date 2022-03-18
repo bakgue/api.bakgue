@@ -1,34 +1,20 @@
 extends ../base/base
+include ../components/subject-cards
 include ../components/page-top
 
 block content
-  +pageTop("Create a New Assignment for 2-2 Students", "2학년 2반을 위한 과제나 시험에 관한 공지를 만들어 보세요. 해당 공지는 나중에 편집 할 수도, 삭제할 수도 있습니다.")
+  +pageTop("Create a New Assignment Announcement for 2-2 Students", "2학년 2반을 위한 과제나 시험에 관한 공지를 만들어 보세요. 해당 공지는 나중에 편집 할 수도, 삭제할 수도 있습니다.")
 
   .ass-new
-    //- TItle, subject, content 에 관한 정보를 받을 수 있는 form.
     if errorMessage
       span#errorMessage=errorMessage
-    form(method="POST")
-      label(for="title") Title
-      input(type="text", name="title", id="title", placeholder="7월 중순에 볼 국어 집필 평가")
-      //- Vjs 로 Subject 가 Subject JSON 안에 있는지 여부 판단
-      label(for="subject") Subject
-      select(id="subject", name="subject") 
-        option(value="class-room") Class Room
-        option(value="korean") Korean
-        option(value="english") English
-        option(value="math") Math
-        option(value="history") History
-        option(value="science-A") Science A
-        option(value="science-B") Science B
-        option(value="music") Music
-        option(value="athletic") Athletic
-        option(value="giga") Giga
-        option(value="chinese") Chinese
-        option(value="moral") Moral
-
-      p 내용은 다 만드신 후, 편집하실 수 있습니다.
-
-      input(type="submit", value="Create!")
+    form.ass-new__form(method="POST")
+      .ass-new__form__element
+        label(for="title") Title
+        input(type="text", name="title", id="title", placeholder="7월 중순에 볼 국어 집필 평가")
         input(type="button", value="Next")
+        p 내용은 다 만드신 후, 편집하실 수 있습니다.
+      .ass-new__form__element
         +subjectOptions()
+        p 내용은 다 만드신 후, 편집하실 수 있습니다.
+        input(type="submit", value="Create!")

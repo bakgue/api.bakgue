@@ -1,20 +1,21 @@
 extends ../base/base
+include ../components/subject-cards
 include ../components/page-top
 
 block content
   +pageTop(ass.title)
 
   .ass-edit
-
+    if errorMessage
+      span#errorMessage=errorMessage  
     //- Edit Section
-    form(method="POST")
-        //- Resize  변경하지 못하게
-      textarea(name="content")
-      label(for="title") Title
-      input(type="text", name="title", id="title")
-      label(for="subject") Subject
-      input(type="text", name="subject", id="subject")
-
-      input(type="subject")
+    form.ass-edit__form(method="POST")
+      .ass-edit__form__element
+        label(for="content") Content
+        textarea(id="content", name="content")=ass.content
         input(type="button", value="Next")
+      .ass-edit__form__element
+        label(for="title") Title
+        input(type="text", name="title", id="title", value=ass.title)
         +subjectOptions(ass.subject)
+        input(type="submit", value="Save Changes!") 
