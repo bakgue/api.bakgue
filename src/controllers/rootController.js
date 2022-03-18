@@ -125,7 +125,7 @@ export const postSignup = async (req, res) => {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signup", {
-        errorMessage: `DataBase Error : ${err}`,
+        errorMessage: `DataBase Error : ${error}`,
       });
   }
 };

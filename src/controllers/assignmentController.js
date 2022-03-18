@@ -8,6 +8,7 @@ import Student from "../model/Student";
 
 const ASS_PUG_PATH = BASE_PUG_PATH + "assignment/";
 
+// Development Completed ✅
 export const getAss = async (req, res) => {
   const asss = await Assignment.find({});
 
@@ -16,10 +17,12 @@ export const getAss = async (req, res) => {
   });
 };
 
+// Development Completed ✅
 export const getNewAss = (req, res) => {
   return res.render(ASS_PUG_PATH + "new");
 };
 
+// Development Completed ✅
 export const postNewAss = async (req, res) => {
   const {
     body: { title, subject },
@@ -40,7 +43,6 @@ export const postNewAss = async (req, res) => {
   // 없으면, 만들기
   try {
     const owner = await Student.findById(req.session.loggedInUser._id);
-
     const createdAssignment = await Assignment.create({
       title,
       subject,
@@ -58,6 +60,7 @@ export const postNewAss = async (req, res) => {
   }
 };
 
+// Development Completed ✅
 export const watchAss = async (req, res) => {
   const {
     params: { assname },
@@ -80,6 +83,7 @@ export const watchAss = async (req, res) => {
   });
 };
 
+// Development Completed ✅
 export const getEditAss = async (req, res) => {
   const {
     params: { assname },
@@ -87,14 +91,19 @@ export const getEditAss = async (req, res) => {
 
   // Title 같은 Assignment 찾기
   const ass = await Assignment.findOne({ title: assname });
-
-  // 없으면 NOT FOUND
   if (!ass) {
     return res
       .status(STATUS_CODE.NOT_FOUND_CODE)
       .render(BASE_PUG_PATH + "root/not-found", {
-        type: "과제나 수행",
+        type: "과제나 시험",
       });
+  }
+
+  // 해당 Assignment 를 만든 사람과 Login 한 Client 가 같은 사람인지 아닌지 확인
+  if (String(ass.owner._id) !== String(req.session.loggedInUser._id)) {
+    return res
+      .status(STATUS_CODE.NOT_ACCEPTABLE_CODE)
+      .render(BASE_PUG_PATH + "root/not-allow");
   }
 
   return res.render(ASS_PUG_PATH + "edit", {
@@ -102,24 +111,55 @@ export const getEditAss = async (req, res) => {
   });
 };
 
-export const postEditAss = (req, res) => {
+// Development Completed ✅
+export const postEditAss = async (req, res) => {
   const {
+    params: { assname },
     body: { title, subject, content },
   } = req;
 
-  // 영어가 아니면 ErrorMessage 를 보내 다시 Rendering
+  const ass = await Assignment.findOne({ title: assname });
 
-  // Subject 가 Subject JSON 안에 있는지 확인
-
-  // 없으면 ErrorMessage 를 보내 다시 Rendering
+  // 해당 Assignment 를 만든 사람과 Login 한 Client 가 같은 사람인지 아닌지 확인
+  if (String(ass.owner._id) !== String(req.session.loggedInUser._id)) {
+    return res
+      .status(STATUS_CODE.NOT_ACCEPTABLE_CODE)
+      .render(BASE_PUG_PATH + "root/not-allow");
+  }
 
   // Title 이 같은 ass 찾기
+  const sameTitleAss = await Assignment.findOne({ title });
 
   // 있으면, Already Taken Return
+  if (sameTitleAss) {
+    if (sameTitleAss.title !== title) {
+      return res
+        .status(STATUS_CODE.ALEADY_TAKEN_CODE)
+        .render(ASS_PUG_PATH + "edit", {
+          ass,
+          errorMessage: "이미 사용되고 있는 제목입니다.",
+        });
+    }
+  }
 
-  // 없으면, 업데이트
-
-  return res.redirect("/");
+  // 아니면, 업데이트
+  try {
+    const updatedAss = await Assignment.findByIdAndUpdate(ass._id, {
+      content,
+      title,
+      subject,
+    });
+    return res
+      .status(STATUS_CODE.UPDATED_CODE)
+      .redirect(`/assignment/${title}`);
+  } catch (error) {
+    return res
+      .status(STATUS_CODE.BAD_REQUEST_CODE)
+      .render(ASS_PUG_PATH + "edit", {
+        ass,
+        errorMessage: `DB Error : ${error}`,
+      });
+  }
 };
 
 export const getDeleteAss = (req, res) => {

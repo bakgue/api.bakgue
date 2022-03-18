@@ -5,7 +5,7 @@ const studentSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    minlength: 3,
+    minlength: 1,
     maxlength: 20,
     trim: true,
     unique: true,
