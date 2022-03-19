@@ -2,13 +2,16 @@ extends ../base/base
 include ../components/page-top
 
 block content
-  +pageTop(assname)
+  +pageTop(`Delete : ${ass.title}`)
 
   .ass-delete
+    if errorMessage
+      span#errorMessage=errorMessage
     form(method="POST")
       p 진짜로 해당 과제물을 지우시겠습니까? 진짜로 지우시겠다면 아래에 과제물 이름을 적어준 후, 과제 삭제하기 버튼을 클릭해주시기 바랍니다.
 
-      label(for="name") Your Assignment Name : `#{assname}`
-      input(type="text", id="name", name="name")
+      //- assname 과 이 input 이 서로 같은지 확인
+      label(for="name") Write : "#{ass.title}"
+      input(type="text", id="name", name="name", required)
 
       input(type="submit")
