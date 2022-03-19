@@ -42,12 +42,11 @@ export const postNewAss = async (req, res) => {
 
   // 없으면, 만들기
   try {
-    const owner = await Student.findById(req.session.loggedInUser._id);
     const createdAssignment = await Assignment.create({
       title,
       subject,
       content: `# ${title}`,
-      owner,
+      owner: req.session.loggedInUser._id,
     });
 
     return res.redirect(`/assignment/${title}/edit`);
