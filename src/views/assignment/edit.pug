@@ -12,10 +12,10 @@ block content
     form.ass-edit__form(method="POST")
       .ass-edit__form__element
         label(for="content") Content
-        textarea(id="content", name="content")=ass.content
+        textarea(id="content", name="content", required)=ass.content
         input(type="button", value="Next")
       .ass-edit__form__element
         label(for="title") Title
-        input(type="text", name="title", id="title", value=ass.title)
+        input(type="text", name="title", id="title", value=ass.title, required)
         +subjectOptions(ass.subject)
         input(type="submit", value="Save Changes!") 
