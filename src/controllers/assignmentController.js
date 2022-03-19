@@ -161,34 +161,59 @@ export const postEditAss = async (req, res) => {
   }
 };
 
-export const getDeleteAss = (req, res) => {
+export const getDeleteAss = async (req, res) => {
   const {
     params: { assname },
   } = req;
 
   // Assname 과 같은 Assignment 찾기
+  const ass = await Assignment.findOne({ title: assname });
 
   // 없으면 NOT FOUND
+  if (!ass) {
+    return res
+      .status(STATUS_CODE.NOT_FOUND_CODE)
+      .render(BASE_PUG_PATH + "root/not-found", {
+        type: "과제나 수행",
+      });
+  }
 
-  // 있으면
+  // 있으면 본인 확인
+  if (String(ass.owner._id) !== req.session.loggedInUser._id) {
+    return res
+      .status(STATUS_CODE.NOT_ACCEPTABLE_CODE)
+      .render(BASE_PUG_PATH + "root/not-allow");
+  }
+
   return res.render(ASS_PUG_PATH + "delete", {
-    assname,
+    ass,
   });
 };
 
-export const deleteAss = (req, res) => {
+export const deleteAss = async (req, res) => {
   const {
     params: { assname },
     body: { name },
   } = req;
 
-  // Assname 과 name 같은지 확인
+  const ass = await Assignment.exists({ title: assname });
 
-  // Assname 과 같은 Assignment 를 DB 에서 찾기
-
-  // 없으면 NOT FOUND
+  if (!ass) {
+    return res
+      .status(STATUS_CODE.NOT_FOUND_CODE)
+      .redirect(`/assignment/${assname}/delete`);
+  }
 
   // 있으면 Delete
-
-  return res.redirect("/assignment");
+  try {
+    const deletedAss = await Assignment.findOneAndDelete({ title: assname });
+    return res.status(STATUS_CODE.UPDATED_CODE).redirect("/assignment");
+  } catch (error) {
+    return res
+      .status(STATUS_CODE.BAD_REQUEST_CODE)
+      .render(ASS_PUG_PATH + "delete", {
+        ass,
+        errorMessage: `DB Error : ${error}`,
+      });
+  }
 };
