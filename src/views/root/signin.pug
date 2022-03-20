@@ -7,15 +7,21 @@ block content
   .signin
     if errorMessage
       span#errorMessage=errorMessage
-    form.signin-form(method="POST")
+    form.signin-form(method="POST")#flowForm
       .signin-form__element
-        label(for="idAndName") 학번 이름
-        input(type="text", id="idAndName", placeholder="학번 이름", name="idAndName", required)
-        input(type="button", value="Next")
+        label(for="ids") 학번 이름
+        input(type="text", id="ids", placeholder="2", name="grad", required, maxlength=1)
+        input(type="text", placeholder="0", name="classOne", required, maxlength=1)
+        input(type="text", placeholder="2", name="classTwo", required, maxlength=1)
+        input(type="text", placeholder="1", name="idOne", required, maxlength=1)
+        input(type="text", placeholder="4", name="idTwo", required, maxlength=1)
+        input(type="text", placeholder="소설", name="name", required)
+        input(type="button", value="Back")#flowBack
+        input(type="button", value="Next")#flowNext
       .signin-form__element
         label(for="password") 비밀번호
         input(type="password", id="password", placeholder="비밀번호", name="password", required)
-        input(type="submit", value="Submit")
+        input(type="submit", value="Submit").submit-good
 
     span 계정이 없으신가요?
     a(href="/signin")

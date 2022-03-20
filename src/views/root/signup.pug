@@ -7,25 +7,34 @@ block content
   .signup
     if errorMessage
       span#errorMessage=errorMessage
-    form.signup-form(method="POST")
+    form.signup-form(method="POST")#flowForm
       .signup-form__element
         label(for="key") Key
         input(type="text", id="key", placeholder="Key", name="key", required)
-        input(type="button", value="Next")
+        input(type="button", value="Back")#flowBack
+        input(type="button", value="Next")#flowNext
       .signup-form__element
         label(for="idAndName") 학번 이름
-        input(type="text", id="idAndName", placeholder="학번 이름", name="idAndName", required)
-        input(type="button", value="Next")
+        label(for="ids") 학번 이름
+        input(type="text", id="ids", placeholder="2", name="grad", required, maxlength=1)
+        input(type="text", placeholder="0", name="classOne", required, maxlength=1)
+        input(type="text", placeholder="2", name="classTwo", required, maxlength=1)
+        input(type="text", placeholder="1", name="idOne", required, maxlength=1)
+        input(type="text", placeholder="4", name="idTwo", required, maxlength=1)
+        input(type="text", placeholder="소설", name="name", required)
+        input(type="button", value="Back")#flowBack
+        input(type="button", value="Next")#flowNext
       .signup-form__element
         label(for="username") 유져 이름
         input(type="text", id="username", placeholder="유져 이름", name="username", required)
-        input(type="button", value="Next")
+        input(type="button", value="Back")#flowBack
+        input(type="button", value="Next")#flowNext
       .signup-form__element
         label(for="password") 비밀번호
         input(type="password", id="password", placeholder="비밀번호", name="password", required)
         label(for="confirmPassword") 비밀번호 확인
         input(type="password", id="confirmPassword", placeholder="비밀번호 확인", name="confirmPassword", required)
-        input(type="submit", value="Submit")
+        input(type="submit", value="Submit").submit-good
 
     span 이미 계정을 가지고 계신가요?
     a(href="/signin")
