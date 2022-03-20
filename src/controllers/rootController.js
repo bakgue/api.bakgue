@@ -48,7 +48,18 @@ export const getSignup = (req, res) => {
 export const postSignup = async (req, res) => {
   // Sign Up 에 필요한 모든 정보들을 Client 로 부터 가지고 옴
   const {
-    body: { key, idAndName, username, password, confirmPassword },
+    body: {
+      key,
+      grad,
+      classOne,
+      classTwo,
+      idOne,
+      idTwo,
+      name,
+      username,
+      password,
+      confirmPassword,
+    },
   } = req;
 
   // Password 와 Confirm Password 가 같지 않다면 ErrorMessage 를 보내 다시 Rendering
@@ -61,22 +72,8 @@ export const postSignup = async (req, res) => {
   }
 
   // 공백을 제거한 학번 이름 저장
-  const studentIdAndName = idAndName.replace(/\s/g, "");
-
-  let studentId;
-  let studentName;
-
-  // 공백을 제거한 학번 이름을 가지고 학번과 이름을 각각 구함 에러가 날 여지가 있어, 에러가 났다면, ErrorMessage 를 보내 다시 Rendering
-  try {
-    studentId = studentIdAndName.substr(0, 5);
-    studentName = studentIdAndName.substr(5, studentIdAndName.length);
-  } catch (error) {
-    return res
-      .status(STATUS_CODE.BAD_REQUEST_CODE)
-      .render(ROOT_PUG_PATH + "signup", {
-        errorMessage: "반 번호를 알맞게 넣어주시기 바랍니다. ex) 20214 소설",
-      });
-  }
+  const studentId = `${grad}${classOne}${classTwo}${idOne}${idTwo}`;
+  const studentName = name;
 
   // JSON 를 통해 이 학번 이름이 있는지 없는지 확인
   let no = true;
@@ -107,7 +104,7 @@ export const postSignup = async (req, res) => {
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signup", {
         errorMessage:
-          "입력하신 정보의 학생은 이미 회원가입된 상태 입니다. 혹시 회원가입을 하지 않으셨습니까? novelier.webbelier@gmail.com 으로 문의해 주시기 바랍니다.",
+          "입력하신 정보의 학생은 이미 회원가입된 상태 입니다. 혹시 회원가입을 하지 않으셨습니까? 그렇다면, novelier.webbelier@gmail.com 으로 문의해 주시기 바랍니다.",
       });
   }
 
@@ -120,6 +117,7 @@ export const postSignup = async (req, res) => {
       name: studentName,
       number: studentId,
     });
+    console.log(`SIGNUP : ${createdStudent}`);
     return res.status(STATUS_CODE.CREATED_CODE).redirect("/signin");
   } catch (error) {
     return res
@@ -137,13 +135,12 @@ export const getSignin = (req, res) => {
 
 export const postSignin = async (req, res) => {
   const {
-    body: { idAndName, password },
+    body: { grad, classOne, classTwo, idOne, idTwo, name, password },
   } = req;
 
   // 학번과 이름 변수에 저장
-  const studentIdAndName = idAndName.replace(/\s/g, "");
-  const studentId = studentIdAndName.substr(0, 5);
-  const studentName = studentIdAndName.substr(5, studentIdAndName.length);
+  const studentId = `${grad}${classOne}${classTwo}${idOne}${idTwo}`;
+  const studentName = name;
 
   // DB 에서 같은 학번과 이름을 가진 계정 긇어옴
   const student = await Student.findOne({
@@ -176,6 +173,7 @@ export const postSignin = async (req, res) => {
   req.session.accessArea = checkGrad(student.key);
   req.session.loggedIn = true;
   req.session.loggedInUser = student;
+  console.log(`SIGNIN : ${student}`);
   return res.redirect("/");
 };
 
