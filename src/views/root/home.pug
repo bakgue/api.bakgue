@@ -11,12 +11,12 @@ block content
     .main-top
       if !loggedIn
         .buttons
-          input(type="button", value="Sign Up")
-          input(type="button", value="Sign In")
+          input(type="button", value="Sign Up", data-href="/signup")#inputBtn
+          input(type="button", value="Sign In", data-href="/signin")#inputBtn
       .meta-info
         span.license LICENSE : MIT
         span.separator  | 
-        input(type="button", value="Github")
+        input(type="button", value="Github", data-href="https://github.com/Novelier-Webbelier/page-two")#inputBtn
 
     .main-bottom
       .main-bottom__cards

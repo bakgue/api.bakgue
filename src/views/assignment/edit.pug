@@ -9,13 +9,14 @@ block content
     if errorMessage
       span#errorMessage=errorMessage  
     //- Edit Section
-    form.ass-edit__form(method="POST")
+    form.ass-edit__form(method="POST")#flowForm
       .ass-edit__form__element
         label(for="content") Content
         textarea(id="content", name="content", required)=ass.content
-        input(type="button", value="Next")
+        input(type="button", value="Back")#flowBack
+        input(type="button", value="Next")#flowNext
       .ass-edit__form__element
         label(for="title") Title
         input(type="text", name="title", id="title", value=ass.title, required)
         +subjectOptions(ass.subject)
-        input(type="submit", value="Save Changes!") 
+        input(type="submit", value="Save Changes!").submit-good
