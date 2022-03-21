@@ -1,8 +1,48 @@
 extends ../base/base
 include ../components/page-top
+include ../components/subject-cards
 
 block content
   +pageTop("Class Information", "이 페이지 에서 학급에 관한 정보들을 확인해 보실 수 있습니다.")
 
   .class
-   h2 Class Information Page
+    nav.class-tabs
+     ul
+      li
+        //- 자리 배치도
+        span 학번 이름
+      li
+        //- 교시당 시간 및 과목 (과목클릭시 )
+        span 시간표
+      li
+        //- 급식 시간표 및 계획
+        span 급식
+
+    .class-main
+      .class-sections.class-seating-chart
+        h2 자리 배치도
+        .seating-chart(style="display:flex;")
+          for column in seatingChart
+            .seating-chart__column
+              for row in column
+                .seating-char__row
+                  span=row.id
+                  span=row.name
+
+      .class-sections.class-schedule
+        h2 시간표
+        .schedule(style="display:flex;")
+          .schedule-day
+            for num in [1, 2, 3, 4, 5, 6, 7]
+              .schedule-subject
+                h4 #{num} 교시
+          for day in schedule
+            .schedule-day
+              for subject in day
+                .schedule-subject
+                  +subjectCardInSchedule(subject)
+
+      .class-sections.class-school-lunch
+        h2 급식 시간표
+        //- 학교에서 알아오기
+        .school-lunch
