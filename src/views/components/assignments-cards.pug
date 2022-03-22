@@ -5,6 +5,7 @@ mixin assignmentsCard(ass)
       a(href=`/assignment/${ass.title}`)
         h4=ass.title
     .assignments-card__mid
+      div(style=`background-color: ${subjectObj.uniqueColor}`, id="subjectColor")
       i.fa-solid.fa-book
       a(href=`/subject/${ass.subject}`)
         span=ass.subject

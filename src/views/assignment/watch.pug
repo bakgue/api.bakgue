@@ -5,4 +5,31 @@ block content
   +pageTop(ass.title)
 
   .ass-watch
-    #assignment(data-content=ass.content)
+    .ass-watch__main
+      .ass-watch__main__bar
+        i.fa-solid.fa-heading
+        h2=ass.title
+
+      //- Vanilla JavaScript 로 data-content 에 있는 내용을 가지고 와서, Github Markdown API 를 보내어서 받은 HTML 여기다가 붙이기
+      #assignment(data-content=ass.content)
+
+    .ass-watch__btns
+      .ass-watch__btns__element.ass-watch__btns__title
+        i.fa-solid.fa-heading
+        h2=ass.title
+      .ass-watch__btns__element.ass-watch__btns__infos
+        .ass-watch__btns__element__created-at
+          i.fa-solid.fa-clock-rotate-left
+          span=ass.createdAt
+        .ass-watch__btns__element__view
+          i.fa-solid.fa-eye
+          if ass.meta.views < 2
+            span #{ass.meta.views} view
+          else
+            span #{ass.meta.views} views
+      .ass-watch__btns__element.ass-watch__btns__infos
+          //- Vanilla JavaScript : 클릭시 Save API 보내기
+          button(type="button")#saveBtn Save
+        if String(ass.owner._id) == String(loggedInUser._id)
+          input(type="button", value="Edit", data-href=`/assignment/${ass.title}/edit`)#inputBtn
+          input(type="button", value="Delete", data-href=`/assignment/${ass.title}/delete`)#inputBtn

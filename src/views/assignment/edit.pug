@@ -16,7 +16,11 @@ block content
         input(type="button", value="Back")#flowBack
         input(type="button", value="Next")#flowNext
       .ass-edit__form__element
-        label(for="title") Title
-        input(type="text", name="title", id="title", value=ass.title, required)
-        +subjectOptions(ass.subject)
-        input(type="submit", value="Save Changes!").submit-good
+        .ass-edit__form__element__title
+          label(for="title") Title
+          input(type="text", name="title", id="title", value=ass.title, required)
+        .ass-edit__form__element__subject
+          +subjectOptions(ass.subject)
+
+        .ass-edit__form__element__submit
+          input(type="submit", value="Save Changes!").submit-good
