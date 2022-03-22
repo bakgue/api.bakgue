@@ -191,23 +191,34 @@ export const getDeleteAss = async (req, res) => {
   });
 };
 
-export const deleteAss = async (req, res) => {
+export const postDeleteAss = async (req, res) => {
   const {
     params: { assname },
-    body: { name },
+    body: { check },
   } = req;
 
-  const ass = await Assignment.exists({ title: assname });
+  const ass = await Assignment.findOne({ title: assname });
 
   if (!ass) {
     return res
       .status(STATUS_CODE.NOT_FOUND_CODE)
-      .redirect(`/assignment/${assname}/delete`);
+      .render(BASE_PUG_PATH + "root/not-found", {
+        type: "과제나 수행",
+      });
+  }
+
+  if (!check === assname) {
+    return res
+      .status(STATUS_CODE.BAD_REQUEST_CODE)
+      .render(ASS_PUG_PATH + "delete", {
+        ass,
+      });
   }
 
   // 있으면 Delete
   try {
     const deletedAss = await Assignment.findOneAndDelete({ title: assname });
+    console.log(`DELETE : ${deletedAss}`);
     return res.status(STATUS_CODE.UPDATED_CODE).redirect("/assignment");
   } catch (error) {
     return res
