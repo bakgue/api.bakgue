@@ -4,11 +4,15 @@ import {
   watchSubject,
   watchSubjectAss,
 } from "../controllers/subjectController";
+import { protectorMiddleware } from "../middlewares";
 
 const subjectRouter = express.Router();
 
-subjectRouter.route("/").get(getSubject);
-subjectRouter.route("/:subname").get(watchSubject);
-subjectRouter.route("/:subname/assignment").get(watchSubjectAss);
+subjectRouter.route("/").all(protectorMiddleware).get(getSubject);
+subjectRouter.route("/:subname").all(protectorMiddleware).get(watchSubject);
+subjectRouter
+  .route("/:subname/assignment")
+  .all(protectorMiddleware)
+  .get(watchSubjectAss);
 
 export default subjectRouter;

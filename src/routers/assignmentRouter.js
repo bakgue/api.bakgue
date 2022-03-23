@@ -9,15 +9,25 @@ import {
   postNewAss,
   watchAss,
 } from "../controllers/assignmentController";
+import { protectorMiddleware } from "../middlewares";
 
 const assignmentRouter = express.Router();
 
-assignmentRouter.route("/").get(getAss);
-assignmentRouter.route("/new").get(getNewAss).post(postNewAss);
-assignmentRouter.route("/:assname").get(watchAss);
-assignmentRouter.route("/:assname/edit").get(getEditAss).post(postEditAss);
+assignmentRouter.route("/").all(protectorMiddleware).get(getAss);
+assignmentRouter
+  .route("/new")
+  .all(protectorMiddleware)
+  .get(getNewAss)
+  .post(postNewAss);
+assignmentRouter.route("/:assname").all(protectorMiddleware).get(watchAss);
+assignmentRouter
+  .route("/:assname/edit")
+  .all(protectorMiddleware)
+  .get(getEditAss)
+  .post(postEditAss);
 assignmentRouter
   .route("/:assname/delete")
+  .all(protectorMiddleware)
   .get(getDeleteAss)
   .post(postDeleteAss);
 
