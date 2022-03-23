@@ -7,11 +7,11 @@ mixin mailBtn(email)
       span Send Email
 
 mixin googleClassroomBtn(googleClassroomId)
-  #googleClassroomBtn.linkBtn(data-link=`https://classroom.google.com/c/${googleClassroomId}`)
+  a(href=`https://classroom.google.com/c/${googleClassroomId}`)#googleClassroomBtn
     i.fas.fa-chalkboard-user
     span Go to Google Classroom
 
 mixin zoomBtn(zoomLink)
-  #zoomBtn.linkBtn(data-link=zoomLink)
+  a(href=`${zoomLink}`)#zoomBtn
     i.fas.fa-video
     span Join to Zoom

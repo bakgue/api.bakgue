@@ -7,9 +7,13 @@ import subjectsInfo from "../json/subject.json";
 
 const SUBJECT_PUG_PATH = BASE_PUG_PATH + "subject/";
 
-const toUppercaseOnlyFirstLetter = (str) => {
+function toUppercaseOnlyFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
-};
+}
+
+function removeDash(str) {
+  return str.replace("-", " ");
+}
 
 export const getSubject = (req, res) => {
   // Subject Home Page 를 Rendering
@@ -41,11 +45,10 @@ export const watchSubject = (req, res) => {
       });
   }
 
-  // 있으면, 해당 englishName 의 첫 글자를 대문자로 치환
-  subjectObj.englishName = toUppercaseOnlyFirstLetter(subjectObj.englishName);
-
   return res.render(SUBJECT_PUG_PATH + "watch", {
-    pageTitle: `${subjectObj.englishName}`,
+    pageTitle: `${removeDash(
+      toUppercaseOnlyFirstLetter(subjectObj.englishName)
+    )}`,
     pageDescription: `${subjectObj.name} 에 대한 정보입니다.`,
     subjectObj,
   });
