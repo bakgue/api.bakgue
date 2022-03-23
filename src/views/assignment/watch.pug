@@ -18,6 +18,9 @@ block content
         i.fa-solid.fa-heading
         h2=ass.title
       .ass-watch__btns__element.ass-watch__btns__infos
+        .ass-watch__btns__element.ass-watch__btns__subjects
+          div(style=`background-color: ${subjectObj.uniqueColor}`, id="subjectColor")
+          span=subject.name
         .ass-watch__btns__element__created-at
           i.fa-solid.fa-clock-rotate-left
           span=ass.createdAt
@@ -29,7 +32,7 @@ block content
             span #{ass.meta.views} views
       .ass-watch__btns__element.ass-watch__btns__infos
           //- Vanilla JavaScript : 클릭시 Save API 보내기
-          button(type="button")#saveBtn Save
+          input(type="button", value="Save")#saveAssBtn
         if String(ass.owner._id) == String(loggedInUser._id)
           input(type="button", value="Edit", data-href=`/assignment/${ass.title}/edit`)#inputBtn
           input(type="button", value="Delete", data-href=`/assignment/${ass.title}/delete`)#inputBtn

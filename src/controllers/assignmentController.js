@@ -77,8 +77,19 @@ export const watchAss = async (req, res) => {
       });
   }
 
+  const subjectOfAss = ass.subject;
+  let subject;
+
+  for (let i = 0; i < subjectInfo.length; i++) {
+    const element = subjectInfo[i];
+    if (String(element) === String(subjectOfAss)) {
+      subject = element;
+    }
+  }
+
   return res.render(ASS_PUG_PATH + "watch", {
     ass,
+    subject,
   });
 };
 
