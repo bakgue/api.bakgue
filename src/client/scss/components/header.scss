@@ -4,7 +4,7 @@
   nav {
     @include allMid();
     width: 80vw;
-    // padding: 10px;
+    padding: 10px;
     justify-content: flex-start;
     ul {
       @include allMid();
@@ -21,6 +21,14 @@
           a {
             @include allMid();
             span {
+              text-align: center;
+              padding: 7px 14px;
+              transition: all 0.3s ease-in-out;
+              &:hover {
+                background-color: white;
+                color: black !important;
+                border-radius: 5px;
+              }
               @include headerElementText();
             }
             img {
