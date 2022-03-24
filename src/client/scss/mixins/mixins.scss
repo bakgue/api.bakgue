@@ -13,3 +13,12 @@
     color: $text-color;
   }
 }
+
+@mixin clickBtn($transitionDuration, $bgColor, $color, $borderRadius) {
+  transition: all $transitionDuration ease-in-out;
+  &:hover {
+    background-color: $bgColor;
+    color: $color;
+    border-radius: $borderRadius;
+  }
+}

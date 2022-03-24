@@ -13,6 +13,7 @@
           border-radius: 5px;
           color: black;
         }
+        @include clickBtn(0.3s, white, black, 5px);
       }
     }
     .meta-info {
@@ -20,20 +21,17 @@
       padding: 10px;
       font-size: 17px;
       a {
+        transition: all 0.3s ease-in-out;
+        padding: 5px 20px;
         &:first-child {
           &:hover {
-            background-color: white;
-            color: black;
-            border-radius: 5px;
+            @include clickBtn(0.3s, white, black, 5px);
           }
         }
-        padding: 5px 20px;
-        transition: all 0.3s ease-in-out;
         &:last-child {
           font-size: 25px;
           &:hover {
-            background-color: darkblue;
-            border-radius: 5px;
+            @include clickBtn(0.3s, darkblue, none, 5px);
           }
         }
       }

@@ -23,12 +23,7 @@
             span {
               text-align: center;
               padding: 7px 14px;
-              transition: all 0.3s ease-in-out;
-              &:hover {
-                background-color: white;
-                color: black !important;
-                border-radius: 5px;
-              }
+              @include clickBtn(0.3s, white, black !important, 5px);
               @include headerElementText();
             }
             img {
