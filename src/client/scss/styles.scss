@@ -1,11 +1,12 @@
-$brand-color: #000000;
-$text-color: #fff5f0;
+// Configuration
+@import "configuration/_reset";
+@import "configuration/_variables.scss";
+@import "configuration/default.scss";
 
-html {
-  background-color: $brand-color;
-  color: $text-color;
-  img {
-    width: 100px;
-    height: 100px;
-  }
-}
+@import "mixins/mixins.scss";
+
+// Animation
+
+// Components
+
+// Screens

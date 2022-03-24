@@ -1,0 +1,12 @@
+html {
+  background-color: $brand-color;
+  color: $text-color;
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  a {
+    color: $text-color;
+    text-decoration: none;
+  }
+}
