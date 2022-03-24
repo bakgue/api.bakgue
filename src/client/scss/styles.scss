@@ -3,10 +3,12 @@
 @import "configuration/_variables.scss";
 @import "configuration/default.scss";
 
+// Mixins
 @import "mixins/mixins.scss";
 
 // Animation
 
 // Components
+@import "components/header.scss";
 
 // Screens

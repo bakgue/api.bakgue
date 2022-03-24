@@ -1,23 +1,29 @@
-header
+header#header
   nav
     ul
-      li
-        a(href="/")
-          img(src="/public/img/logo.png")
-      li
-        a(href="/assignment")
-          span Assignment
-      li
-        a(href="/class")
-          span Class
-      li
-        a(href="/subject")
-          span Subject
-      li
-        a(href="/doc")
-          span Documentation
-      li
-        a(href="/logout")
-          span Logout
-      li
-        input#search(type="text")
+      .left
+        li
+          a(href="/")
+            img(src="/public/img/logo.png")
+        li
+          a(href="/assignment")
+            span Assignment
+        li
+          a(href="/class")
+            span Class
+        li
+          a(href="/subject")
+            span Subject
+        li
+          a(href="/doc")
+            span Documentation
+      .right
+        li
+          a(href="/assignment/new")
+            span Create a New Assignment
+        li
+          a(href="/assignment/save")
+            span Watch Saved Assignment
+        li
+          a(href="/logout")
+            span Logout
