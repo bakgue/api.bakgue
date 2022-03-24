@@ -3,7 +3,7 @@ include ../components/subject-cards
 include ../components/page-top
 
 block content
-  +pageTop(ass.title)
+  +pageTop(`Edit : ${ass.title}`)
 
   .ass-edit
     if errorMessage
