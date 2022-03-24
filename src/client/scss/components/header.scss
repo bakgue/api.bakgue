@@ -1,7 +1,10 @@
 // 만약 스크린의 가로길이가 970px 이라면 toogle btn header 로 바꾸기
 #header {
+  @include allMid();
   nav {
     @include allMid();
+    width: 80vw;
+    // padding: 10px;
     justify-content: flex-start;
     ul {
       @include allMid();
@@ -13,14 +16,13 @@
         li {
           margin-right: 20px;
           &:not(:first-child) {
-            padding: 0px 0px 3px 0px;
-            // 나중에 움직이는 무지개색 그라디언트로 바꿈
-            &:hover {
-              border-bottom: 1px solid #fff;
-            }
+            @include headerElementText();
           }
           a {
             @include allMid();
+            span {
+              @include headerElementText();
+            }
             img {
               width: 50px;
               height: 50px;

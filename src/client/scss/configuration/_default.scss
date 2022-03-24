@@ -9,4 +9,11 @@ html {
     color: $text-color;
     text-decoration: none;
   }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  main {
+    background-color: red;
+    width: 80vw;
+  }
 }

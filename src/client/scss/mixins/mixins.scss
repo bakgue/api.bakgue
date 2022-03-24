@@ -3,3 +3,13 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin headerElementText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $description-color;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: $text-color;
+  }
+}
