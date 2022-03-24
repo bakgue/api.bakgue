@@ -8,18 +8,21 @@ block content
     +pageTop("The Study Management Service for 2-2 Students", "Page Two 는 학업 관리 서비스 입니다. 만약 학교 수행이나 시험을 확인해 보고 싶다면 밑의 카드를 클릭해 확인하세요!")
 
   #home.main
-    .main-top
+    .home-top
       if !loggedIn
         .buttons
           input(type="button", value="Sign Up", data-href="/signup")#inputBtn
+          span.separator | 
           input(type="button", value="Sign In", data-href="/signin")#inputBtn
       .meta-info
-        span.license LICENSE : MIT
-        span.separator  | 
-        input(type="button", value="Github", data-href="https://github.com/Novelier-Webbelier/page-two")#inputBtn
+        a(href="https://opensource.org/licenses/MIT")
+          span.license LICENSE : MIT
+        span.separator | 
+        a(href="https://github.com/Novelier-Webbelier/page-two")
+          i.fa-brands.fa-github
 
-    .main-bottom
-      .main-bottom__cards
+    .home-bottom
+      .home-bottom__cards
         if !loggedIn
           +pageSubTop("You can not use this service", "당신은 이 서비스에 로그인 하지 않았기 때문에, 이 서비를 사용하실 수 없습니다. 먼저, 로그인 부터 해주시길 바랍니다.")
         else

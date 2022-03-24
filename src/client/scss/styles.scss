@@ -1,4 +1,5 @@
 // Configuration
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "configuration/_reset";
 @import "configuration/_variables.scss";
 @import "configuration/_default.scss";
@@ -10,5 +11,8 @@
 
 // Components
 @import "components/header.scss";
+@import "components/main.scss";
+@import "components/separator.scss";
 
 // Screens
+@import "screens/home.scss";

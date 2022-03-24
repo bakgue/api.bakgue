@@ -1,0 +1,45 @@
+#home {
+  .home-top {
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // Sign in 상태가 아닐 때
+      input {
+        padding: 10px;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          background-color: white;
+          border-radius: 5px;
+          color: black;
+        }
+      }
+    }
+    .meta-info {
+      @include allMid();
+      padding: 10px;
+      font-size: 17px;
+      a {
+        &:first-child {
+          &:hover {
+            background-color: white;
+            color: black;
+            border-radius: 5px;
+          }
+        }
+        padding: 5px 20px;
+        transition: all 0.3s ease-in-out;
+        &:last-child {
+          font-size: 25px;
+          &:hover {
+            background-color: darkblue;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+  .home-bottom {
+    background-color: blue;
+  }
+}

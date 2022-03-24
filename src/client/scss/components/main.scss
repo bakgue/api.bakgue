@@ -1,0 +1,45 @@
+#main {
+  padding-top: 20px;
+  .page-top {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    &__header {
+      h1 {
+        @include allMid();
+        font-size: 5rem;
+        margin-bottom: 20px;
+        font-weight: 900;
+        text-align: center;
+        span {
+          &:not(:first-child) {
+            margin-left: 5px;
+          }
+          &:first-child {
+            margin-left: auto;
+          }
+          &:last-child {
+            margin-right: auto;
+          }
+        }
+      }
+      p {
+        margin: 0px auto;
+        width: auto;
+        text-align: center;
+        font-size: 1rem;
+        color: $description-color;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          color: #ffffff;
+        }
+      }
+    }
+    #gradient {
+      width: 50vw;
+      height: 15vw;
+      position: absolute;
+      z-index: -10;
+    }
+  }
+}

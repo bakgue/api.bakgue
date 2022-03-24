@@ -1,6 +1,11 @@
 html {
   background-color: $brand-color;
   color: $text-color;
+  font-family: "Inter", "sons-serif";
+  ::selection {
+    background-color: blue;
+    color: white;
+  }
   img {
     width: 100px;
     height: 100px;
@@ -13,7 +18,6 @@ html {
   align-items: center;
   justify-content: center;
   main {
-    background-color: red;
     width: 80vw;
   }
 }

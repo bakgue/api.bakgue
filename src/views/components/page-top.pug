@@ -12,8 +12,6 @@ mixin pageSubTop(subTitle, subDescription)
 
 mixin pageElement(...elementContents)
   .page-element
-    canvas#bridge
-    .page-element__elements
-      for elementContent in elementContents
-        a(href=elementContent.url).page-element__elements__element
-          h4=elementContent.text
+    for elementContent in elementContents
+      a(href=elementContent.url).page-element__elements__element
+        h4=elementContent.text
