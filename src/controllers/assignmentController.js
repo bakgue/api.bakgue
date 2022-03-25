@@ -10,7 +10,19 @@ const ASS_PUG_PATH = BASE_PUG_PATH + "assignment/";
 
 // Development Completed ✅
 export const getAss = async (req, res) => {
-  const asss = await Assignment.find({});
+  const assInDB = await Assignment.find({});
+  let asss = JSON.parse(JSON.stringify(assInDB));
+
+  for (let i = 0; i < asss.length; i++) {
+    const ass = asss[i];
+    asss[i].createdAt = new Date(ass.createdAt);
+    for (let j = 0; j < subjectInfo.length; j++) {
+      const element = subjectInfo[j];
+      if (ass.subject === element.englishName) {
+        asss[i].subject = element;
+      }
+    }
+  }
 
   return res.render(ASS_PUG_PATH + "home", {
     asss,
