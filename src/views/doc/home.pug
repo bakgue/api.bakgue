@@ -1,4 +1,9 @@
 extends ../base/base
+include ../components/page-top
 
 block content
-  h1 Documentation Page
+  +pageTop("Documentation", "Page Two 서비스에 대한 모든 문서를 보실 수 있습니다.")
+
+  #documentation
+    .documentation__main
+      h2 Nothing Found

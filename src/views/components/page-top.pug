@@ -13,5 +13,6 @@ mixin pageSubTop(subTitle, subDescription)
 mixin pageElement(...elementContents)
   .page-element
     for elementContent in elementContents
-      a(href=elementContent.url).page-element__elements__element
-        h4=elementContent.text
+      .page-element__element
+        a(href=elementContent.url).page-element__elements__element
+          h4=elementContent.text

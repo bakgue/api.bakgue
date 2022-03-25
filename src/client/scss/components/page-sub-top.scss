@@ -1,0 +1,16 @@
+.page-sub-top {
+  flex-direction: column;
+  @include allMid();
+  h2 {
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+  p {
+    color: $description-color;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: $text-color;
+    }
+  }
+}
