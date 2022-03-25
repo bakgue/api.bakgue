@@ -5,7 +5,7 @@
       justify-content: center;
       align-items: center;
       // Sign in 상태가 아닐 때
-      input {
+      a {
         padding: 10px;
         transition: all 0.3s ease-in-out;
         &:hover {
