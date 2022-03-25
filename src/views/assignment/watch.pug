@@ -7,33 +7,55 @@ block content
   .ass-watch
     .ass-watch__main
       .ass-watch__main__bar
-        i.fa-solid.fa-heading
-        h2=ass.title
+        .ass-watch__main__bar__left
+          i.fa-solid.fa-heading
+          span.separator | 
+          h2=ass.title
+        .ass-watch__main__bar__right
+          //- Vanilla JavaScript 로 toggl btn 만들어서 크게 또는 작게 만들 수 있게 만들기
+          i.fa-solid.fa-expand
 
       //- Vanilla JavaScript 로 data-content 에 있는 내용을 가지고 와서, Github Markdown API 를 보내어서 받은 HTML 여기다가 붙이기
       #assignment(data-content=ass.content)
+        .markdown-body
 
     .ass-watch__btns
-      .ass-watch__btns__element.ass-watch__btns__title
+      .ass-watch__btns__element
         i.fa-solid.fa-heading
         h2=ass.title
-      .ass-watch__btns__element.ass-watch__btns__infos
-        .ass-watch__btns__element.ass-watch__btns__subjects
+      hr.element-separator
+      .ass-watch__btns__element
+        .ass-watch__btns__element__element
+          i.fa-solid.fa-book
+          span 교과
+          span.separator : 
           div(style=`background-color: ${subject.uniqueColor}`, id="subjectColor")
           span=subject.name
-        .ass-watch__btns__element__created-at
+        hr.element-separator
+        .ass-watch__btns__element__element
           i.fa-solid.fa-clock-rotate-left
-          span=ass.createdAt
-        .ass-watch__btns__element__view
+          span 만들어진 날
+          span.separator : 
+          span=ass.createdAt.toDateString()
+        hr.element-separator
+        .ass-watch__btns__element__element
           i.fa-solid.fa-eye
+          span 조회수
+          span.separator : 
           if ass.meta.views < 2
             span #{ass.meta.views} view
           else
             span #{ass.meta.views} views
-      .ass-watch__btns__element.ass-watch__btns__infos
+      hr.element-separator
+      .ass-watch__btns__btns
         //- Vanilla JavaScript : 클릭시 Save API 보내기
-        input(type="button", value="Save")#saveAssBtn
-        span=loggedInUser
-        //- if String(ass.owner._id) == String(loggedInUser._id)
-          input(type="button", value="Edit", data-href=`/assignment/${ass.title}/edit`)#inputBtn
-          input(type="button", value="Delete", data-href=`/assignment/${ass.title}/delete`)#inputBtn
+        a#saveAssBtn
+          i.fa-solid.fa-bookmark
+          span Save
+        if String(ass.owner._id) == String(loggedInUser._id)
+          a(href=`/assignment/${ass.title}/edit`)
+            i.fa-solid.fa-pen-to-square
+            span Edit
+          a(href=`/assignment/${ass.title}/delete`)
+            i.fa-solid.fa-delete-left
+            span Delete
