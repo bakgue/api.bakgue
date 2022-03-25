@@ -173,6 +173,10 @@ export const postSignin = async (req, res) => {
   req.session.accessArea = checkGrad(student.key);
   req.session.loggedIn = true;
   req.session.loggedInUser = student;
+
+  res.locals.loggedIn = true;
+  res.locals.loggedInUser = student;
+
   console.log(`SIGNIN : ${student}`);
   return res.redirect("/");
 };

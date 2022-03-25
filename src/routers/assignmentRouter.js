@@ -8,6 +8,7 @@ import {
   postEditAss,
   postNewAss,
   watchAss,
+  getSaveAss,
 } from "../controllers/assignmentController";
 import { protectorMiddleware } from "../middlewares";
 
@@ -19,6 +20,7 @@ assignmentRouter
   .all(protectorMiddleware)
   .get(getNewAss)
   .post(postNewAss);
+assignmentRouter.route("/save").all(protectorMiddleware).get(getSaveAss);
 assignmentRouter.route("/:assname").all(protectorMiddleware).get(watchAss);
 assignmentRouter
   .route("/:assname/edit")

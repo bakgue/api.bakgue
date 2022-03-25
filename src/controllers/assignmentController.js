@@ -66,7 +66,7 @@ export const watchAss = async (req, res) => {
   } = req;
 
   // Title 이 같은 Assignment 찾기
-  const ass = await Assignment.findOne({ title: assname });
+  const ass = await Assignment.findOne({ title: assname }).populate("owner");
 
   // 없으면 NOT FOUND
   if (!ass) {
@@ -82,10 +82,12 @@ export const watchAss = async (req, res) => {
 
   for (let i = 0; i < subjectInfo.length; i++) {
     const element = subjectInfo[i];
-    if (String(element) === String(subjectOfAss)) {
+    if (String(element.englishName) === String(subjectOfAss)) {
       subject = element;
     }
   }
+
+  console.log(subject);
 
   return res.render(ASS_PUG_PATH + "watch", {
     ass,
@@ -239,4 +241,8 @@ export const postDeleteAss = async (req, res) => {
         errorMessage: `DB Error : ${error}`,
       });
   }
+};
+
+export const getSaveAss = (req, res) => {
+  return res.redirect("/assignment/new");
 };
