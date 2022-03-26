@@ -3,7 +3,8 @@
   @include allMid();
   nav {
     @include allMid();
-    width: 80vw;
+    min-width: 80vw;
+    max-width: 100vw;
     padding: 10px;
     justify-content: flex-start;
     ul {

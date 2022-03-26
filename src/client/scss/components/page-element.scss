@@ -28,6 +28,10 @@
     border-radius: 100%;
     font-size: 22px;
     font-weight: 200;
+    ::selection {
+      background-color: #ffffff00;
+      color: #000000;
+    }
 
     &:first-child {
       background: #c8ce3f;

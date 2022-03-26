@@ -18,11 +18,15 @@ html {
   align-items: center;
   justify-content: center;
   main {
-    width: 80vw;
+    min-width: 80vw;
+    max-width: 100vw;
   }
   #subjectColor {
     width: 8px;
     height: 8px;
     border-radius: 100%;
+  }
+  .none-display {
+    display: none;
   }
 }
