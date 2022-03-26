@@ -19,17 +19,22 @@ block content
         span 급식
 
     .class-main
-      .class-sections.class-seating-chart
+      .class-main__sections.class-main__seating-chart.none-display
         h2 자리 배치도
         .seating-chart(style="display:flex;")
           for column in seatingChart
             .seating-chart__column
               for row in column
-                .seating-char__row
-                  span=row.id
-                  span=row.name
+                if row.name == loggedInUser.name
+                  .seating-chart__column__row.its-me
+                    span.seating-chart__column__row__id=row.id
+                    span.seating-chart__column__row__name=row.name
+                else
+                  .seating-chart__column__row
+                    span.seating-chart__column__row__id=row.id
+                    span.seating-chart__column__row__name=row.name
 
-      .class-sections.class-schedule
+      .class-main__sections.class-main__schedule
         h2 시간표
         .schedule(style="display:flex;")
           .schedule-day
@@ -42,7 +47,7 @@ block content
                 .schedule-subject
                   +subjectCardInSchedule(subject)
 
-      .class-sections.class-school-lunch
+      .class-main__sections.class-main__school-lunch.none-display
         h2 급식 시간표
         //- Vanilla JavaScript 에 fetch 로 https://npr-m.goesn.kr/npr-m/ad/fm/foodmenu/selectFoodMenuView.do 에 보내서 가지고 오기
         .school-lunch
