@@ -1,6 +1,6 @@
 #assignmentsCard {
-  background-color: #232323;
-  border: 2px solid #383838;
+  background-color: $card-background-color;
+  border: 2px solid $card-border-color;
   border-radius: 10px;
   padding: 15px 20px;
   max-width: 30vw;

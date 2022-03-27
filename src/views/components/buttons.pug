@@ -1,5 +1,5 @@
 mixin mailBtn(email)
-  #emailBtn.linkBtn(data-link=email)
+  #emailBtn.linkBtn(data-link=email).subject-btn
     i.fas.fa-envelope
     if email == "미확인"
       span No Email Address
@@ -7,11 +7,11 @@ mixin mailBtn(email)
       span Send Email
 
 mixin googleClassroomBtn(googleClassroomId)
-  a(href=`https://classroom.google.com/c/${googleClassroomId}`)#googleClassroomBtn
+  a(href=`https://classroom.google.com/c/${googleClassroomId}`)#googleClassroomBtn.subject-btn
     i.fas.fa-chalkboard-user
-    span Go to Google Classroom
+    span Google Classroom
 
 mixin zoomBtn(zoomLink)
-  a(href=`${zoomLink}`)#zoomBtn
+  a(href=`${zoomLink}`)#zoomBtn.subject-btn
     i.fas.fa-video
-    span Join to Zoom
+    span Zoom

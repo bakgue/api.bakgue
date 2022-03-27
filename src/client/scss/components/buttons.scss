@@ -1,0 +1,26 @@
+.subject-btn {
+  width: fit-content;
+  padding: 10px 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  i {
+    margin-right: 5px;
+  }
+}
+
+#googleClassroomBtn {
+  background-color: #ffb325;
+  color: black;
+  &:hover {
+    -webkit-box-shadow: 0px 0px 30px -2px #ffa500;
+    box-shadow: 0px 0px 30px -2px #ffa500;
+  }
+}
+
+#zoomBtn {
+  background-color: #1919ff;
+  &:hover {
+    -webkit-box-shadow: 0px 0px 30px -2px #1919ff;
+    box-shadow: 0px 0px 30px -2px #1919ff;
+  }
+}

@@ -9,6 +9,7 @@
         @include allMid();
         word-wrap: keep-all;
         font-size: 4rem;
+        margin: 0px 30px;
         margin-bottom: 20px;
         font-weight: 900;
         text-align: center;
@@ -25,7 +26,7 @@
         }
       }
       p {
-        margin: 0px auto;
+        margin: 0px 30px;
         width: auto;
         text-align: center;
         font-size: 1rem;

@@ -4,7 +4,7 @@ mixin subjectCard(subjectObj)
     .subject-card__top
       a(href=`/subject/${subjectObj.englishName}`)
         div(style=`background-color: ${subjectObj.uniqueColor}`, id="subjectColor")
-        span.subject-card__name=subjectObj.name
+        h3.subject-card__name=subjectObj.name
     .subject-card__mid
       a(href=`/subject/${subjectObj.englishName}`)
         i.fa-solid.fa-person-chalkboard
