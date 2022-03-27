@@ -5,6 +5,7 @@
   h2 {
     font-size: 30px;
     font-weight: 900;
+    text-align: center;
     margin-bottom: 10px;
   }
   p {
@@ -19,6 +20,10 @@
 .page-element {
   @include allMid();
   margin-top: 40px;
+  @media screen and (max-width: 930px) {
+    display: flex;
+    flex-direction: column;
+  }
   &__element {
     margin: 10px 20px;
     width: 200px;
@@ -28,6 +33,7 @@
     border-radius: 100%;
     font-size: 22px;
     font-weight: 200;
+
     ::selection {
       background-color: #ffffff00;
       color: #000000;
