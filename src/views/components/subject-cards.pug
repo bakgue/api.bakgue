@@ -15,14 +15,10 @@ mixin subjectCard(subjectObj)
 
 mixin subjectCardInSchedule(subjectObj)
   #subjectCardInSchedule
-    .subject-card-in-schedule__top
-      div(style=`background-color: ${subjectObj.uniqueColor}`, id="subjectColor")
-      h4=subjectObj.name
-    .subject-card-in-schedule__mid
-      i.fa-solid.fa-chalkboard-user
-      span #{subjectObj.teacher} 선생님
-    .subject-card-in-schedule__bottom
-      button(data-href=`/subject/${subjectObj.englishName}`)#inputBtn 보러가기 &rarr;
+    .subject-card-in-schedule
+      a(href=`/subject/${subjectObj.englishName}`)
+        div(style=`background-color: ${subjectObj.uniqueColor}`, id="subjectColor")
+        h4=subjectObj.name
 
 mixin subjectOptions(select)
   //- 나중에 refactoring

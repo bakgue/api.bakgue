@@ -1,7 +1,9 @@
 .class {
   margin-top: 50px;
+  h2 {
+    margin-bottom: 30px;
+  }
   &-tabs {
-    // background-color: red;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,7 +14,6 @@
       justify-content: flex-start;
       width: 100%;
       li {
-        // background-color: green;
         border: 1px solid #8f8f8f;
         border-bottom: none;
         padding: 10px 40px;
@@ -49,11 +50,44 @@
             border: 1px solid #ffffff;
             padding: 10px 20px;
             text-align: center;
+            transition: all 0.3s ease-in-out;
             &__id {
               margin-right: 5px;
             }
             &__name {
               font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+    &__schedule {
+      .schedule {
+        display: flex;
+        justify-content: center;
+        &-day {
+          border-left: 1px solid #ffffff;
+          border-right: 1px solid #ffffff;
+          &__subject {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            a {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 5px 10px;
+              transition: all 0.3s ease-in-out;
+              #subjectColor {
+                margin-right: 6px;
+              }
+              &:hover {
+                background-color: white;
+                border-radius: 5px;
+                color: black;
+              }
             }
           }
         }
