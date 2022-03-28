@@ -22,3 +22,11 @@
     border-radius: $borderRadius;
   }
 }
+
+@mixin hoverScaleAndBoxShadow($scale, $boxShadow) {
+  &:hover {
+    transform: scale($scale);
+    -webkit-box-shadow: 0px 0px 36px 4px $boxShadow;
+    box-shadow: 0px 0px 36px 4px $boxShadow;
+  }
+}

@@ -6,7 +6,7 @@
     font-size: 30px;
     font-weight: 900;
     text-align: center;
-    margin-bottom: 10px;
+    margin: 10px 20px;
   }
   p {
     color: $description-color;
@@ -33,6 +33,7 @@
     border-radius: 100%;
     font-size: 22px;
     font-weight: 200;
+    transition: all 0.3s ease-in-out;
 
     ::selection {
       background-color: #ffffff00;
@@ -40,6 +41,7 @@
     }
 
     &:first-child {
+      @include hoverScaleAndBoxShadow(1.04, #ffed5c);
       background: #c8ce3f;
       background: -moz-linear-gradient(left, #c8ce3f 0%, #a46f11 50%, #c51919 100%);
       background: -webkit-linear-gradient(left, #c8ce3f 0%, #a46f11 50%, #c51919 100%);
@@ -47,6 +49,7 @@
     }
 
     &:nth-child(2) {
+      @include hoverScaleAndBoxShadow(1.04, #4083ff);
       background: #c50000;
       background: -moz-linear-gradient(left, #c50000 0%, #1d25a4 36%, #2ea7ce 100%);
       background: -webkit-linear-gradient(left, #c50000 0%, #1d25a4 36%, #2ea7ce 100%);
@@ -54,6 +57,7 @@
     }
 
     &:nth-child(3) {
+      @include hoverScaleAndBoxShadow(1.04, #57ffec);
       background: #70c53a;
       background: -moz-linear-gradient(left, #70c53a 0%, #46a498 50%, #3f65ce 100%);
       background: -webkit-linear-gradient(left, #70c53a 0%, #46a498 50%, #3f65ce 100%);
@@ -61,6 +65,7 @@
     }
 
     &:last-child {
+      @include hoverScaleAndBoxShadow(1.04, #f86bff);
       background: #c562ba;
       background: -moz-linear-gradient(left, #c562ba 0%, #a4325f 33%, #8dce68 100%);
       background: -webkit-linear-gradient(left, #c562ba 0%, #a4325f 33%, #8dce68 100%);
