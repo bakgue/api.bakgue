@@ -18,7 +18,6 @@ function handleWindowReszie() {
 }
 
 function checkMode() {
-  console.log(mode);
   const isWidthAppro = checkWidth();
   if (isWidthAppro) {
     ul.appendChild(hamburger);
