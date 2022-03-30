@@ -5,19 +5,23 @@ header#header
         li
           a(href="/")
             img(src="/public/img/logo-white.png")
-        li
+        li.nav-elemenet
           a(href="/assignment")
             span Assignment
-        li
+        li.nav-elemenet
           a(href="/class")
             span Class
-        li
+        li.nav-elemenet
           a(href="/subject")
             span Subject
-        li
+        li.nav-elemenet
           a(href="/doc")
             span Documentation
       .right
-        li
+        li.nav-elemenet
           a(href="/logout")
             span Logout
+
+      //- Vanilla JavaScript 를 통해 innerHTML 을 이용, bar 넣기
+      .ham#hamburger
+        i.fa-solid.fa-bars

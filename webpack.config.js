@@ -12,6 +12,7 @@ module.exports = {
   },
   entry: {
     main: `${BASE_JS_PATH}main.js`,
+    navbar: `${BASE_JS_PATH}navbar.js`,
   },
   plugins: [
     new MiniCssExtractPlugin({

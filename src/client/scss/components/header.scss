@@ -1,5 +1,12 @@
 // 만약 스크린의 가로길이가 970px 이라면 toogle btn header 로 바꾸기
 #header {
+  width: 100vw;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  background-color: $brand-color;
+  -webkit-box-shadow: 0px 0px 17px 1px rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 17px 1px rgba(255, 255, 255, 0.3);
   @include allMid();
   nav {
     @include allMid();
@@ -30,6 +37,48 @@
               width: 50px;
               height: 50px;
             }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 730px) {
+    nav {
+      padding: 0px;
+      ul {
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+        div {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          li {
+            margin: 5px 0px;
+            width: 100%;
+            a {
+              width: 100vw;
+              span {
+                width: 100vw;
+              }
+            }
+          }
+        }
+        .ham {
+          position: fixed;
+          top: 0px;
+          right: 0px;
+          width: min-content;
+          display: flex;
+          align-items: flex-end;
+          i {
+            font-size: 22px;
+            margin: 15px;
+            padding: 5px;
+            cursor: pointer;
+
+            @include clickBtn(0.3s, white, black, 5px);
           }
         }
       }
