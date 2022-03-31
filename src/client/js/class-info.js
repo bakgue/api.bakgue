@@ -1,3 +1,7 @@
+import { async } from "regenerator-runtime";
+
+const url = "https://schoolmenukr.ml/api/middle/J100005136";
+
 const tags = {
   seatingChart: {
     btn: document.querySelector("#seatingChartBtn"),
@@ -26,6 +30,24 @@ function showSection(areaName) {
   }
 }
 
+function handleGetLunch(error, res, html) {
+  if (error) {
+    throw error;
+  }
+  console.log(html);
+}
+
+async function getLunchSchedule() {
+  // const hello = request(url, handleGetLunch);
+  const response = await fetch(url, {
+    method: "GET",
+  });
+
+  const data = await response.json();
+  const menu = data.menu;
+  console.log(menu);
+}
+
 for (const key in tags) {
   if (Object.hasOwnProperty.call(tags, key)) {
     const element = tags[key];
@@ -34,3 +56,4 @@ for (const key in tags) {
     });
   }
 }
+getLunchSchedule();
