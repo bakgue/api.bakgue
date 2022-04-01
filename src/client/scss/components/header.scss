@@ -1,6 +1,6 @@
 // 만약 스크린의 가로길이가 970px 이라면 toogle btn header 로 바꾸기
 #header {
-  width: 100vw;
+  width: $--vw;
   top: 0px;
   left: 0px;
   position: fixed;
@@ -10,7 +10,7 @@
   @include allMid();
   nav {
     @include allMid();
-    width: 100vw;
+    width: $--vw;
     padding: 10px;
     justify-content: flex-start;
     ul {
@@ -58,9 +58,9 @@
             margin: 5px 0px;
             width: 100%;
             a {
-              width: 100vw;
+              width: $--vw;
               span {
-                width: 100vw;
+                width: $--vw;
               }
             }
           }

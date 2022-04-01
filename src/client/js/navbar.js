@@ -1,33 +1,52 @@
 const hamburger = document.querySelector("#hamburger");
 const ul = document.querySelector("#header nav ul");
-const hamburgerHTML = hamburger;
 const navElementArr = document.querySelectorAll(".nav-elemenet");
 
 const maxWidth = 730;
 let mode = false;
 
 function handleClickHam(event) {
-  checkMode();
+  checkMode((modeChange = true));
 }
 
 function handleWindowReszie() {
-  checkMode();
+  checkMode((modeChange = false));
   if (hamburger) {
     hamburger.addEventListener("click", handleClickHam);
   }
+
+  const vw = window.innerWidth;
+
+  const html = document.querySelector("html");
+  const body = document.querySelector("body");
+  const header = document.querySelector("#header");
+  const main = document.querySelector("#main");
+
+  const elements = [html, body, header, main];
+  for (let i = 0; i < elements.length; i++) {
+    const element = elements[i];
+    element.style.width = `${vw}px`;
+  }
 }
 
-function checkMode() {
+function checkMode(modeChange = true) {
+  console.log(mode);
   const isWidthAppro = checkWidth();
   if (isWidthAppro) {
     ul.appendChild(hamburger);
 
+    hideNavBar();
+
     if (mode) {
-      mode = false;
-      showNavBar();
+      if (modeChange) {
+        mode = false;
+        showNavBar();
+      }
     } else if (!mode) {
-      mode = true;
-      hideNavBar();
+      if (modeChange) {
+        mode = true;
+        hideNavBar();
+      }
     }
   } else {
     showNavBar();
