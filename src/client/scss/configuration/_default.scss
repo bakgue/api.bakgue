@@ -3,8 +3,9 @@ html {
   color: $text-color;
   font-family: "Inter", "sons-serif";
   width: $--vw;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   body {
     width: $--vw;
@@ -29,6 +30,7 @@ html {
     justify-content: center;
     main {
       width: $--vw;
+      min-height: 100vh;
     }
     #subjectColor {
       width: 8px;

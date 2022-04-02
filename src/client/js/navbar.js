@@ -1,3 +1,4 @@
+const main = document.querySelector("#main");
 const hamburger = document.querySelector("#hamburger");
 const ul = document.querySelector("#header nav ul");
 const navElementArr = document.querySelectorAll(".nav-elemenet");
@@ -7,6 +8,12 @@ let mode = false;
 
 function handleClickHam(event) {
   checkMode((modeChange = true));
+}
+
+function handleClickMain(event) {
+  mode = false;
+  checkMode((modeChange = false));
+  mode = true;
 }
 
 function handleWindowReszie() {
@@ -30,23 +37,24 @@ function handleWindowReszie() {
 }
 
 function checkMode(modeChange = true) {
-  console.log(mode);
   const isWidthAppro = checkWidth();
   if (isWidthAppro) {
-    ul.appendChild(hamburger);
+    if (!document.querySelector("#hamburger")) {
+      ul.appendChild(hamburger);
+    }
 
-    hideNavBar();
+    // hideNavBar();
 
     if (mode) {
       if (modeChange) {
         mode = false;
-        showNavBar();
       }
+      showNavBar();
     } else if (!mode) {
       if (modeChange) {
         mode = true;
-        hideNavBar();
       }
+      hideNavBar();
     }
   } else {
     showNavBar();
@@ -83,3 +91,5 @@ if (hamburger) {
 }
 
 window.addEventListener("resize", handleWindowReszie);
+
+main.addEventListener("click", handleClickMain);
