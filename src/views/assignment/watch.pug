@@ -13,7 +13,7 @@ block content
           h2=ass.title
         .ass-watch__main__bar__right
           //- Vanilla JavaScript 로 toggl btn 만들어서 크게 또는 작게 만들 수 있게 만들기
-          i.fa-solid.fa-expand
+          i.fa-solid.fa-expand#fullScreenBtn
 
       //- Vanilla JavaScript 로 data-content 에 있는 내용을 가지고 와서, Github Markdown API 를 보내어서 받은 HTML 여기다가 붙이기
       #assignment(data-content=ass.content)
@@ -31,8 +31,9 @@ block content
           i.fa-solid.fa-book
           span 교과
           span.separator : 
-          div(style=`background-color: ${subject.uniqueColor}`, id="subjectColor")
-          span=subject.name
+          a(href=`/subject/${subject.englishName}`)
+            div(style=`background-color: ${subject.uniqueColor}`, id="subjectColor")
+            span=subject.name
         hr.element-separator
         .ass-watch__btns__element__element
           i.fa-solid.fa-clock-rotate-left
@@ -61,3 +62,6 @@ block content
           a(href=`/assignment/${ass.title}/delete`).delete-btn
             i.fa-solid.fa-delete-left
             span Delete
+
+block scripts
+  script(src="/static/js/watchAss.js")
