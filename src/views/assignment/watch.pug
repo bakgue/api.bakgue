@@ -16,7 +16,7 @@ block content
           i.fa-solid.fa-expand#fullScreenBtn
 
       //- Vanilla JavaScript 로 data-content 에 있는 내용을 가지고 와서, Github Markdown API 를 보내어서 받은 HTML 여기다가 붙이기
-      #assignment(data-content=ass.content)
+      #assignment(data-res=res)
         .markdown-body
 
     .ass-watch__btns
@@ -65,3 +65,4 @@ block content
 
 block scripts
   script(src="/static/js/watchAss.js")
+  script(src="/static/js/markdown.js")

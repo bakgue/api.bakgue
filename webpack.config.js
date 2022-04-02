@@ -15,6 +15,7 @@ module.exports = {
     navbar: `${BASE_JS_PATH}navbar.js`,
     classInfo: `${BASE_JS_PATH}class-info.js`,
     watchAss: `${BASE_JS_PATH}watch-ass.js`,
+    markdown: `${BASE_JS_PATH}markdown.js`,
   },
   plugins: [
     new MiniCssExtractPlugin({

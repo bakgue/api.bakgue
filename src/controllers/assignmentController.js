@@ -6,6 +6,10 @@ import subjectInfo from "../json/subject.json";
 import Assignment from "../model/Assignment";
 import Student from "../model/Student";
 
+import { Octokit } from "@octokit/core";
+
+const octokit = new Octokit({ auth: process.env.GH_TOKEN });
+
 const ASS_PUG_PATH = BASE_PUG_PATH + "assignment/";
 
 // Development Completed ✅
@@ -99,11 +103,17 @@ export const watchAss = async (req, res) => {
     }
   }
 
-  console.log(subject);
+  const response = await octokit.request("POST /markdown", {
+    text: ass.content,
+  });
 
   return res.render(ASS_PUG_PATH + "watch", {
     ass,
     subject,
+    res: {
+      status: response.status,
+      data: response.data,
+    },
   });
 };
 

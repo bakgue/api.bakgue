@@ -41,6 +41,7 @@
       padding: 20px;
       .markdown-body {
         background-color: rgba($color: #000000, $alpha: 0);
+        color: $text-color;
       }
     }
   }
@@ -107,7 +108,8 @@
     flex-direction: column;
     align-items: center;
     &__main {
-      width: 100%;
+      width: calc(100% - 20px);
+      margin: 0px 10px !important;
       i#fullScreenBtn {
         display: none;
       }
