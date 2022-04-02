@@ -1,5 +1,13 @@
+.ass {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .ass-watch {
   display: flex;
+  justify-content: center;
   &__main {
     width: 70vw;
     height: min-content;
@@ -18,6 +26,11 @@
         justify-content: center;
         h2 {
           font-size: 20px;
+        }
+      }
+      &__right {
+        i {
+          cursor: pointer;
         }
       }
     }
@@ -61,13 +74,14 @@
         padding: 10px;
         margin: 10px 0px;
         border-radius: 10px;
-        &:first-child {
+        cursor: pointer;
+        &.save-btn {
           background-color: orange;
         }
-        &:nth-child(2) {
+        &.edit-btn {
           background-color: blue;
         }
-        &:last-child {
+        &.delete-btn {
           background-color: red;
         }
       }

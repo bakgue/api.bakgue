@@ -22,6 +22,8 @@ block content
     .ass-watch__btns
       .ass-watch__btns__element
         i.fa-solid.fa-heading
+        span 제목
+        span.separator : 
         h2=ass.title
       hr.element-separator
       .ass-watch__btns__element
@@ -49,13 +51,13 @@ block content
       hr.element-separator
       .ass-watch__btns__btns
         //- Vanilla JavaScript : 클릭시 Save API 보내기
-        a#saveAssBtn
+        a#saveAssBtn.save-btn
           i.fa-solid.fa-bookmark
           span Save
         if String(ass.owner._id) == String(loggedInUser._id)
-          a(href=`/assignment/${ass.title}/edit`)
+          a(href=`/assignment/${ass.title}/edit`).edit-btn
             i.fa-solid.fa-pen-to-square
             span Edit
-          a(href=`/assignment/${ass.title}/delete`)
+          a(href=`/assignment/${ass.title}/delete`).delete-btn
             i.fa-solid.fa-delete-left
             span Delete
