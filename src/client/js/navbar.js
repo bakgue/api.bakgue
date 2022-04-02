@@ -17,7 +17,8 @@ function handleClickMain(event) {
 }
 
 function handleWindowReszie() {
-  checkMode((modeChange = false));
+  mode = false;
+  checkMode((modeChange = true));
   if (hamburger) {
     hamburger.addEventListener("click", handleClickHam);
   }
