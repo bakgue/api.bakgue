@@ -8,7 +8,7 @@ block content
     if errorMessage
       span#errorMessage=errorMessage
     form.signin-form(method="POST")#flowForm
-      .signin-form__element
+      .flow-form__element
         label(for="ids") 학번 이름
         input(type="text", id="ids", placeholder="2", name="grad", required, maxlength=1)
         input(type="text", placeholder="0", name="classOne", required, maxlength=1)
@@ -16,13 +16,18 @@ block content
         input(type="text", placeholder="1", name="idOne", required, maxlength=1)
         input(type="text", placeholder="4", name="idTwo", required, maxlength=1)
         input(type="text", placeholder="소설", name="name", required)
-        input(type="button", value="Back")#flowBack
-        input(type="button", value="Next")#flowNext
-      .signin-form__element
+
+        .flow-form__element__flow-btn
+          input(type="button", value="Back")#flowBack
+          input(type="button", value="Next")#flowNext
+      .flow-form__element
         label(for="password") 비밀번호
         input(type="password", id="password", placeholder="비밀번호", name="password", required)
-        input(type="submit", value="Submit").submit-good
+        input(type="submit", value="Submit").submit-btn
 
     span 계정이 없으신가요?
     a(href="/signin")
       span 그렇다면, 바로 만드세요 &rarr;
+
+block scripts
+  script(src="/static/js/flowForm.js") 

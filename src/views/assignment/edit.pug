@@ -10,12 +10,13 @@ block content
       span#errorMessage=errorMessage  
     //- Edit Section
     form.ass-edit__form(method="POST")#flowForm
-      .ass-edit__form__element
+      .flow-form__element
         label(for="content") Content
         textarea(id="content", name="content", required)=ass.content
-        input(type="button", value="Back")#flowBack
-        input(type="button", value="Next")#flowNext
-      .ass-edit__form__element
+        .flow-form__element__flow-btn
+          input(type="button", value="Back")#flowBack
+          input(type="button", value="Next")#flowNext
+      .flow-form__element
         .ass-edit__form__element__title
           label(for="title") Title
           input(type="text", name="title", id="title", value=ass.title, required)
@@ -23,4 +24,7 @@ block content
           +subjectOptions(ass.subject)
 
         .ass-edit__form__element__submit
-          input(type="submit", value="Save Changes!").submit-good
+          input(type="submit", value="Save Changes!").submit-btn
+
+block scripts
+  script(src="/static/js/flowForm.js") 

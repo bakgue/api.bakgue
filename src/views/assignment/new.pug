@@ -9,13 +9,17 @@ block content
     if errorMessage
       span#errorMessage=errorMessage
     form.ass-new__form(method="POST")#flowForm
-      .ass-new__form__element
+      .flow-form__element
+        p 내용은 다 만드신 후, 편집하실 수 있습니다.
         label(for="title") Title
         input(type="text", name="title", id="title", placeholder="7월 중순에 볼 국어 집필 평가", required)
-        input(type="button", value="Back")#flowBack
-        input(type="button", value="Next")#flowNext
-        p 내용은 다 만드신 후, 편집하실 수 있습니다.
-      .ass-new__form__element
+        .flow-form__element__flow-btn
+          input(type="button", value="Back")#flowBack
+          input(type="button", value="Next")#flowNext
+      .flow-form__element
         +subjectOptions()
         p 내용은 다 만드신 후, 편집하실 수 있습니다.
-        input(type="submit", value="Create!").submit-good
+        input(type="submit", value="Create!").submit-btn
+
+block scripts
+  script(src="/static/js/flowForm.js") 
