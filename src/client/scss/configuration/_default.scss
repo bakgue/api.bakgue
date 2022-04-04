@@ -13,6 +13,10 @@ html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    input[type="submit"],
+    input[type="button"] {
+      cursor: pointer;
+    }
     ::selection {
       background-color: blue;
       color: white;
