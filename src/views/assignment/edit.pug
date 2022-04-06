@@ -8,23 +8,33 @@ block content
   .ass-edit
     if errorMessage
       span#errorMessage=errorMessage  
-    //- Edit Section
-    form.ass-edit__form(method="POST")#flowForm
-      .flow-form__element
-        label(for="content") Content
-        textarea(id="content", name="content", required)=ass.content
-        .flow-form__element__flow-btn
-          input(type="button", value="Back")#flowBack
-          input(type="button", value="Next")#flowNext
-      .flow-form__element
-        .ass-edit__form__element__title
-          label(for="title") Title
-          input(type="text", name="title", id="title", value=ass.title, required)
-        .ass-edit__form__element__subject
-          +subjectOptions(ass.subject)
+    form.ass-edit__form(method="POST")#form
+      h3 Edit #{ass.title}
+      .form__element
+        label(for="content")
+          .content-label-mid
+            span Content
+          .content-label-right
+            i.fa-solid.fa-pen-to-square
+            i.fa-solid.fa-eye
+        .edit
+          .edit__edit
+            textarea(id="content", name="content", required, onkeyup="this.style.height='26px'; this.style.height = this.scrollHeight + 'px';")=ass.content
+          .edit__watch.none-display
+            #assignment
+              .markdown-body
+                h1 Hello
+
+      .form__element
+        .form__element__title
+        label(for="title") Title
+        input(type="text", name="title", id="title", value=ass.title, required).long
+        .form__element__subject
+        +subjectOptions(ass.subject)
 
         .ass-edit__form__element__submit
           input(type="submit", value="Save Changes!").submit-btn
 
 block scripts
-  script(src="/static/js/flowForm.js") 
+  script(src="/static/js/markdown.js")
+  script(src="/static/js/edit.js")
