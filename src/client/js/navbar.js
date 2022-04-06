@@ -44,8 +44,6 @@ function checkMode(modeChange = true) {
       ul.appendChild(hamburger);
     }
 
-    // hideNavBar();
-
     if (mode) {
       if (modeChange) {
         mode = false;
