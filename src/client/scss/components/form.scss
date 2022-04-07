@@ -22,16 +22,19 @@ form#form {
       font-size: 18px;
       font-weight: 600;
       margin: 10px 0px;
-      margin-top: 25px;
-      display: flex;
+      position: relative;
+      // display: flex;
 
       .content-label-mid {
         text-align: center;
-        margin: auto 0;
+        margin: auto 10px;
       }
 
       .content-label-right {
         margin: 0 0 0 auto;
+        position: absolute;
+        right: 0px;
+        top: 0px;
         i {
           padding: 10px;
           font-size: 14px;
@@ -44,22 +47,15 @@ form#form {
       }
     }
 
-    input,
-    select {
-      margin-right: auto;
-    }
-
     input {
       border: 1px solid #ffffff;
       padding: 7px 15px;
       border-radius: 5px;
+      width: 100%;
+      text-align: center;
 
       &:placeholder-shown {
         color: $description-color;
-      }
-
-      &.submit-btn {
-        margin-top: 20px;
       }
     }
   }
@@ -78,6 +74,7 @@ form#form {
 
   .edit {
     display: flex;
+    margin-top: 10px;
     width: 100%;
 
     textarea {

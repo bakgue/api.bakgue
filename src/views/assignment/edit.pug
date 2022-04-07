@@ -15,15 +15,14 @@ block content
           .content-label-mid
             span Content
           .content-label-right
-            i.fa-solid.fa-pen-to-square
-            i.fa-solid.fa-eye
+            i.fa-solid.fa-pen-to-square#editIcon
+            i.fa-solid.fa-eye#watchIcon
         .edit
           .edit__edit
-            textarea(id="content", name="content", required, onkeyup="this.style.height='26px'; this.style.height = this.scrollHeight + 'px';")=ass.content
+            textarea(id="content", name="content", required)=ass.content
           .edit__watch.none-display
             #assignment
               .markdown-body
-                h1 Hello
 
       .form__element
         .form__element__title
@@ -36,5 +35,4 @@ block content
           input(type="submit", value="Save Changes!").submit-btn
 
 block scripts
-  script(src="/static/js/markdown.js")
   script(src="/static/js/edit.js")
