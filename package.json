@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/Novelier-Webbelier/page-two#readme",
   "dependencies": {
-    "@octokit/core": "^3.6.0",
     "babel-loader": "^8.2.3",
     "bcrypt": "^5.0.1",
     "connect-mongo": "^4.6.0",
@@ -30,6 +29,7 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.17.2",
     "fs": "^0.0.1-security",
+    "marked": "^4.0.12",
     "mongoose": "^6.2.4",
     "morgan": "^1.10.0",
     "multer": "^1.4.4",

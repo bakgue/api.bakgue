@@ -1,19 +1,7 @@
-const assignment = document.querySelector("#assignment");
-const markdownBody = assignment.querySelector(".markdown-body");
-const resInServer = JSON.parse(assignment.dataset.res);
+import { marked } from "marked";
 
-function getMarkdown(html) {
-  if (resInServer.status !== 200) {
-    writeInAss(
-      `<h1>Here is an Error</h1><p>Please <a href="${window.location}">refresh</a> again.</p>`
-    );
-  } else if (resInServer.status === 200) {
-    writeInAss(html);
-  }
-}
+const markdownArea = assignment.querySelector(".markdown-body");
 
-function writeInAss(content) {
-  markdownBody.innerHTML = content;
-}
+let markdownContent = markdownArea.dataset.content;
 
-getMarkdown(resInServer.data);
+markdownArea.innerHTML = marked.parse(markdownContent);
