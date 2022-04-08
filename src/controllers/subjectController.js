@@ -22,7 +22,7 @@ export const getSubject = (req, res) => {
   });
 };
 
-export const watchSubject = (req, res) => {
+export const watchSubject = async (req, res) => {
   const {
     params: { subname },
   } = req;
@@ -45,55 +45,26 @@ export const watchSubject = (req, res) => {
       });
   }
 
+  const assInDB = await Assignment.find({ subject: subjectObj.englishName });
+  let assignments = JSON.parse(JSON.stringify(assInDB));
+
+  for (let i = 0; i < assignments.length; i++) {
+    const ass = assignments[i];
+    assignments[i].createdAt = new Date(ass.createdAt);
+    for (let j = 0; j < subjectsInfo.length; j++) {
+      const element = subjectsInfo[j];
+      if (ass.subject === element.englishName) {
+        assignments[i].subject = element;
+      }
+    }
+  }
+
   return res.render(SUBJECT_PUG_PATH + "watch", {
     pageTitle: `${removeDash(
       toUppercaseOnlyFirstLetter(subjectObj.englishName)
     )}`,
     pageDescription: `${subjectObj.name} 에 대한 정보입니다.`,
     subjectObj,
-  });
-};
-
-export const watchSubjectAss = async (req, res) => {
-  const {
-    params: { subname },
-  } = req;
-
-  // subname 이 Subject JSON 에 있는지 여부 확인
-  let sameSubjectName;
-  for (let i = 0; i < subjectsInfo.length; i++) {
-    const element = subjectsInfo[i];
-    if (element.englishName === subname) {
-      sameSubjectName = element;
-    }
-  }
-
-  // 없으면 NOT FOUND
-  if (!sameSubjectName) {
-    return res
-      .status(STATUS_CODE.NOT_FOUND_CODE)
-      .render(BASE_PUG_PATH + "root/not-found", {
-        type: "과목",
-      });
-  }
-
-  // DB 에 있는 모든 Assignment 들을 긇어옴
-  const subjectAss = await Assignment.find({ subject: subname });
-
-  // 없으면 NOT FOUND
-  if (subjectAss.length === 0) {
-    return res
-      .status(STATUS_CODE.NOT_FOUND_CODE)
-      .render(SUBJECT_PUG_PATH + "assignment", {
-        pageTitle: `Here has no information about the ${subname}`,
-        pageDescription: `여기에서 ${subname} 에 관한 모든 수행 및 시험들을 보실 수 있습니다만, 현재 이 과목에 대한 수행이나 시험이 없습니다.`,
-        assignments: subjectAss,
-      });
-  }
-
-  return res.render(SUBJECT_PUG_PATH + "assignment", {
-    pageTitle: `All of the assignments of this ${subname}`,
-    pageDescription: `여기에서 ${subname} 에 관한 모든 수행 및 시험들을 보실 수 있습니다`,
-    assignments: subjectAss,
+    assignments,
   });
 };

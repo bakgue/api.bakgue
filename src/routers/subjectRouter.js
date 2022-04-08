@@ -10,9 +10,5 @@ const subjectRouter = express.Router();
 
 subjectRouter.route("/").all(protectorMiddleware).get(getSubject);
 subjectRouter.route("/:subname").all(protectorMiddleware).get(watchSubject);
-subjectRouter
-  .route("/:subname/assignment")
-  .all(protectorMiddleware)
-  .get(watchSubjectAss);
 
 export default subjectRouter;
