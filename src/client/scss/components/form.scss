@@ -51,8 +51,11 @@ form#form {
       border: 1px solid #ffffff;
       padding: 7px 15px;
       border-radius: 5px;
-      width: 100%;
       text-align: center;
+
+      &.long {
+        width: 100%;
+      }
 
       &:placeholder-shown {
         color: $description-color;
@@ -94,9 +97,15 @@ form#form {
 
 .student-info {
   display: flex;
+  align-items: center;
+  justify-content: center;
 
   .inputs {
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
 
     input {
       width: 40px;
@@ -105,13 +114,6 @@ form#form {
       margin: 0px 10px;
       padding: 5px 10px;
       text-align: center;
-    }
-  }
-
-  input {
-    &:nth-child(6) {
-      width: 80px;
-      letter-spacing: 3px;
     }
   }
 }
