@@ -7,19 +7,20 @@ block content
   +pageTop(pageTitle, pageDescription)
 
   .subject-watch
-    .subject-watch__main__default
+    .subject-watch__main__default.subject-watch__element
       .subject-watch__main__default__top
         +pageSubTop("Default Information", `${subjectObj.name} 의 기본적인 정보 입니다. 별거 없긴한데ㅋ..`)
-      .subject-watch__main__default__name
-        span 이름
-        span.separator  | 
-        span=subjectObj.name
-      .subject-watch__main__default__teacher
-        span 선생님
-        span.separator  | 
-        span=subjectObj.teacher
+      .subject-watch__main__default__main
+        .subject-watch__main__default__main__name
+          span 이름
+          span.separator  | 
+          span=subjectObj.name
+        .subject-watch__main__default__main__teacher
+          span 선생님
+          span.separator  | 
+          span=subjectObj.teacher
 
-    .subject-watch__main__linked
+    .subject-watch__main__linked.subject-watch__element
       .subject-watch__main__linked__top
         +pageSubTop("Link Information", "밑의 버튼을 클릭하면 해당 웹페이지로 이동하게 됩니다.")
 
@@ -28,7 +29,7 @@ block content
         +googleClassroomBtn(subjectObj.googleClassroomId)
         +zoomBtn(subjectObj.zoomLink)
 
-    .subject-watch__main__ass
+    .subject-watch__main__ass.subject-watch__element
       .subject-watch__main__ass__top
         +pageSubTop(`Assignments of "${subjectObj.englishName}" Subject`, `${subjectObj.name}의 모든 Assignment 가 표시됩니다.`)
 

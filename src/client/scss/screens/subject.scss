@@ -43,3 +43,36 @@
     }
   }
 }
+
+.subject-watch {
+  .subject-watch__element {
+    padding-bottom: 20px;
+    .page-sub-top {
+      padding-bottom: 20px;
+    }
+  }
+  &__main__default {
+    &__main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &__main__linked {
+    &__main {
+      display: flex;
+      justify-content: center;
+
+      a {
+        margin: 0px 10px;
+      }
+    }
+  }
+  &__main__ass {
+    &__main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}

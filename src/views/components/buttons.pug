@@ -1,5 +1,5 @@
 mixin mailBtn(email)
-  #emailBtn.linkBtn(data-link=email).subject-btn
+  a(href=email)#emailBtn.subject-btn
     i.fas.fa-envelope
     if email == "미확인"
       span No Email Address
