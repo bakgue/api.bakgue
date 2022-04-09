@@ -38,9 +38,10 @@ block content
         hr.element-separator
         .ass-watch__btns__element__element
           i.fa-solid.fa-clock-rotate-left
-          span 만들어진 날
+          span 기한
           span.separator : 
-          span=ass.createdAt.toDateString()
+          span #{ass.deadLine.from.month} 월 #{ass.deadLine.from.day} 일 #{ass.deadLine.from.class} 교시 ~ #{ass.deadLine.to.month} 월 #{ass.deadLine.to.day} 일 #{ass.deadLine.to.class} 교시
+          //- span=ass.createdAt.toDateString()
         hr.element-separator
         .ass-watch__btns__element__element
           i.fa-solid.fa-eye

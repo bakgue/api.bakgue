@@ -31,6 +31,33 @@ block content
         .form__element__subject
         +subjectOptions(ass.subject)
 
+      .form__element.from-to-form
+        label Deadline
+        .form__element__element.from-to-form__element
+          label 시작일
+          .from-to-form__element__main
+            .from-to-form__element__main__element
+              input(type="text", name="fromMonth", value=ass.deadLine.from.month)
+              span 월
+            .from-to-form__element__main__element
+              input(type="text", name="fromDay", value=ass.deadLine.from.day)
+              span 일
+            .from-to-form__element__main__element
+              input(type="text", name="fromClass", value=ass.deadLine.from.class)
+              span 교시
+        .form__element__element.from-to-form__element
+          label 마지막일
+          .from-to-form__element__main
+            .from-to-form__element__main__element
+              input(type="text", name="toMonth", value=ass.deadLine.to.month)
+              span 월
+            .from-to-form__element__main__element
+              input(type="text", name="toDay", value=ass.deadLine.to.day)
+              span 일
+            .from-to-form__element__main__element
+              input(type="text", name="toClass", value=ass.deadLine.to.class)
+              span 교시
+
         .ass-edit__form__element__submit
           input(type="submit", value="Save Changes!").submit-btn
 

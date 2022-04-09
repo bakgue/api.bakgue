@@ -3,7 +3,7 @@ include ../components/subject-cards
 include ../components/page-top
 
 block content
-  +pageTop("Create a New Assignment for 2-2 Students", "2학년 2반을 위한 과제나 시험에 관한 공지를 만들어 보세요. 해당 공지는 나중에 편집 할 수도, 삭제할 수도 있습니다.")
+  +pageTop("Create a New Assignment", "2학년 2반을 위한 과제나 시험에 관한 공지를 만들어 보세요. 해당 공지는 나중에 편집 할 수도, 삭제할 수도 있습니다.")
 
   .ass-new
     form.ass-new__form(method="POST")#form
@@ -17,7 +17,31 @@ block content
       .form__element
         +subjectOptions()
 
-      input(type="submit", value="Create!").submit-btn
+      .form__element.from-to-form
+        label Deadline
+        .form__element__element.from-to-form__element
+          label 시작일
+          .from-to-form__element__main
+            .from-to-form__element__main__element
+              input(type="text", name="fromMonth")
+              span 월
+            .from-to-form__element__main__element
+              input(type="text", name="fromDay")
+              span 일
+            .from-to-form__element__main__element
+              input(type="text", name="fromClass")
+              span 교시
+        .form__element__element.from-to-form__element
+          label 마지막일
+          .from-to-form__element__main
+            .from-to-form__element__main__element
+              input(type="text", name="toMonth")
+              span 월
+            .from-to-form__element__main__element
+              input(type="text", name="toDay")
+              span 일
+            .from-to-form__element__main__element
+              input(type="text", name="toClass")
+              span 교시
 
-block scripts
-  script(src="/static/js/flowForm.js") 
+      input(type="submit", value="Create!").submit-btn
