@@ -17,6 +17,7 @@ module.exports = {
     watchScreenController: `${BASE_JS_PATH}watch-screen-controller.js`,
     markdown: `${BASE_JS_PATH}markdown.js`,
     edit: `${BASE_JS_PATH}edit.js`,
+    delete: `${BASE_JS_PATH}delete.js`,
   },
   plugins: [
     new MiniCssExtractPlugin({
