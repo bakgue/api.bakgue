@@ -23,6 +23,48 @@ const assignmentSchema = new mongoose.Schema({
     required: true,
     default: Date.now,
   },
+  deadLine: {
+    from: {
+      month: {
+        type: Number,
+        min: 4,
+        max: 12,
+        required: true,
+      },
+      day: {
+        type: Number,
+        min: 1,
+        max: 31,
+        required: true,
+      },
+      class: {
+        type: Number,
+        min: 1,
+        max: 7,
+        required: true,
+      },
+    },
+    to: {
+      month: {
+        type: Number,
+        min: 4,
+        max: 12,
+        required: true,
+      },
+      day: {
+        type: Number,
+        min: 1,
+        max: 31,
+        required: true,
+      },
+      class: {
+        type: Number,
+        min: 1,
+        max: 7,
+        required: true,
+      },
+    },
+  },
   meta: {
     views: {
       type: Number,
