@@ -18,6 +18,7 @@ module.exports = {
     markdown: `${BASE_JS_PATH}markdown.js`,
     edit: `${BASE_JS_PATH}edit.js`,
     delete: `${BASE_JS_PATH}delete.js`,
+    checkNewAss: `${BASE_JS_PATH}check-new-ass.js`,
   },
   plugins: [
     new MiniCssExtractPlugin({

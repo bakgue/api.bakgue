@@ -37,25 +37,25 @@ block content
           label 시작일
           .from-to-form__element__main
             .from-to-form__element__main__element
-              input(type="text", name="fromMonth", value=ass.deadLine.from.month)
+              input(type="text", name="fromMonth", value=ass.deadLine.from.month)#fromMonth
               span 월
             .from-to-form__element__main__element
-              input(type="text", name="fromDay", value=ass.deadLine.from.day)
+              input(type="text", name="fromDay", value=ass.deadLine.from.day)#fromDay
               span 일
             .from-to-form__element__main__element
-              input(type="text", name="fromClass", value=ass.deadLine.from.class)
+              input(type="text", name="fromClass", value=ass.deadLine.from.class)#fromClass
               span 교시
         .form__element__element.from-to-form__element
           label 마지막일
           .from-to-form__element__main
             .from-to-form__element__main__element
-              input(type="text", name="toMonth", value=ass.deadLine.to.month)
+              input(type="text", name="toMonth", value=ass.deadLine.to.month)#toMonth
               span 월
             .from-to-form__element__main__element
-              input(type="text", name="toDay", value=ass.deadLine.to.day)
+              input(type="text", name="toDay", value=ass.deadLine.to.day)#toDay
               span 일
             .from-to-form__element__main__element
-              input(type="text", name="toClass", value=ass.deadLine.to.class)
+              input(type="text", name="toClass", value=ass.deadLine.to.class)#toClass
               span 교시
 
         .ass-edit__form__element__submit
@@ -63,3 +63,4 @@ block content
 
 block scripts
   script(src="/static/js/edit.js")
+  script(src="/static/js/checkNewAss.js")

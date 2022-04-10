@@ -23,25 +23,28 @@ block content
           label 시작일
           .from-to-form__element__main
             .from-to-form__element__main__element
-              input(type="text", name="fromMonth")
+              input(type="text", name="fromMonth")#fromMonth
               span 월
             .from-to-form__element__main__element
-              input(type="text", name="fromDay")
+              input(type="text", name="fromDay")#fromDay
               span 일
             .from-to-form__element__main__element
-              input(type="text", name="fromClass")
+              input(type="text", name="fromClass")#fromClass
               span 교시
         .form__element__element.from-to-form__element
           label 마지막일
           .from-to-form__element__main
             .from-to-form__element__main__element
-              input(type="text", name="toMonth")
+              input(type="text", name="toMonth")#toMonth
               span 월
             .from-to-form__element__main__element
-              input(type="text", name="toDay")
+              input(type="text", name="toDay")#toDay
               span 일
             .from-to-form__element__main__element
-              input(type="text", name="toClass")
+              input(type="text", name="toClass")#toClass
               span 교시
 
-      input(type="submit", value="Create!").submit-btn
+      input(type="submit", value="Create!").submit-btn#submitBtn
+
+block scripts
+  script(src="/static/js/checkNewAss.js")

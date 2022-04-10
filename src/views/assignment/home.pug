@@ -5,6 +5,7 @@ include ../components/assignments-cards
 block content
   +pageTop("Assignment Information", "이 페이지에서 과제나 시험에 관한 것들을 확인해 보세요.")
   .ass
+    a(href="/assignment/new").submit-btn Create a New Assignment
     for ass in asss
       +assignmentsCard(ass)
       +assignmentsCard(ass)
