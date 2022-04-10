@@ -39,4 +39,7 @@
   border-radius: 5px;
   border: 1px solid #79a882;
   margin-top: 20px;
+  &:disabled {
+    opacity: 0.8;
+  }
 }

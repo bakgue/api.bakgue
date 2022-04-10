@@ -26,8 +26,9 @@ const passCondition = {
 };
 
 function handleChangeInput(event) {
+  console.log("Hello World");
   const target = event.target;
-  const value = event.target.value;
+  const value = target.value;
   const id = target.getAttribute("id");
   const type = id.replace("from", "").replace("to", "").toLowerCase();
   // 이 변수 이름을 뭐라해야하지
@@ -36,10 +37,35 @@ function handleChangeInput(event) {
   checkValue(type, genre, value);
 }
 
+function init(event) {
+  for (const fromto in inputTags) {
+    if (Object.hasOwnProperty.call(inputTags, fromto)) {
+      const unit = inputTags[fromto];
+
+      for (const type in unit) {
+        if (Object.hasOwnProperty.call(unit, type)) {
+          const element = unit[type];
+          const values = element.value;
+          const id = element.getAttribute("id");
+          const types = id.replace("from", "").replace("to", "").toLowerCase();
+          // 이 변수 이름을 뭐라해야하지
+          const genre = id
+            .replace("Month", "")
+            .replace("Day", "")
+            .replace("Class", "");
+
+          checkValue(types, genre, values);
+        }
+      }
+    }
+  }
+}
+
 function checkValue(type, genre, value) {
   if (type === "month" || type === "day" || type === "class") {
     if (!isNaN(value) && Number.isInteger(Number(value))) {
       const valueInHere = Number(value);
+
       if (type === "month") {
         if (4 <= valueInHere && valueInHere <= 12) {
           changePassCondition(type, genre, true);
@@ -50,7 +76,6 @@ function checkValue(type, genre, value) {
         if (1 <= valueInHere && valueInHere <= 31) {
           changePassCondition(type, genre, true);
         } else {
-          console.log("Hello");
           changePassCondition(type, genre, false);
         }
       } else if (type === "class") {
@@ -78,7 +103,6 @@ function changeSubmitBtn(to) {
 
 // changePassCondition("from", "month", true);
 function changePassCondition(genre, type, to) {
-  console.log(type, genre, to);
   eval(
     `passCondition.${type}.${type}${
       genre.charAt(0).toUpperCase() + genre.slice(1)
@@ -102,8 +126,6 @@ function checkPassCondition() {
     }
   }
 
-  console.log(passConditionArr);
-
   const isPass = passConditionArr.every((value) => value === true);
 
   if (isPass) {
@@ -120,10 +142,12 @@ for (const fromto in inputTags) {
     for (const i in unit) {
       if (Object.hasOwnProperty.call(unit, i)) {
         const element = unit[i];
-        element.addEventListener("change", handleChangeInput);
+        element.addEventListener("input", handleChangeInput);
       }
     }
   }
 }
 
 changeSubmitBtn(false);
+
+init();
