@@ -8,10 +8,10 @@ function handleClickSaveBtn() {
   console.log(isSavedAss);
   if (isSavedAss) {
     isSavedAss = false;
-    saveAss();
+    cancelSaveAss();
   } else {
     isSavedAss = true;
-    cancelSaveAss();
+    saveAss();
   }
 
   checkSavedAss();
@@ -26,8 +26,10 @@ async function checkSavedAss() {
 
   if (json.isSaved === true) {
     changeSavedBtnTo(true);
+    isSavedAss = true;
   } else {
     changeSavedBtnTo(false);
+    isSavedAss = false;
   }
 }
 
@@ -38,9 +40,9 @@ async function saveAss() {
 
   const status = res.status;
   if (status === 200) {
-    changeSavedBtnTo(false);
-  } else {
     changeSavedBtnTo(true);
+  } else {
+    changeSavedBtnTo(false);
   }
 }
 
@@ -51,9 +53,9 @@ async function cancelSaveAss() {
 
   const status = res.status;
   if (status === 200) {
-    changeSavedBtnTo(true);
-  } else {
     changeSavedBtnTo(false);
+  } else {
+    changeSavedBtnTo(true);
   }
 }
 
