@@ -26,7 +26,6 @@ const passCondition = {
 };
 
 function handleChangeInput(event) {
-  console.log("Hello World");
   const target = event.target;
   const value = target.value;
   const id = target.getAttribute("id");

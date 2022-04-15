@@ -54,7 +54,7 @@ block content
       hr.element-separator
       .ass-watch__btns__btns
         //- Vanilla JavaScript : 클릭시 Save API 보내기
-        a#saveAssBtn.save-btn
+        a#saveAssBtn.save-btn(data-title=ass.title)
           i.fa-solid.fa-bookmark
           span Save
         if String(ass.owner._id) == String(loggedInUser._id)
@@ -68,3 +68,4 @@ block content
 block scripts
   script(src="/static/js/watchScreenController.js")
   script(src="/static/js/markdown.js")
+  script(src="/static/js/saveAss.js")
