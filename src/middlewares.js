@@ -1,5 +1,5 @@
 export const localsMiddleware = (req, res, next) => {
-  res.locals.siteName = "Page Two";
+  res.locals.siteName = "Bak Gue";
   res.locals.loggedIn = Boolean(req.session.loggedIn);
   res.locals.accessArea = req.session.accessArea || "Guest";
   res.locals.grad = req.session.grad || "Guest";
