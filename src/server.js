@@ -8,7 +8,6 @@ import { localsMiddleware } from "./middlewares";
 import rootRouter from "./routers/rootRouter";
 import assignmentRouter from "./routers/assignmentRouter";
 import subjectRouter from "./routers/subjectRouter";
-import docRouter from "./routers/docRouter";
 import apiRouter from "./routers/apiRouter";
 import classRouter from "./routers/classRouter";
 
@@ -52,6 +51,5 @@ app.use("/assignment", assignmentRouter);
 app.use("/class", classRouter);
 app.use("/subject", subjectRouter);
 app.use("/api", apiRouter);
-app.use("/doc", docRouter);
 
 export default app;
