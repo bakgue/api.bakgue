@@ -16,6 +16,12 @@
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
     margin-right: auto;
+    #assignment {
+      padding: 20px;
+      .markdown-body {
+        background-color: $brand-color;
+      }
+    }
     &__bar {
       display: flex;
       flex-direction: row;
