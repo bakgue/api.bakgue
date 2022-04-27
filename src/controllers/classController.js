@@ -58,7 +58,7 @@ function contractSchedule(schedules) {
       for (let k = 0; k < subjectInfo.length; k++) {
         const subjectInSubjectInfo = subjectInfo[k];
 
-        if (subject === subjectInSubjectInfo.englishName) {
+        if (String(subject) === String(subjectInSubjectInfo.englishName)) {
           schedules[i][j] = subjectInSubjectInfo;
         }
       }

@@ -9,6 +9,10 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin: {
+    right: 5vw;
+    left: 5vw;
+  }
   &__main {
     width: 70vw;
     height: min-content;

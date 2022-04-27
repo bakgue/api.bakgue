@@ -1,5 +1,4 @@
 /assets
 /node_modules
 .env
-/src/public/json
 /build
