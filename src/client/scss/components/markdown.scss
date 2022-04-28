@@ -2,8 +2,19 @@
   padding: 20px;
   color: $brand-color;
   .markdown-body {
-    text-align: start;
+    list-style: circle;
+    text-align: start !important;
     background-color: $brand-color;
+    font-size: 18px;
+    color: $text-color;
+    font-weight: 500;
+
+    ol,
+    ul,
+    menu {
+      list-style: circle;
+    }
   }
 }
+
 

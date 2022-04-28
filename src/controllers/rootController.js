@@ -6,24 +6,6 @@ import studentInfo from "../public/json/student.json";
 export const BASE_PUG_PATH = "../views/";
 const ROOT_PUG_PATH = BASE_PUG_PATH + "root/";
 
-export const checkGrad = (value) => {
-  const keys = {
-    masterKey: process.env.MASTER_KEY,
-    presidentKey: process.env.PRESIDENT_KEY,
-    clientKey: process.env.CLIENT_KEY,
-  };
-
-  if (value === keys.clientKey) {
-    return "C";
-  } else if (value === keys.presidentKey) {
-    return "P";
-  } else if (value === keys.masterKey) {
-    return "M";
-  } else {
-    return false;
-  }
-};
-
 export const STATUS_CODE = {
   OK_CODE: 200,
   CREATED_CODE: 201,
@@ -170,7 +152,6 @@ export const postSignin = async (req, res) => {
   }
 
   // 위의 절차를 모두 통과시 Request 의 Sessison 에 로그인 확인 변수 저장
-  req.session.accessArea = checkGrad(student.key);
   req.session.loggedIn = true;
   req.session.loggedInUser = student;
 
