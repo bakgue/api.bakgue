@@ -1,7 +1,7 @@
 import { STATUS_CODE } from "./rootController";
 import { BASE_PUG_PATH } from "./rootController";
 
-import subjectInfo from "../public/json/subject.json";
+import subjectInfo from "/src/json/subject.json";
 
 import Assignment from "../model/Assignment";
 import Student from "../model/Student";

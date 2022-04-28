@@ -3,9 +3,9 @@ import { BASE_PUG_PATH } from "./rootController";
 
 const CLASS_PUG_PATH = BASE_PUG_PATH + "class/";
 
-import subjectInfo from "../public/json/subject.json";
-import studentInfo from "../public/json/student.json";
-import classInfo from "../public/json/class.json";
+import subjectInfo from "/src/json/subject.json";
+import studentInfo from "/src/json/student.json";
+import classInfo from "/src/json/class.json";
 
 let seatingChartNumbers = classInfo.seatingChart;
 let scheduleOnlyName = classInfo.schedule;
