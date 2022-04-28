@@ -10,7 +10,9 @@ import app from "./server";
 const PORT = process.env.PORT || 4000;
 
 const handleListening = () => {
-  console.log(`✅ Server listening on port http://localhost:${PORT} 🚀`);
+  console.log(`✅ Server listening on port ${PORT} 🚀`);
 };
 
 app.listen(PORT, handleListening);
+
+console.log(process.env.PORT);

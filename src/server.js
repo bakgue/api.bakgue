@@ -41,9 +41,9 @@ app.use((_, res, next) => {
 
 app.use(flash());
 app.use(localsMiddleware);
-app.use("/public", express.static(__dirname + "/public"));
 app.use("/static", express.static("assets"));
-app.use(`/${process.env.JSON_FILE_NAME}`, express.static(__dirname + "/json"));
+app.use("/public", express.static("public"));
+app.use("/json", express.static("json"))
 
 app.use("/", rootRouter);
 

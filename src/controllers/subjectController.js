@@ -3,7 +3,7 @@ import Assignment from "../model/Assignment";
 import { STATUS_CODE } from "./rootController";
 import { BASE_PUG_PATH } from "./rootController";
 
-import subjectsInfo from "../json/subject.json";
+import subjectsInfo from "../../json/subject.json";
 
 const SUBJECT_PUG_PATH = BASE_PUG_PATH + "subject/";
 
