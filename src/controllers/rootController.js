@@ -1,7 +1,7 @@
 import Student from "../model/Student";
 
 import bcrypt from "bcrypt";
-import studentInfo from "/src/json/student.json";
+import studentInfo from "../json/student.json";
 
 export const BASE_PUG_PATH = "../views/";
 const ROOT_PUG_PATH = BASE_PUG_PATH + "root/";
