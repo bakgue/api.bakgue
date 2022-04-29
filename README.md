@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="">
-    <img src="src/public/img/logo.png" alt="Bak Gue Logo">
+    <img src="public/img/logo.png" alt="Bak Gue Logo">
   </a>
 </p>
 

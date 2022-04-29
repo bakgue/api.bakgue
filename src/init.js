@@ -14,5 +14,3 @@ const handleListening = () => {
 };
 
 app.listen(PORT, handleListening);
-
-console.log(process.env.PORT);
