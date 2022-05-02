@@ -1,0 +1,134 @@
+[
+  {
+    "name": "학급방",
+    "englishName": "Class Room",
+    "teacher": "이효지",
+    "email": "Not Found",
+    "zoomLink": "https://zoom.us/j/7945157068?pwd=WjYrYkdNL3BtNlJHQSt4elp5eDgxdz09",
+    "zoomId": "794 515 7068",
+    "zoomPassword": "3333",
+    "googleClassroomId": "NDY3NTQyNjE0Njk3",
+    "uniqueColor": "#2F3030"
+  },
+  {
+    "name": "국어",
+    "englishName": "Korean",
+    "teacher": "윤경아",
+    "email": "Not Found",
+    "zoomLink": "https://zoom.us/j/7945157068?pwd=WjYrYkdNL3BtNlJHQSt4elp5eDgxdz09",
+    "zoomId": "7993 390 408",
+    "zoomPassword": "0733",
+    "googleClassroomId": "NDY3NTYyMzUxOTk5",
+    "uniqueColor": "#EB5542"
+  },
+  {
+    "name": "영어",
+    "englishName": "English",
+    "teacher": "이효지",
+    "email": "Not Found",
+    "zoomLink": "https://zoom.us/j/7945157068?pwd=WjYrYkdNL3BtNlJHQSt4elp5eDgxdz09",
+    "zoomId": "794 515 7068",
+    "zoomPassword": "3333",
+    "googleClassroomId": "NDY3NTQyNjE1Mzc0",
+    "uniqueColor": "#4B88EB"
+  },
+  {
+    "name": "수학",
+    "englishName": "Math",
+    "teacher": "임성현",
+    "email": "Not Found",
+    "zoomLink": "https://us02web.zoom.us/j/3693270277",
+    "zoomId": "369 327 0277",
+    "zoomPassword": "0100",
+    "googleClassroomId": "NDY3MzUxNzc3ODM4",
+    "uniqueColor": "#7AEB4E"
+  },
+  {
+    "name": "역사",
+    "englishName": "History",
+    "teacher": "윤정선",
+    "email": "Not Found",
+    "zoomLink": "Not Found",
+    "zoomId": "Not Found",
+    "zoomPassword": "Not Found",
+    "googleClassroomId": "NDY3NTY4NDA5NjI0",
+    "uniqueColor": "#B97BFA"
+  },
+  {
+    "name": "과학 A",
+    "englishName": "Science A",
+    "teacher": "장희영",
+    "email": "Not Found",
+    "zoomLink": "https://us02web.zoom.us/j/8367586205?pwd=MTdLTGhjQnowT1F0RnFTRURaQVpIdz09",
+    "zoomId": "836 758 6205",
+    "zoomPassword": "1234",
+    "googleClassroomId": "NDY3NTcwNDQ5Njk4",
+    "uniqueColor": "#3A34E3"
+  },
+  {
+    "name": "과학 B",
+    "englishName": "Science B",
+    "teacher": "김혜경",
+    "email": "Not Found",
+    "zoomLink": "https://zoom.us/j/6477164949?pwd=VVRGL1hUdUN6a2Q5elJjZ1Z5ZDhrQT09",
+    "zoomId": "647 716 4949",
+    "zoomPassword": "2020",
+    "googleClassroomId": "NDY3NTgwNzA5OTM0",
+    "uniqueColor": "#3A34E3"
+  },
+  {
+    "name": "음악",
+    "englishName": "Music",
+    "teacher": "정수연",
+    "email": "Not Found",
+    "zoomLink": "Not Found",
+    "zoomId": "Not Found",
+    "zoomPassword": "Not Found",
+    "googleClassroomId": "NDY3NTQyMjU4NDQw",
+    "uniqueColor": "#FFA65E"
+  },
+  {
+    "name": "체육",
+    "englishName": "Athletic",
+    "teacher": "조영현",
+    "email": "Not Found",
+    "zoomLink": "Not Found",
+    "zoomId": "Not Found",
+    "zoomPassword": "Not Found",
+    "googleClassroomId": "NDY3NTY0Nzk2NzY1",
+    "uniqueColor": "#FF1001"
+  },
+  {
+    "name": "기술 가정",
+    "englishName": "Technology and Home Economics",
+    "teacher": "이미혜",
+    "email": "Not Found",
+    "zoomLink": "https://zoom.us/j/7989527503?pwd=UEpwNXpZanBGdjBHZExjN0xnbFlDUT09",
+    "zoomId": "798 952 7503",
+    "zoomPassword": "1234",
+    "googleClassroomId": "NDU5OTUzNjY4MjU5",
+    "uniqueColor": "#C5EBAB"
+  },
+  {
+    "name": "한문",
+    "englishName": "Chinese",
+    "teacher": "현혜경",
+    "email": "Not Found",
+    "zoomLink": "https://zoom.us/j/3563842209?pwd=d0hGVzd3N1l0bnFhOGt5bFd4NWh6Zz09",
+    "zoomId": "356 384 2209",
+    "zoomPassword": "1234",
+    "googleClassroomId": "NDY3NTY4NzA1Nzk1",
+    "uniqueColor": "#71F1FF"
+  },
+  {
+    "name": "도덕",
+    "englishName": "Moral Education",
+    "teacher": "김정아",
+    "email": "Not Found",
+    "zoomLink": "https://zoom.us/j/4828839629?pwd=K2owQ1dhUWg4c1JZemRaR1Q2OWVvUT09",
+    "zoomId": "482 883 9629",
+    "zoomPassword": "2022",
+    "googleClassroomId": "NDY3NTY1OTAwMzc4",
+    "uniqueColor": "#90E665"
+  }
+]
