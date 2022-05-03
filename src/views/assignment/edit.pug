@@ -10,7 +10,7 @@ block content
       span#errorMessage=errorMessage  
     form.ass-edit__form(method="POST")#form
       h3 Edit #{ass.title}
-      .form__element
+      .form__element.form__element__content
         label(for="content")
           .content-label-mid
             span Content
@@ -24,6 +24,9 @@ block content
             #assignment
               .markdown-body
                 h1 Hi
+
+      .form__element
+        label 이런 가로 길이가 너무 작습니다. 더 큰화면으로 편집해주세요!
 
       .form__element
         .form__element__title

@@ -44,6 +44,18 @@ form#form {
     align-items: center;
     width: 80%;
 
+    &:nth-child(2) {
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
+    }
+
+    &:nth-child(3) {
+      @media screen and (min-width: 600px) {
+        display: none;
+      }
+    }
+
     label {
       width: 100%;
       text-align: center;
@@ -94,6 +106,7 @@ form#form {
     font-size: 23px;
     font-weight: 800;
     margin-bottom: 10px;
+    text-align: center;
   }
 
   p#errorMessage {

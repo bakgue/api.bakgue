@@ -136,7 +136,7 @@ export const watchAss = async (req, res) => {
 
   for (let i = 0; i < subjectInfo.length; i++) {
     const element = subjectInfo[i];
-    if (String(element.englishName) === String(subjectOfAss)) {
+    if (String(element.englishName.toLowerCase()) === String(subjectOfAss.toLowerCase())) {
       subject = element;
     }
   }
@@ -239,7 +239,6 @@ export const postEditAss = async (req, res) => {
 
   // 아니면, 업데이트
   try {
-    console.log("Hello");
     const updatedAss = await Assignment.findByIdAndUpdate(ass._id, {
       content,
       title,

@@ -1,6 +1,7 @@
 #main {
   margin-top: 100px;
   padding-top: 20px;
+  width: 100%;
   .page-top {
     display: flex;
     justify-content: center;
@@ -9,9 +10,8 @@
       h1 {
         @include allMid();
         word-wrap: keep-all;
-        font-size: 4rem;
-        margin: 0px 30px;
-        margin-bottom: 20px;
+        font-size: 3rem;
+        padding: 0px 30px 20px 30px;
         font-weight: 900;
         text-align: center;
         span {
