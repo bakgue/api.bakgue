@@ -45,14 +45,18 @@ form#form {
     width: 80%;
 
     &:nth-child(2) {
-      @media screen and (max-width: 600px) {
-        display: none;
+      &.form__element__content {
+        @media screen and (max-width: 600px) {
+          display: none;
+        }
       }
     }
 
     &:nth-child(3) {
-      @media screen and (min-width: 600px) {
-        display: none;
+      &.form__element__content__rep {
+        @media screen and (min-width: 600px) {
+          display: none;
+        }
       }
     }
 
