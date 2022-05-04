@@ -18,11 +18,15 @@ export const getAss = async (req, res) => {
     asss[i].createdAt = new Date(ass.createdAt);
     for (let j = 0; j < subjectInfo.length; j++) {
       const element = subjectInfo[j];
+      console.log(element)
       if (ass.subject === element.englishName) {
+        console.log("Hellolllo")
         asss[i].subject = element;
       }
     }
   }
+
+  console.log(asss)
 
   return res.render(ASS_PUG_PATH + "home", {
     asss,

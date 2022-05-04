@@ -57,17 +57,11 @@ export const postSignup = async (req, res) => {
   const studentId = `${grad}${classOne}${classTwo}${idOne}${idTwo}`;
   const studentName = name;
 
-  // JSON 를 통해 이 학번 이름이 있는지 없는지 확인
-  let no = true;
-  for (let i = 0; i < studentInfo.length; i++) {
-    const element = studentInfo[i];
-    if (element.id === studentId && element.name === studentName) {
-      no = false;
-    }
-  }
+  // JSON 를 통해 이 학번 름이 있는지 없는지 확인
+  const isExists = studentInfo[studentId]
 
   // 없다면 ErrorMessage 를 보내 다시 Rendering
-  if (no) {
+  if (!isExists) {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signup", {
