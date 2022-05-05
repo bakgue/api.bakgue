@@ -19,7 +19,7 @@ block content
       .class-main__sections.class-main__seating-chart#seatingChart
         h2 자리 배치도
         .seating-chart(style="display:flex;")
-          for column in seatingChart
+          for column in seatingChartWithStudentObj
             .seating-chart__column
               for row in column
                 if row.name == loggedInUser.name
@@ -33,7 +33,8 @@ block content
 
       .class-main__sections.class-main__schedule#schedule
         h2 시간표
-        .schedule(style="display:flex;")
+        p 추후 업데이트로 돌아올 예정임니다!
+        //- .schedule(style="display:flex;")
           .schedule-day
             for num in [1, 2, 3, 4, 5, 6, 7]
               .schedule-day__subject
@@ -46,6 +47,7 @@ block content
 
       .class-main__sections.class-main__school-lunch#lunchSchedule
         h2 급식 시간표
+        p 추후 업데이트로 돌아올 예정임니다!
         //- Vanilla JavaScript 에 fetch 로 https://npr-m.goesn.kr/npr-m/ad/fm/foodmenu/selectFoodMenuView.do 에 보내서 가지고 오기
         .school-lunch
 

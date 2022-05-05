@@ -28,21 +28,18 @@ export const watchSubject = async (req, res) => {
   } = req;
 
   // JSON 에 Subname 에 해당하는 Subject 가 있는지 확인
+  const isExists = subjectsInfo[subname];
   let subjectObj;
-  for (let i = 0; i < subjectsInfo.length; i++) {
-    const element = subjectsInfo[i];
-    if (String(element.englishName) === String(subname)) {
-      subjectObj = element;
-    }
-  }
 
   // 없으면 NOT FOUND Page Rendering 함
-  if (!subjectObj) {
+  if (!isExists) {
     return res
       .status(STATUS_CODE.NOT_FOUND_CODE)
       .render(BASE_PUG_PATH + "root/not-found", {
         type: "과목",
       });
+  } else {
+    subjectObj = isExists;
   }
 
   const assInDB = await Assignment.find({ subject: subjectObj.englishName });
@@ -51,12 +48,7 @@ export const watchSubject = async (req, res) => {
   for (let i = 0; i < assignments.length; i++) {
     const ass = assignments[i];
     assignments[i].createdAt = new Date(ass.createdAt);
-    for (let j = 0; j < subjectsInfo.length; j++) {
-      const element = subjectsInfo[j];
-      if (ass.subject === element.englishName) {
-        assignments[i].subject = element;
-      }
-    }
+    assignments[i].subject = subjectsInfo[ass.subject];
   }
 
   return res.render(SUBJECT_PUG_PATH + "watch", {

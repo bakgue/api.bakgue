@@ -1,7 +1,7 @@
-[
-  {
+{
+  "Class-Room": {
     "name": "학급방",
-    "englishName": "Class Room",
+    "englishName": "Class-Room",
     "teacher": "이효지",
     "email": "Not Found",
     "zoomLink": "https://zoom.us/j/7945157068?pwd=WjYrYkdNL3BtNlJHQSt4elp5eDgxdz09",
@@ -10,7 +10,8 @@
     "googleClassroomId": "NDY3NTQyNjE0Njk3",
     "uniqueColor": "#2F3030"
   },
-  {
+
+  "Korean": {
     "name": "국어",
     "englishName": "Korean",
     "teacher": "윤경아",
@@ -21,7 +22,8 @@
     "googleClassroomId": "NDY3NTYyMzUxOTk5",
     "uniqueColor": "#EB5542"
   },
-  {
+
+  "English": {
     "name": "영어",
     "englishName": "English",
     "teacher": "이효지",
@@ -32,7 +34,8 @@
     "googleClassroomId": "NDY3NTQyNjE1Mzc0",
     "uniqueColor": "#4B88EB"
   },
-  {
+
+  "Math": {
     "name": "수학",
     "englishName": "Math",
     "teacher": "임성현",
@@ -43,7 +46,8 @@
     "googleClassroomId": "NDY3MzUxNzc3ODM4",
     "uniqueColor": "#7AEB4E"
   },
-  {
+
+  "History": {
     "name": "역사",
     "englishName": "History",
     "teacher": "윤정선",
@@ -54,9 +58,10 @@
     "googleClassroomId": "NDY3NTY4NDA5NjI0",
     "uniqueColor": "#B97BFA"
   },
-  {
+
+  "Science-A": {
     "name": "과학 A",
-    "englishName": "Science A",
+    "englishName": "Science-A",
     "teacher": "장희영",
     "email": "Not Found",
     "zoomLink": "https://us02web.zoom.us/j/8367586205?pwd=MTdLTGhjQnowT1F0RnFTRURaQVpIdz09",
@@ -65,9 +70,10 @@
     "googleClassroomId": "NDY3NTcwNDQ5Njk4",
     "uniqueColor": "#3A34E3"
   },
-  {
+
+  "Science-B": {
     "name": "과학 B",
-    "englishName": "Science B",
+    "englishName": "Science-B",
     "teacher": "김혜경",
     "email": "Not Found",
     "zoomLink": "https://zoom.us/j/6477164949?pwd=VVRGL1hUdUN6a2Q5elJjZ1Z5ZDhrQT09",
@@ -76,7 +82,8 @@
     "googleClassroomId": "NDY3NTgwNzA5OTM0",
     "uniqueColor": "#3A34E3"
   },
-  {
+
+  "Music": {
     "name": "음악",
     "englishName": "Music",
     "teacher": "정수연",
@@ -87,7 +94,8 @@
     "googleClassroomId": "NDY3NTQyMjU4NDQw",
     "uniqueColor": "#FFA65E"
   },
-  {
+
+  "Athletic": {
     "name": "체육",
     "englishName": "Athletic",
     "teacher": "조영현",
@@ -98,9 +106,10 @@
     "googleClassroomId": "NDY3NTY0Nzk2NzY1",
     "uniqueColor": "#FF1001"
   },
-  {
+
+  "Giga": {
     "name": "기술 가정",
-    "englishName": "Technology and Home Economics",
+    "englishName": "Giga",
     "teacher": "이미혜",
     "email": "Not Found",
     "zoomLink": "https://zoom.us/j/7989527503?pwd=UEpwNXpZanBGdjBHZExjN0xnbFlDUT09",
@@ -109,7 +118,8 @@
     "googleClassroomId": "NDU5OTUzNjY4MjU5",
     "uniqueColor": "#C5EBAB"
   },
-  {
+
+  "Chinese": {
     "name": "한문",
     "englishName": "Chinese",
     "teacher": "현혜경",
@@ -120,9 +130,10 @@
     "googleClassroomId": "NDY3NTY4NzA1Nzk1",
     "uniqueColor": "#71F1FF"
   },
-  {
+
+  "Moral-Education": {
     "name": "도덕",
-    "englishName": "Moral Education",
+    "englishName": "Moral-Education",
     "teacher": "김정아",
     "email": "Not Found",
     "zoomLink": "https://zoom.us/j/4828839629?pwd=K2owQ1dhUWg4c1JZemRaR1Q2OWVvUT09",
@@ -131,4 +142,4 @@
     "googleClassroomId": "NDY3NTY1OTAwMzc4",
     "uniqueColor": "#90E665"
   }
-]
+}
