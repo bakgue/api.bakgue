@@ -58,9 +58,7 @@ export const postSignup = async (req, res) => {
   const studentName = name;
 
   // JSON 를 통해 이 학번 름이 있는지 없는지 확인
-  const isExists = studentInfo[studentId]
-
-  // 없다면 ErrorMessage 를 보내 다시 Rendering
+  const isExists = studentInfo[studentId];
   if (!isExists) {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
@@ -118,6 +116,16 @@ export const postSignin = async (req, res) => {
   const studentId = `${grad}${classOne}${classTwo}${idOne}${idTwo}`;
   const studentName = name;
 
+  // JSON 에서 같은 학번과 이름을 가진 학생 긁어옴
+  const isExists = studentInfo[studentId].name == studentName;
+  if (!isExists) {
+    return res
+      .status(STATUS_CODE.BAD_REQUEST_CODE)
+      .render(ROOT_PUG_PATH + "signin", {
+        errorMessage: `${studentName} 학생은 저희 반에 없습니다.`,
+      });
+  }
+
   // DB 에서 같은 학번과 이름을 가진 계정 긇어옴
   const student = await Student.findOne({
     number: studentId,
@@ -129,7 +137,7 @@ export const postSignin = async (req, res) => {
     return res
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signin", {
-        errorMessage: "학생을 찾지 못했습니다. 다시 입력해 주시기 바랍니다.",
+        errorMessage: "계정을 찾지 못했습니다. 다시 입력해 주시기 바랍니다.",
       });
   }
 
