@@ -8,8 +8,7 @@ mixin assignmentsCard(ass)
     .assignments-card__mid
       div(style=`background-color: ${ass.subject.uniqueColor}`, id="subjectColor")
       a(href=`/subject/${ass.subject.englishName}`)
-        - const subjectName = ass.subject.charAt(0).toUpperCase() + ass.subject.slice(1);
-        span=subjectName
+        span=ass.subject.englishName
     .assignments-card__bottom
       .assignments-card__bottom__left
         i.fa-solid.fa-clock-rotate-left
