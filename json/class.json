@@ -1,49 +1,11 @@
 {
   "seatingChart": [
-    [
-      "3",
-      "20",
-      "4",
-      "6",
-      "23",
-      "7"
-    ],
-    [
-      "9",
-      "24",
-      "13",
-      "28",
-      "8",
-      "31"
-    ],
-    [
-      "15",
-      "25",
-      "16",
-      "2"
-    ],
-    [
-      "1",
-      "26",
-      "32",
-      "30"
-    ],
-    [
-      "19",
-      "17",
-      "21",
-      "5",
-      "29",
-      "14"
-    ],
-    [
-      "18",
-      "12",
-      "11",
-      "22",
-      "10",
-      "27"
-    ]
+    ["3", "20", "4", "6", "23", "7"],
+    ["9", "24", "13", "28", "8", "31"],
+    ["15", "25", "16", "2"],
+    ["1", "26", "32", "30"],
+    ["19", "17", "21", "5", "29", "14"],
+    ["18", "12", "11", "22", "10", "27"]
   ],
   "schedule": [
     [
@@ -63,13 +25,7 @@
       "science-a",
       "korean"
     ],
-    [
-      "history",
-      "korean",
-      "math",
-      "moral-education",
-      "english"
-    ],
+    ["history", "korean", "math", "moral-education", "english"],
     [
       "technology-and-home-economics",
       "korean",
@@ -79,13 +35,6 @@
       "history",
       "moral-education"
     ],
-    [
-      "science-a",
-      "athletic",
-      "sports",
-      "english",
-      "math",
-      "chinese"
-    ]
+    ["science-a", "athletic", "sports", "english", "math", "chinese"]
   ]
 }
