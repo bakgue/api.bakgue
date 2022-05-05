@@ -1,7 +1,7 @@
 {
   "Class-Room": {
     "name": "학급방",
-    "englishName": "Class-Rooom",
+    "englishName": "Class-Room",
     "teacher": "이효지",
     "email": "Not Found",
     "zoomLink": "https://zoom.us/j/7945157068?pwd=WjYrYkdNL3BtNlJHQSt4elp5eDgxdz09",
@@ -107,9 +107,9 @@
     "uniqueColor": "#FF1001"
   },
 
-  "Technology-and-Home-Economics": {
+  "Giga": {
     "name": "기술 가정",
-    "englishName": "Technology-and-HomeEconomics",
+    "englishName": "Giga",
     "teacher": "이미혜",
     "email": "Not Found",
     "zoomLink": "https://zoom.us/j/7989527503?pwd=UEpwNXpZanBGdjBHZExjN0xnbFlDUT09",

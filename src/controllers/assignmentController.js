@@ -15,19 +15,12 @@ export const getAss = async (req, res) => {
 
   for (let i = 0; i < asss.length; i++) {
     const ass = asss[i];
+    const subject = subjectInfo[ass.subject];
     asss[i].createdAt = new Date(ass.createdAt);
-    for (let j = 0; j < subjectInfo.length; j++) {
-      const element = subjectInfo[j];
-      console.log(element)
-      if (ass.subject === element.englishName) {
-        console.log("Hellolllo")
-        asss[i].subject = element;
-      }
-    }
+    asss[i].subject = subject;
   }
 
-  console.log(asss)
-
+  console.log(asss);
   return res.render(ASS_PUG_PATH + "home", {
     asss,
   });
@@ -135,15 +128,7 @@ export const watchAss = async (req, res) => {
       });
   }
 
-  const subjectOfAss = ass.subject;
-  let subject;
-
-  for (let i = 0; i < subjectInfo.length; i++) {
-    const element = subjectInfo[i];
-    if (String(element.englishName.toLowerCase()) === String(subjectOfAss.toLowerCase())) {
-      subject = element;
-    }
-  }
+  const subject = subjectInfo[ass.subject];
 
   return res.render(ASS_PUG_PATH + "watch", {
     ass,
