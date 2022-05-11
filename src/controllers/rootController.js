@@ -44,6 +44,14 @@ export const postSignup = async (req, res) => {
     },
   } = req;
 
+  if (key !== process.env.CLIENT_KEY) {
+    return res
+      .status(STATUS_CODE.BAD_REQUEST_CODE)
+      .render(ROOT_PUG_PATH + "signup", {
+        errorMessage: "Key 가 일치하지 않습니다.",
+      });
+  }
+
   // Password 와 Confirm Password 가 같지 않다면 ErrorMessage 를 보내 다시 Rendering
   if (password !== confirmPassword) {
     return res
