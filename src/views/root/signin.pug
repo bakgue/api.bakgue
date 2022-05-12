@@ -12,7 +12,7 @@ block content
       .form__element.student-info
         label(for="ids") 학번 이름
 
-        .inputs
+        .inputs#autoSkip
           input(type="text", id="ids", placeholder="2", name="grad", required, maxlength=1)
           input(type="text", placeholder="0", name="classOne", required, maxlength=1)
           input(type="text", placeholder="2", name="classTwo", required, maxlength=1)
@@ -29,3 +29,7 @@ block content
     span 계정이 없으신가요? 
     a(href="/signin")
       span 그렇다면, 바로 만드세요 &rarr;
+
+block scripts
+  script(src="/static/js/autoSkipper.js")
+
