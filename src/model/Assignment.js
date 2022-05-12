@@ -26,7 +26,7 @@ const assignmentSchema = new mongoose.Schema({
   deadLine: {
     type: String,
     required: true,
-    minlength: 10,
+    minlength: 5,
     maxlength: 35,
   },
   saveUsers: [

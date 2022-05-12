@@ -12,7 +12,4 @@ mixin assignmentsCard(ass)
     .assignments-card__bottom
       .assignments-card__bottom__left
         i.fa-solid.fa-clock-rotate-left
-        span #{ass.deadLine.from.month} 월 #{ass.deadLine.from.day} 일 #{ass.deadLine.from.class} 교시 ~ #{ass.deadLine.to.month} 월 #{ass.deadLine.to.day} 일 #{ass.deadLine.to.class} 교시
-      .assignments-card__bottom__right
-        i.fa-solid.fa-eye
-        span=ass.meta.views
+        span=ass.deadLine

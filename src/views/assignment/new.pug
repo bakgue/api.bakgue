@@ -7,9 +7,9 @@ block content
 
   .ass-new
     form.ass-new__form(method="POST")#form
-      h3 Create New Assignment Form
       if errorMessage
         span#errorMessage=errorMessage
+      h3 Create New Assignment Form
       .form__element
         label(for="title") Title
         input(type="text", name="title", id="title", placeholder="7월 중순에 볼 국어 집필 평가", required).long
@@ -19,30 +19,7 @@ block content
 
       .form__element.from-to-form
         label Deadline
-        .form__element__element.from-to-form__element
-          label 시작일
-          .from-to-form__element__main
-            .from-to-form__element__main__element
-              input(type="text", name="fromMonth")#fromMonth
-              span 월
-            .from-to-form__element__main__element
-              input(type="text", name="fromDay")#fromDay
-              span 일
-            .from-to-form__element__main__element
-              input(type="text", name="fromClass")#fromClass
-              span 교시
-        .form__element__element.from-to-form__element
-          label 마지막일
-          .from-to-form__element__main
-            .from-to-form__element__main__element
-              input(type="text", name="toMonth")#toMonth
-              span 월
-            .from-to-form__element__main__element
-              input(type="text", name="toDay")#toDay
-              span 일
-            .from-to-form__element__main__element
-              input(type="text", name="toClass")#toClass
-              span 교시
+        input(type="text", name="deadLine", placeholder="5 월 20 일 부터 3주간", minLength=5).long
 
       input(type="submit", value="Create!").submit-btn#submitBtn
 
