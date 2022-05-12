@@ -4,7 +4,7 @@ include ../components/page-top
 block content
   +pageTop("Sign In", "로그인하여, 이 서비스를 이용해 보세요.")
 
-  .signin
+  .signin#autoSkip
     form.signin-form(method="POST")#form
       h3 Sign In Form
       if errorMessage
@@ -18,14 +18,17 @@ block content
           input(type="text", placeholder="2", name="classTwo", required, maxlength=1)
           input(type="text", placeholder="1", name="idOne", required, maxlength=1)
           input(type="text", placeholder="4", name="idTwo", required, maxlength=1)
-        input(type="text", placeholder="소설", name="name", required).long
+        input(type="text", placeholder="소설", name="name", required, maxlength=3).long
 
       .form__element
         label(for="password") 비밀번호
-        input(type="password", id="password", placeholder="비밀번호", name="password", required).long
+        input(type="password", id="password", placeholder="비밀번호", name="password", required).autoSkipIgnore.long
 
       input(type="submit", value="Submit").submit-btn
 
     span 계정이 없으신가요? 
     a(href="/signin")
       span 그렇다면, 바로 만드세요 &rarr;
+
+block scripts
+  script(src="/static/js/autoSkipper.js")

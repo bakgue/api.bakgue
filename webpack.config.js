@@ -20,6 +20,7 @@ module.exports = {
     delete: `${BASE_JS_PATH}delete.js`,
     checkNewAss: `${BASE_JS_PATH}check-new-ass.js`,
     saveAss: `${BASE_JS_PATH}save-ass.js`,
+    autoSkipper: `${BASE_JS_PATH}auto-skipper.js`,
   },
   plugins: [
     new MiniCssExtractPlugin({
