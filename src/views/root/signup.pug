@@ -4,19 +4,19 @@ include ../components/page-top
 block content
   +pageTop("Sign Up", "해당 절차는 당신이 늘푸른 중학교 2학년 2반 학생인지 확인하고, 비밀번호를 설정하는 절차입니다. 만약 이미 회원가입된 학생이라고 에러 메세지로 뜰 경우, novelier.webbelier@gmail.com 으로 문위해 주시기 바랍니다.")
 
-  .signup
+  .signup#autoSkip
     form.signup-form(method="POST")#form
       h3 Sign Up Form
       if errorMessage
         p#errorMessage=errorMessage
       .form__element
         label(for="key") Key
-        input(type="text", id="key", placeholder="Key", name="key", required).long
+        input(type="text", id="key", placeholder="Key", name="key", maxlength=8, required).long
 
       .form__element.student-info
         label(for="ids") 학번 이름
 
-        .inputs#autoSkip
+        .inputs
           input(type="text", id="ids", placeholder="2", name="grad", required, maxlength=1)
           input(type="text", placeholder="0", name="classOne", required, maxlength=1)
           input(type="text", placeholder="2", name="classTwo", required, maxlength=1)
@@ -26,13 +26,13 @@ block content
 
       .form__element
         label(for="username") 유져 이름
-        input(type="text", id="username", placeholder="유져 이름", name="username", required).long
+        input(type="text", id="username", placeholder="유져 이름", name="username", required).autoSkipIgnore.long
 
       .form__element
         label(for="password") 비밀번호
-        input(type="password", id="password", placeholder="비밀번호", name="password", required).long
+        input(type="password", id="password", placeholder="비밀번호", name="password", required).autoSkipIgnore.long
         label(for="confirmPassword") 비밀번호 확인
-        input(type="password", id="confirmPassword", placeholder="비밀번호 확인", name="confirmPassword", required).long
+        input(type="password", id="confirmPassword", placeholder="비밀번호 확인", name="confirmPassword", required).autoSkipIgnore.long
         input(type="submit", value="Submit").submit-btn
 
     span 이미 계정을 가지고 계신가요? 
