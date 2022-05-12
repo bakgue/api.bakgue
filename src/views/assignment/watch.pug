@@ -40,20 +40,9 @@ block content
           i.fa-solid.fa-clock-rotate-left
           span 기한
           span.separator : 
-          span #{ass.deadLine.from.month} 월 #{ass.deadLine.from.day} 일 #{ass.deadLine.from.class} 교시 ~ #{ass.deadLine.to.month} 월 #{ass.deadLine.to.day} 일 #{ass.deadLine.to.class} 교시
-          //- span=ass.createdAt.toDateString()
-        hr.element-separator
-        .ass-watch__btns__element__element
-          i.fa-solid.fa-eye
-          span 조회수
-          span.separator : 
-          if ass.meta.views < 2
-            span #{ass.meta.views} view
-          else
-            span #{ass.meta.views} views
+          span=ass.deadLine
       hr.element-separator
       .ass-watch__btns__btns
-        //- Vanilla JavaScript : 클릭시 Save API 보내기
         a#saveAssBtn.save-btn(data-title=ass.title)
           i.fa-solid.fa-bookmark
           span Save

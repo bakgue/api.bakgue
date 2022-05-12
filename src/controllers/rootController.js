@@ -86,7 +86,7 @@ export const postSignup = async (req, res) => {
       .status(STATUS_CODE.BAD_REQUEST_CODE)
       .render(ROOT_PUG_PATH + "signup", {
         errorMessage:
-          "입력하신 정보의 학생은 이미 회원가입된 상태 입니다. 혹시 회원가입을 하지 않으셨습니까? 그렇다면, novelier.webbelier@gmail.com 으로 문의해 주시기 바랍니다.",
+          "입력하신 정보의 학생은 이미 회원가입된 상태 입니다. 혹시 회원가입을 하지 않으셨습니까? 그렇다면, bak.gue.service@gmail.com 으로 문의해 주시기 바랍니다.",
       });
   }
 

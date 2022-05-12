@@ -15,29 +15,6 @@ form#form {
     word-break: keep-all;
   }
 
-  .from-to-form {
-    &__element {
-      display: flex;
-      flex-direction: column;
-      &__main {
-        &__element {
-          display: flex;
-          margin-bottom: 10px;
-          input {
-            margin-right: 15px;
-          }
-          span {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: fit-content;
-            font-size: 15px;
-          }
-        }
-      }
-    }
-  }
-
   .form__element {
     display: flex;
     flex-direction: column;

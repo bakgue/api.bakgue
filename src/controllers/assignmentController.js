@@ -34,16 +34,7 @@ export const getNewAss = (req, res) => {
 // Development Completed ✅
 export const postNewAss = async (req, res) => {
   const {
-    body: {
-      title,
-      subject,
-      fromMonth,
-      fromDay,
-      fromClass,
-      toMonth,
-      toDay,
-      toClass,
-    },
+    body: { title, subject, deadLine },
   } = req;
 
   // Title 이 같은 ass 찾기
@@ -57,45 +48,12 @@ export const postNewAss = async (req, res) => {
         errorMessage: "이미 존재하는 이름입니다. 다른 이름으로 바꾸세요.",
       });
   }
-
-  // Check
-  try {
-    if (
-      4 <= Number(fromMonth) <= 12 &&
-      4 <= Number(toMonth) <= 12 &&
-      1 <= Number(fromDay) <= 31 &&
-      1 <= Number(toDay) <= 31 &&
-      1 <= Number(fromClass) <= 7 &&
-      1 <= Number(toClass) <= 7
-    ) {
-    } else {
-      return res.render(ASS_PUG_PATH + "new", {
-        errorMessage: "유효한 일자를 넣어주시기 바랍니다.",
-      });
-    }
-  } catch (error) {
-    return res.render(ASS_PUG_PATH + "new", {
-      errorMessage: `Server Error : ${error.__msg}`,
-    });
-  }
-
   // 없으면, 만들기
   try {
     const createdAssignment = await Assignment.create({
       title,
       subject,
-      deadLine: {
-        from: {
-          month: fromMonth,
-          day: fromDay,
-          class: fromClass,
-        },
-        to: {
-          month: fromMonth,
-          day: fromDay,
-          class: fromClass,
-        },
-      },
+      deadLine,
       content: `# ${title}`,
       owner: req.session.loggedInUser._id,
     });
@@ -168,17 +126,7 @@ export const getEditAss = async (req, res) => {
 export const postEditAss = async (req, res) => {
   const {
     params: { assname },
-    body: {
-      title,
-      subject,
-      content,
-      fromMonth,
-      fromDay,
-      fromClass,
-      toMonth,
-      toDay,
-      toClass,
-    },
+    body: { title, subject, content, deadLine },
   } = req;
 
   const ass = await Assignment.findOne({ title: assname });
@@ -204,46 +152,13 @@ export const postEditAss = async (req, res) => {
         });
     }
   }
-
-  // check
-  try {
-    if (
-      4 <= Number(fromMonth) <= 12 &&
-      4 <= Number(toMonth) <= 12 &&
-      1 <= Number(fromDay) <= 31 &&
-      1 <= Number(toDay) <= 31 &&
-      1 <= Number(fromClass) <= 7 &&
-      1 <= Number(toClass) <= 7
-    ) {
-    } else {
-      return res.render(ASS_PUG_PATH + "new", {
-        errorMessage: "유효한 일자를 넣어주시기 바랍니다.",
-      });
-    }
-  } catch (error) {
-    return res.render(ASS_PUG_PATH + "new", {
-      errorMessage: `Server Error : ${error.__msg}`,
-    });
-  }
-
   // 아니면, 업데이트
   try {
     const updatedAss = await Assignment.findByIdAndUpdate(ass._id, {
       content,
       title,
       subject,
-      deadLine: {
-        from: {
-          month: fromMonth,
-          day: fromDay,
-          class: fromClass,
-        },
-        to: {
-          month: toMonth,
-          day: toDay,
-          class: toClass,
-        },
-      },
+      deadLine,
     });
 
     console.log(updatedAss);
