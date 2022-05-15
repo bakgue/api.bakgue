@@ -23,7 +23,6 @@
     #assignment {
       padding: 20px;
       .markdown-body {
-        font-weight: inherit;
         background-color: $brand-color;
       }
     }
@@ -89,6 +88,9 @@
         cursor: pointer;
         &.save-btn {
           background-color: orange;
+        }
+        &.copy-btn {
+          background-color: green;
         }
         &.edit-btn {
           background-color: blue;

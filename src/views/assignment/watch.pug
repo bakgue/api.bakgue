@@ -46,6 +46,9 @@ block content
         a#saveAssBtn.save-btn(data-title=ass.title)
           i.fa-solid.fa-bookmark
           span Save
+        a#copyUrlBtn.copy-btn
+          i.fa-solid.fa-copy
+          span Copy URL
         if String(ass.owner._id) == String(loggedInUser._id)
           a(href=`/assignment/${ass.title}/edit`).edit-btn
             i.fa-solid.fa-pen-to-square
@@ -58,3 +61,4 @@ block scripts
   script(src="/static/js/watchScreenController.js")
   script(src="/static/js/markdown.js")
   script(src="/static/js/saveAss.js")
+  script(src="/static/js/copyLink.js")
