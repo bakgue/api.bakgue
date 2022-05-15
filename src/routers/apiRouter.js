@@ -1,8 +1,9 @@
 import express from "express";
 import {
-  postAddView,
+  postAddIssues,
   postCancelSaveAss,
   postCheckSaveAss,
+  postDeleteIssues,
   postSaveAss,
 } from "../controllers/apiController";
 import { protectorMiddleware } from "../middlewares";
@@ -22,5 +23,15 @@ apiRouter
   .route("/assignment/save/:assname/cancel")
   .all(protectorMiddleware)
   .post(postCancelSaveAss);
+
+apiRouter
+  .route("/assignment/issues/create")
+  .all(protectorMiddleware)
+  .post(postAddIssues);
+
+apiRouter
+  .route("/assignment/issues/delete")
+  .all(protectorMiddleware)
+  .post(postDeleteIssues);
 
 export default apiRouter;

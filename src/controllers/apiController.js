@@ -90,6 +90,10 @@ export const postCheckSaveAss = async (req, res) => {
   return res.status(STATUS_CODE.OK_CODE).json({ isSaved: false });
 };
 
-export const postAddView = async (req, res) => {
-  return res.sendStatus(STATUS_CODE.OK_CODE);
-};
+export const postAddIssues = async (req, res) => {
+  return res.status(STATUS_CODE.OK_CODE);
+}
+
+export const postDeleteIssues = async (req, res) => {
+  return res.status(STATUS_CODE.OK_CODE)
+}

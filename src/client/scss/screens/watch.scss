@@ -23,6 +23,7 @@
     #assignment {
       padding: 20px;
       .markdown-body {
+        font-weight: inherit;
         background-color: $brand-color;
       }
     }
