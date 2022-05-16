@@ -1,5 +1,3 @@
-# Bak Gue
-
 <p align="center">
   <a href="">
     <img src="public/img/logo.png" alt="Bak Gue Logo">
