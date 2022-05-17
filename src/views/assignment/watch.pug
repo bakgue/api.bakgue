@@ -12,13 +12,11 @@ block content
           span.separator | 
           h2=ass.title
         .ass-watch__main__bar__right
-          //- Vanilla JavaScript 로 toggl btn 만들어서 크게 또는 작게 만들 수 있게 만들기
           i.fa-solid.fa-expand#fullScreenBtn
 
-      //- Vanilla JavaScript 로 data-content 에 있는 내용을 가지고 와서, Github Markdown API 를 보내어서 받은 HTML 여기다가 붙이기
       #assignment
         .markdown-body(data-content=ass.content)
-          h1 Hi
+          h1 Waiting for response of server...
 
     .ass-watch__btns
       .ass-watch__btns__element
@@ -28,6 +26,12 @@ block content
         h2=ass.title
       hr.element-separator
       .ass-watch__btns__element
+        .ass-watch__btns__element__element
+          i.fa-solid.fa-user
+          span 글쓴이
+          span.separator : 
+          span #{ass.owner.number} #{ass.owner.name}
+        hr.element-separator
         .ass-watch__btns__element__element
           i.fa-solid.fa-book
           span 교과
