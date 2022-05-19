@@ -40,12 +40,12 @@
     "multer": "^1.4.4",
     "node-fetch": "^3.2.1",
     "node-polyfill-webpack-plugin": "^1.1.4",
-    "regenerator-runtime": "^0.13.9",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.9",
+    "@babel/core": "^7.17.12",
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
     "css-loader": "^6.7.0",
