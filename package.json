@@ -1,5 +1,5 @@
 {
-  "name": "page-two",
+  "name": "bak-gue",
   "version": "1.0.0",
   "description": "The Web Service for NPR, 2-2 Student.",
   "main": "index.js",
@@ -40,8 +40,8 @@
     "multer": "^1.4.4",
     "node-fetch": "^3.2.1",
     "node-polyfill-webpack-plugin": "^1.1.4",
-    "regenerator-runtime": "^0.13.9",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
