@@ -1,5 +1,6 @@
 extends ../base/base
 include ../components/page-top
+include ../components/issues
 
 block content
   +pageTop(`Watch : ${ass.title}`)
@@ -56,6 +57,15 @@ block content
           a(href=`/assignment/${ass.title}/delete`).delete-btn
             i.fa-solid.fa-delete-left
             span Delete
+
+  .ass-issue
+    .ass-issue__show
+      for issue in ass.issues
+        +issues(issue)
+      else
+        +notIssuesFound()
+    .ass-issue__create
+      +createIssues()
 
 block scripts
   script(src="/static/js/watchScreenController.js")

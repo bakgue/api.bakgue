@@ -1,0 +1,28 @@
+mixin issues(issue)
+  #issue
+    .issue__top
+      span=issue.owner.number
+      span=issue.owner.name
+      span | 
+      span=issue.createdAt
+    .issue__mid
+      span=issue.content
+    .issue__bottom
+      span=issue.emotion.great.length
+      span=issue.emotion.smile.length
+      span=issue.emotion.heart.length
+
+mixin notIssuesFound()
+  span Here is no issues!
+
+mixin createIssues()
+  form(post="/api/assignment/issues/create")#createIssues
+    .create-issues__top
+      span=loggedInUser.number
+      span=loggedInUser.name
+    .create-issues__mid
+      input(type="text", required=true, placeholder=`이 과제에 대해서 틀린 부분이 있거나 궁금한 점이 있다면, 이 이슈를 만들어 질문하세요!`)
+    .create-issues__bottom
+      input(type="submit").submit-btn
+    
+
