@@ -1,28 +1,55 @@
 mixin issues(issue)
   #issue
     .issue__top
-      span=issue.owner.number
-      span=issue.owner.name
-      span | 
+      .issue__top__owner
+        span=issue.owner.number
+        span=issue.owner.name
+      .issue__top__separator
+        span | 
+      .issue__top__created-at
       span=issue.createdAt
-    .issue__mid
-      span=issue.content
-    .issue__bottom
-      span=issue.emotion.great.length
-      span=issue.emotion.smile.length
-      span=issue.emotion.heart.length
+
+    .issue__main
+      .issue__main__content
+        p=issue.content
+
+      .issue__main__emotion
+        .issue__emotion
+          .issue__emotion__emoji
+            span 👍
+          .issue__emotion__num
+            span=issue.emotion.heart.length
+        .issue__emotion
+          .issue__emotion__emoji
+            span ❤️ 
+          .issue__emotion__num
+            span=issue.emotion.heart.length
+        .issue__emotion
+          .issue__emotion__emoji
+            span 😃
+          .issue__emotion__num
+            span=issue.emotion.smile.length
 
 mixin notIssuesFound()
-  span Here is no issues!
+  #issue
+    .issue__main
+      .issue__content__no
+        p Here is not issues! Start issues with a comment.
 
 mixin createIssues()
-  form(post="/api/assignment/issues/create")#createIssues
-    .create-issues__top
-      span=loggedInUser.number
-      span=loggedInUser.name
-    .create-issues__mid
-      input(type="text", required=true, placeholder=`이 과제에 대해서 틀린 부분이 있거나 궁금한 점이 있다면, 이 이슈를 만들어 질문하세요!`)
-    .create-issues__bottom
-      input(type="submit").submit-btn
-    
+  form(post="/api/assignment/issues/create")#createIssue
+    .create-issue__top
 
+      .create-issue__top__owner
+        span=loggedInUser.number
+        span=loggedInUser.name
+      .create-issue__top__separator
+        span | 
+      .create-issue__top__created-at
+        span 지금 이 순간
+
+    .create-issue__mid
+      textarea(type="text", required=true, placeholder=`이 과제에 대해서 틀린 부분이 있거나 궁금한 점이 있다면, 이 이슈를 만들어 질문하세요!`)
+    .create-issue__bottom
+      input(type="submit", value="Send Issues").submit-btn
+    
