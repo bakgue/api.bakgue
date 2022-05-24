@@ -1,18 +1,29 @@
-import { STATUS_CODE } from "./rootController";
-import { BASE_PUG_PATH } from "./rootController";
-
-const CLASS_PUG_PATH = BASE_PUG_PATH + "class/";
-
 import subjectInfo from "../../json/subject.json";
 import studentInfo from "../../json/student.json";
 import seatingChart from "../../json/class.json";
 
-// Seating Chart List 안의 숫자를 이용해 Student Info 안에서 찾고, 그것을 Seating Chart List 안에 넣기
+import { STATUS_CODE } from "./rootController";
+import { BASE_PUG_PATH } from "./rootController";
+
+import Timetable from "comcigan-parser";
+
+const CLASS_PUG_PATH = BASE_PUG_PATH + "class/";
+const timetable = new Timetable();
+
 const seatingChartWithStudentObj = contractStudent(seatingChart);
 
-export const getClass = (req, res) => {
+export const getClass = async (req, res) => {
+  await timetable.init();
+  const schoolList = await timetable.search("늘푸른");
+  const targetSchool = schoolList.find((school) => {
+    return school.region === '경기' && school.name === '늘푸른중학교';
+  });
+  await timetable.setSchool(targetSchool.code);
+  const schoolScheduleResults = await timetable.getTimetable();
+
   return res.render(CLASS_PUG_PATH + "home", {
     seatingChartWithStudentObj,
+    schoolScheduleResults
   });
 };
 
@@ -36,3 +47,4 @@ function contractStudent(seatingCharts) {
   }
   return seatingCharts;
 }
+
