@@ -93,7 +93,3 @@ export const postCheckSaveAss = async (req, res) => {
 export const postAddIssues = async (req, res) => {
   return res.status(STATUS_CODE.OK_CODE);
 }
-
-export const postDeleteIssues = async (req, res) => {
-  return res.status(STATUS_CODE.OK_CODE)
-}

@@ -1,10 +1,9 @@
 import express from "express";
 import {
-  postAddIssues,
   postCancelSaveAss,
   postCheckSaveAss,
-  postDeleteIssues,
   postSaveAss,
+  postAddIssues,
 } from "../controllers/apiController";
 import { protectorMiddleware } from "../middlewares";
 
@@ -28,10 +27,5 @@ apiRouter
   .route("/assignment/issues/create")
   .all(protectorMiddleware)
   .post(postAddIssues);
-
-apiRouter
-  .route("/assignment/issues/delete")
-  .all(protectorMiddleware)
-  .post(postDeleteIssues);
 
 export default apiRouter;

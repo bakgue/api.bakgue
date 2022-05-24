@@ -40,6 +40,12 @@ const assignmentSchema = new mongoose.Schema({
     ref: "Student",
     required: true,
   },
+  issues: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Issue"
+    }
+  ]
 });
 
 const Assignment = mongoose.model("Assignment", assignmentSchema);
