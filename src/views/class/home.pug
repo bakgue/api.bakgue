@@ -46,8 +46,15 @@ block content
 
       .class-main__sections.class-main__school-lunch#lunchSchedule
         h2 급식 시간표
-        p 추후 업데이트로 돌아올 예정임니다!
+        - const weekOfDay = ["월", "화", "수", "목" ,"금"]
         .school-lunch
+          for day, index in lunchMenu
+            .school-lunch__day
+              .school-lunch__day__week-of-day
+                span=weekOfDay[index]
+              .school-lunch__day__menu
+                for menu in day.lunch
+                  p=menu
 
 block scripts
   script(src="/static/js/classInfo.js")
