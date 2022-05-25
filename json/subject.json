@@ -60,7 +60,7 @@
   },
 
   "Science-A": {
-    "name": "과학 A",
+    "name": "과학A",
     "englishName": "Science-A",
     "teacher": "장희영",
     "email": "Not Found",
@@ -72,7 +72,7 @@
   },
 
   "Science-B": {
-    "name": "과학 B",
+    "name": "과학B",
     "englishName": "Science-B",
     "teacher": "김혜경",
     "email": "Not Found",
@@ -108,7 +108,7 @@
   },
 
   "Giga": {
-    "name": "기술 가정",
+    "name": "기가",
     "englishName": "Giga",
     "teacher": "이미혜",
     "email": "Not Found",
@@ -141,5 +141,17 @@
     "zoomPassword": "2022",
     "googleClassroomId": "NDY3NTY1OTAwMzc4",
     "uniqueColor": "#90E665"
+  },
+
+  "No-Subject": {
+    "name": "비교과",
+    "englishName": "No-Subject",
+    "teacher": "이효지",
+    "email": "Not Found",
+    "zoomLink": "https://zoom.us/j/7945157068?pwd=WjYrYkdNL3BtNlJHQSt4elp5eDgxdz09",
+    "zoomId": "794 515 7068",
+    "zoomPassword": "3333",
+    "googleClassroomId": "NDY3NTQyNjE0Njk3",
+    "uniqueColor": "#000000"
   }
 }
