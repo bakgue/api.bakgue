@@ -5,6 +5,7 @@ import seatingChart from "../../json/class.json";
 import { STATUS_CODE } from "./rootController";
 import { BASE_PUG_PATH } from "./rootController";
 
+import request from "request";
 import Timetable from "comcigan-parser";
 
 const CLASS_PUG_PATH = BASE_PUG_PATH + "class/";
@@ -40,6 +41,34 @@ export const getClass = async (req, res) => {
       }
     }
   }
+
+  const date = new Date();
+  const mondayNum = date.getDate() - date.getDay() + 1;
+
+  const responseOfSchoolMenu = request(`https://schoolmenukr.ml/api/middle/${process.env.SCHOOL_CODE}`, (err, _res, body) => {
+    const json = JSON.parse(body);
+    const lunchMenu = [];
+
+    let yes = false;
+    let count = 0;
+
+    for (let i = 0; i < json.menu.length; i++) {
+      const element = json.menu[i];
+      if (yes) {
+        if (count >= 5) {
+          continue
+        } else {
+          lunchMenu.push(element)
+          count += 1;
+        }
+      } else {
+        if (element.date === String(mondayNum - 1)) {
+          yes = true;
+        } else {
+          continue;
+        }
+      }
+   }
 
     return res.render(CLASS_PUG_PATH + "home", {
       seatingChartWithStudentObj,
