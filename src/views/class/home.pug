@@ -33,13 +33,12 @@ block content
 
       .class-main__sections.class-main__schedule#schedule
         h2 시간표
-        p 추후 업데이트로 돌아올 예정임니다!
-        //- .schedule(style="display:flex;")
+        .schedule(style="display:flex;")
           .schedule-day
             for num in [1, 2, 3, 4, 5, 6, 7]
               .schedule-day__subject
                 h4 #{num} 교시
-          for day in schedule
+          for day in schoolSchedule
             .schedule-day
               for subject in day
                 .schedule-day__subject
@@ -48,7 +47,6 @@ block content
       .class-main__sections.class-main__school-lunch#lunchSchedule
         h2 급식 시간표
         p 추후 업데이트로 돌아올 예정임니다!
-        //- Vanilla JavaScript 에 fetch 로 https://npr-m.goesn.kr/npr-m/ad/fm/foodmenu/selectFoodMenuView.do 에 보내서 가지고 오기
         .school-lunch
 
 block scripts

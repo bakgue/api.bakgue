@@ -19,12 +19,34 @@ export const getClass = async (req, res) => {
     return school.region === '경기' && school.name === '늘푸른중학교';
   });
   await timetable.setSchool(targetSchool.code);
-  const schoolScheduleResults = await timetable.getTimetable();
+  const schoolScheduleResult = await timetable.getTimetable();
+  const schoolSchedule = schoolScheduleResult['2']['2'];
 
-  return res.render(CLASS_PUG_PATH + "home", {
-    seatingChartWithStudentObj,
-    schoolScheduleResults
-  });
+  for (let i = 0; i < schoolSchedule.length; i++) {
+    const day = schoolSchedule[i];
+    for (let j = 0; j < day.length; j++) {
+      const classes = day[j];
+      const subjectOfClasses = classes.subject;
+      for (const k in subjectInfo) {
+        if (Object.hasOwnProperty.call(subjectInfo, k)) {
+          const subjectInSubjectInfo = subjectInfo[k];
+          if (subjectOfClasses === "스포" || subjectOfClasses === "창체") {
+            schoolSchedule[i][j] = subjectInfo["No-Subject"];
+          }
+          if (subjectOfClasses === subjectInSubjectInfo.name) {
+            schoolSchedule[i][j] = subjectInSubjectInfo;
+          }
+        }
+      }
+    }
+  }
+
+    return res.render(CLASS_PUG_PATH + "home", {
+      seatingChartWithStudentObj,
+      schoolSchedule,
+      lunchMenu
+    });
+});
 };
 
 function contractStudent(seatingCharts) {
