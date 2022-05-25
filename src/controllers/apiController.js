@@ -1,6 +1,8 @@
 import Assignment from "../model/Assignment";
 import Student from "../model/Student";
-import { STATUS_CODE } from "./rootController";
+import Issue from "../model/Issues";
+
+import {STATUS_CODE} from "./rootController";
 
 export const postSaveAss = async (req, res) => {
   const {
@@ -91,5 +93,23 @@ export const postCheckSaveAss = async (req, res) => {
 };
 
 export const postAddIssues = async (req, res) => {
-  return res.status(STATUS_CODE.OK_CODE);
+  const {
+    params: { assname },
+    session: { loggedInUser },
+    body: { content },
+  } = req;
+
+  try {
+    const createdIssue = await Issue.create({
+      content,
+      owner: loggedInUser._id,
+    });
+
+    console.log(`CREATE ISSUE : ${createdIssue}`);
+  } catch (error) {
+    console.log(`ERROR : ${error}`);
+    return res.sendStatus(STATUS_CODE.BAD_REQUEST_CODE)
+  }
+
+  return res.sendStatus(STATUS_CODE.OK_CODE);
 }

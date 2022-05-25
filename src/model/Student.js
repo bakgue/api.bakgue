@@ -47,6 +47,12 @@ const studentSchema = new mongoose.Schema({
       ref: "Assignment",
     },
   ],
+  createdIssues: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Assignment",
+    }
+  ]
 });
 
 studentSchema.pre("save", async function () {

@@ -1,7 +1,7 @@
 #issue {
   border: 2px solid $brand-color-light;
   border-radius: 5.8px;
-  margin-bottom: 20px;
+  margin: 10px 20px;
   > div {
     padding: 7px;
   }
@@ -70,8 +70,9 @@
 }
 
 #createIssue {
-   border: 2px solid $brand-color-light;
+  border: 2px solid $brand-color-light;
   border-radius: 5.8px;
+  margin: 10px 20px;
   > div {
     padding: 7px;
   }

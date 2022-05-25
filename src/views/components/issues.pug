@@ -37,7 +37,7 @@ mixin notIssuesFound()
         p Here is not issues! Start issues with a comment.
 
 mixin createIssues()
-  form(post="/api/assignment/issues/create")#createIssue
+  form(method="POST", action="/api/assignment/issues/create")#createIssue
     .create-issue__top
 
       .create-issue__top__owner
@@ -49,7 +49,6 @@ mixin createIssues()
         span 지금 이 순간
 
     .create-issue__mid
-      textarea(type="text", required=true, placeholder=`이 과제에 대해서 틀린 부분이 있거나 궁금한 점이 있다면, 이 이슈를 만들어 질문하세요!`)
+      textarea(type="text", name="content", required=true, placeholder=`이 과제에 대해서 틀린 부분이 있거나 궁금한 점이 있다면, 이 이슈를 만들어 질문하세요!`)
     .create-issue__bottom
       input(type="submit", value="Send Issues").submit-btn
-    
