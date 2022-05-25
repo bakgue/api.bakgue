@@ -6,16 +6,19 @@
   p {
     text-align: center;
   }
+
   &-tabs {
     display: flex;
     align-items: center;
     justify-content: center;
+
     ul {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
       padding-bottom: 10px;
+
       li {
         border: 1px solid #8f8f8f;
         padding: 10px 40px;
@@ -32,9 +35,12 @@
       }
     }
   }
+
   &-main {
+
     &__sections {
       margin-top: 20px;
+
       h2 {
         text-align: center;
         font-size: 22px;
@@ -42,23 +48,28 @@
     }
 
     &__seating-chart {
+
       .seating-chart {
         display: flex;
         align-items: flex-end;
         justify-content: center;
         margin-top: 10px;
+
         &__column {
           margin: 0px 10px;
+
           .its-me {
             -moz-box-shadow: inset 0 0 10px #ff0000;
             -webkit-box-shadow: inset 0 0 10px #ff0000;
             box-shadow: inset 0 0 10px #00ff4c;
           }
+
           &__row {
             border: 1px solid #ffffff;
             padding: 10px 20px;
             text-align: center;
             transition: all 0.3s ease-in-out;
+
             &__id {
               margin-right: 5px;
             }
@@ -69,13 +80,16 @@
         }
       }
     }
+
     &__schedule {
       .schedule {
         display: flex;
         justify-content: center;
+
         &-day {
           border-left: 1px solid #ffffff;
           border-right: 1px solid #ffffff;
+
           &__subject {
             width: 100px;
             height: 100px;
@@ -97,6 +111,36 @@
                 color: black;
               }
             }
+          }
+        }
+      }
+    }
+
+    &__school-lunch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .school-lunch {
+        &__day {
+          background-color: $brand-color;
+          border-radius: 5px;
+          border: 1px solid $brand-color-light;
+          transition: all .3s ease-in-out;
+          margin: 0px 0px 20px 0px;
+          &:hover {
+            transform: translateY(-6px);
+            box-shadow: 0px 28px 87px -66px rgba(0,0,0,0.57);
+            -webkit-box-shadow: 0px 28px 80px -66px rgba(255, 255, 255, 0.57);
+            -moz-box-shadow: 0px 28px 80px -66px rgba(255, 255, 255,0.57);
+          }
+          &__week-of-day {
+            padding: 8px 0px;
+            text-align: center;
+            border-bottom: 1px solid $brand-color-light;
+          }
+          &__menu {
+            padding: 20px 20px;
+            text-align: center;
           }
         }
       }
