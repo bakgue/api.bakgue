@@ -1,5 +1,3 @@
-# Bak Gue
-
 <p align="center">
   <a href="">
     <img src="public/img/logo.png" alt="Bak Gue Logo">
@@ -43,5 +41,11 @@ Bak Gue 에서 아래와 같은 정보를 확인 하실 수 있습니다.
   - 내용
   - 이러한 정보는 늘푸른 중학교 2-2 학생들이라면, 어떤 내용이든지 올릴 수 있습니다
 
+# 개발 중인 것들
+
 - TMI
+
   - 그날 하루에 있었던 일들을 올릴 수 있습니다.
+
+- Issue
+  - 해당 Assignment 에 대해 질문이 있거나, 틀린 부분이 있다면, Issue 를 통해 질문하거나 고칠 수 있습니다.

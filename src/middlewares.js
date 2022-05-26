@@ -5,6 +5,13 @@ export const localsMiddleware = (req, res, next) => {
   res.locals.grad = req.session.grad || "Guest";
   res.locals.loggedInUser = req.session.loggedInUser || {};
 
+  if (req.session.loggedInUser) {
+    console.log(
+      `User : ${req.session.loggedInUser.number} ${req.session.loggedInUser.name}`
+    );
+  } else {
+    console.log(`User : NONE`);
+  }
   next();
 };
 

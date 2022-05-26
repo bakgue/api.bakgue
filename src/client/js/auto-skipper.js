@@ -29,7 +29,9 @@ function handleInput(event) {
           .focus();
       } else if (nameOfInputs === "name") {
         try {
-          document.querySelector(".form__element input#username").focus();
+          if (value.length < 3) {
+            document.querySelector(".form__element input#username").focus();
+          }
         } catch (error) {
           document.querySelector(".form__element input#password").focus();
         }

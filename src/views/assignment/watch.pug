@@ -17,7 +17,7 @@ block content
 
       #assignment
         .markdown-body(data-content=ass.content)
-          h1 Hi
+          h1 Waiting for response of server...
 
     .ass-watch__btns
       .ass-watch__btns__element
@@ -27,6 +27,12 @@ block content
         h2=ass.title
       hr.element-separator
       .ass-watch__btns__element
+        .ass-watch__btns__element__element
+          i.fa-solid.fa-user
+          span 글쓴이
+          span.separator : 
+          span #{ass.owner.number} #{ass.owner.name}
+        hr.element-separator
         .ass-watch__btns__element__element
           i.fa-solid.fa-book
           span 교과

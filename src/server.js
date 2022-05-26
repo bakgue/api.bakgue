@@ -43,7 +43,7 @@ app.use(flash());
 app.use(localsMiddleware);
 app.use("/static", express.static("assets"));
 app.use("/public", express.static("public"));
-app.use("/json", express.static("json"))
+app.use("/json", express.static("json"));
 
 app.use("/", rootRouter);
 
