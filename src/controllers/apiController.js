@@ -94,16 +94,25 @@ export const postCheckSaveAss = async (req, res) => {
 
 export const postAddIssues = async (req, res) => {
   const {
-    params: { assname },
+    params: { assname, content },
     session: { loggedInUser },
-    body: { content },
   } = req;
+
+  const sameAss = await Assignment.findOne({ title: assname });
+
+  if (!sameAss) {
+    return res.sendStatus(STATUS_CODE.NOT_FOUND_CODE);
+  }
 
   try {
     const createdIssue = await Issue.create({
       content,
+      assignment: sameAss._id,
       owner: loggedInUser._id,
     });
+
+    sameAss.issues.push(createdIssue._id);
+    await sameAss.save();
 
     console.log(`CREATE ISSUE : ${createdIssue}`);
   } catch (error) {

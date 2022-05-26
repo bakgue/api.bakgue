@@ -10,21 +10,21 @@ import { protectorMiddleware } from "../middlewares";
 const apiRouter = express.Router();
 
 apiRouter
-  .route("/assignment/save/:assname")
+  .route("/assignment/:assname/save")
   .all(protectorMiddleware)
   .post(postSaveAss);
 apiRouter
-  .route("/assignment/save/:assname/check")
+  .route("/assignment/:assname/save/check")
   .all(protectorMiddleware)
   .post(postCheckSaveAss);
 
 apiRouter
-  .route("/assignment/save/:assname/cancel")
+  .route("/assignment/:assname/save/cancel")
   .all(protectorMiddleware)
   .post(postCancelSaveAss);
 
 apiRouter
-  .route("/assignment/issues/create")
+  .route("/assignment/:assname/issues/create/:content")
   .all(protectorMiddleware)
   .post(postAddIssues);
 

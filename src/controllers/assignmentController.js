@@ -68,7 +68,14 @@ export const watchAss = async (req, res) => {
     params: { assname },
   } = req;
 
-  const ass = await Assignment.findOne({ title: assname }).populate("owner");
+  const ass = await Assignment.findOne({ title: assname })
+    .populate("owner")
+    .populate({
+      path: "issues",
+      populate: {
+        path: "owner",
+      }
+    });
 
   if (!ass) {
     return res
@@ -79,6 +86,8 @@ export const watchAss = async (req, res) => {
   }
 
   const subject = subjectInfo[ass.subject];
+
+  console.log(ass);
 
   return res.render(ASS_PUG_PATH + "watch", {
     ass,

@@ -47,10 +47,10 @@ const studentSchema = new mongoose.Schema({
       ref: "Assignment",
     },
   ],
-  createdIssues: [
+  createIssues: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Assignment",
+      ref: "Issue",
     }
   ]
 });
