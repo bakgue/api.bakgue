@@ -21,7 +21,8 @@ module.exports = {
     checkNewAss: `${BASE_JS_PATH}check-new-ass.js`,
     saveAss: `${BASE_JS_PATH}save-ass.js`,
     autoSkipper: `${BASE_JS_PATH}auto-skipper.js`,
-    copyLink: `${BASE_JS_PATH}copy-link.js`
+    copyLink: `${BASE_JS_PATH}copy-link.js`,
+    createIssue: `${BASE_JS_PATH}create-issue.js`,
   },
   plugins: [
     new MiniCssExtractPlugin({

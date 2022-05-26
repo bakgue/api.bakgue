@@ -7,7 +7,8 @@ mixin issues(issue)
       .issue__top__separator
         span | 
       .issue__top__created-at
-      span=issue.createdAt
+      - const goodTimeFormat = new Date(issue.createdAt).toString().substring(0, 10);
+      span=goodTimeFormat
 
     .issue__main
       .issue__main__content
@@ -34,12 +35,11 @@ mixin notIssuesFound()
   #issue
     .issue__main
       .issue__content__no
-        p Here is not issues! Start issues with a comment.
+        p Here is no issues! Start issues with a comment.
 
 mixin createIssues()
-  form(method="POST", action="/api/assignment/issues/create")#createIssue
+  form#createIssue(method="POST", action="/api/assignment/issues/create")
     .create-issue__top
-
       .create-issue__top__owner
         span=loggedInUser.number
         span=loggedInUser.name
@@ -49,6 +49,7 @@ mixin createIssues()
         span 지금 이 순간
 
     .create-issue__mid
-      textarea(type="text", name="content", required=true, placeholder=`이 과제에 대해서 틀린 부분이 있거나 궁금한 점이 있다면, 이 이슈를 만들어 질문하세요!`)
+      textarea(type="text", name="content", required=true, placeholder=`이 과제에 대해서 틀린 부분이 있거나 궁금한 점이 있다면, 이 이슈를 만들어 질문하세요!`)#issueContent
+    
     .create-issue__bottom
-      input(type="submit", value="Send Issues").submit-btn
+      input(type="submit", value="Send Issues").submit-btn#createIssueBtn

@@ -18,7 +18,7 @@ function handleClickSaveBtn() {
 }
 
 async function checkSavedAss() {
-  const res = await fetch(`/api/assignment/save/${assTitle}/check`, {
+  const res = await fetch(`/api/assignment/${assTitle}/save/check`, {
     method: "POST",
   });
 
