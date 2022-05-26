@@ -1,5 +1,3 @@
-import { async } from "regenerator-runtime";
-
 const url = "https://schoolmenukr.ml/api/middle/J100005136";
 
 const tags = {

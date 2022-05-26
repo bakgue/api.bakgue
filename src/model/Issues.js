@@ -16,6 +16,11 @@ const issueSchema = new mongoose.Schema({
     ref: "Student",
     required: true,
   },
+  assignment: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Assignment",
+    required: true,
+  },
   emotion: {
     great: [
       {
