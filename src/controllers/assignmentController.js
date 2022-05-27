@@ -87,8 +87,6 @@ export const watchAss = async (req, res) => {
 
   const subject = subjectInfo[ass.subject];
 
-  console.log(ass);
-
   return res.render(ASS_PUG_PATH + "watch", {
     ass,
     subject,

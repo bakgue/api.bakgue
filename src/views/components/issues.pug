@@ -1,5 +1,5 @@
 mixin issues(issue)
-  #issue
+  #issue(data-id=issue._id)
     .issue__top
       .issue__top__owner
         span=issue.owner.number
@@ -15,21 +15,44 @@ mixin issues(issue)
         p=issue.content
 
       .issue__main__emotion
-        .issue__emotion
-          .issue__emotion__emoji
-            span 👍
-          .issue__emotion__num
-            span=issue.emotion.heart.length
-        .issue__emotion
-          .issue__emotion__emoji
-            span ❤️ 
-          .issue__emotion__num
-            span=issue.emotion.heart.length
-        .issue__emotion
-          .issue__emotion__emoji
-            span 😃
-          .issue__emotion__num
-            span=issue.emotion.smile.length
+        if issue.emotion.selected.great == true
+          .issue__emotion.selected#emoji(data-type="great")
+            .issue__emotion__emoji
+              span 👍
+            .issue__emotion__num
+              span=issue.emotion.great.length
+        else
+          .issue__emotion#emoji(data-type="great")
+            .issue__emotion__emoji
+              span 👍
+            .issue__emotion__num
+              span=issue.emotion.great.length
+        
+        if issue.emotion.selected.heart == true
+          .issue__emotion.selected#emoji(data-type="heart")
+            .issue__emotion__emoji
+              span ❤️ 
+            .issue__emotion__num
+              span=issue.emotion.heart.length
+        else
+          .issue__emotion#emoji(data-type="heart")
+            .issue__emotion__emoji
+              span ❤️ 
+            .issue__emotion__num
+              span=issue.emotion.heart.length
+
+        if issue.emotion.selected.smile == true
+          .issue__emotion.selected#emoji(data-type="smile")
+            .issue__emotion__emoji
+              span 😃
+            .issue__emotion__num
+              span=issue.emotion.smile.length
+        else
+          .issue__emotion#emoji(data-type="smile")
+            .issue__emotion__emoji
+              span 😃
+            .issue__emotion__num
+              span=issue.emotion.smile.length
 
 mixin notIssuesFound()
   #issue

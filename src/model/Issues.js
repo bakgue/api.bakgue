@@ -22,6 +22,20 @@ const issueSchema = new mongoose.Schema({
     required: true,
   },
   emotion: {
+    selected: {
+      great: {
+        type: Boolean,
+        default: false,
+      },
+      smile: {
+        type: Boolean,
+        default: false,
+      },
+      heart: {
+        type: Boolean,
+        default: false,
+      }
+    },
     great: [
       {
         type: mongoose.Schema.Types.ObjectId,
