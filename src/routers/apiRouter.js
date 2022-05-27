@@ -5,7 +5,6 @@ import {
   postSaveAss,
   postAddIssues,
   postAddEmotion,
-  postDeleteEmotion,
 } from "../controllers/apiController";
 import { protectorMiddleware } from "../middlewares";
 
@@ -34,10 +33,5 @@ apiRouter
   .route("/assignment/:assname/issues/emotion/add/:type")
   .all(protectorMiddleware)
   .post(postAddEmotion);
-
-apiRouter
-  .route("/assignment/:assname/issues/emotion/delete/:type")
-  .all(protectorMiddleware)
-  .post(postDeleteEmotion);
 
 export default apiRouter;
