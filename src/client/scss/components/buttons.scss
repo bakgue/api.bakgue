@@ -43,5 +43,25 @@
     opacity: 0.8;
   }
 }
-.save-btn {
+
+.danger-btn {
+  background-color: $danger-color;
+  padding: 4px 15px;
+  border-radius: 5px;
+  border: 1px solid #89a882;
+  margin-top: 20px;
+  &:disabled {
+    opacity: 0.8;
+  }
+}
+
+.disabled-btn {
+  background-color: $disabled-color;
+  padding: 4px 15px;
+  border-radius: 5px;
+  border: 1px solid #89a882;
+  margin-top: 20px;
+  &:disabled {
+    opacity: 0.8;
+  }
 }
