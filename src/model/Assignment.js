@@ -43,7 +43,7 @@ const assignmentSchema = new mongoose.Schema({
   issues: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Issue"
+      ref: "Issue",
     }
   ]
 });

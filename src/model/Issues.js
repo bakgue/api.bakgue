@@ -21,40 +21,6 @@ const issueSchema = new mongoose.Schema({
     ref: "Assignment",
     required: true,
   },
-  emotion: {
-    selected: {
-      great: {
-        type: Boolean,
-        default: false,
-      },
-      smile: {
-        type: Boolean,
-        default: false,
-      },
-      heart: {
-        type: Boolean,
-        default: false,
-      }
-    },
-    great: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Student",
-      },
-    ],
-    smile: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Student",
-      },
-    ],
-    heart: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Student",
-      },
-    ],
-  },
 });
 
 const Issue = mongoose.model("Issue", issueSchema);

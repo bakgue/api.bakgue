@@ -66,6 +66,7 @@ export const postNewAss = async (req, res) => {
 export const watchAss = async (req, res) => {
   const {
     params: { assname },
+    session: { loggedInUser },
   } = req;
 
   const ass = await Assignment.findOne({ title: assname })

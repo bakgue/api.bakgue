@@ -5,6 +5,7 @@ import {
   postSaveAss,
   postAddIssues,
   postAddEmotion,
+  postDeleteEmotion,
 } from "../controllers/apiController";
 import { protectorMiddleware } from "../middlewares";
 
@@ -29,17 +30,4 @@ apiRouter
   .all(protectorMiddleware)
   .post(postAddIssues);
 
-apiRouter
-  .route("/assignment/:assname/issues/:issueId/emotion/add/:type")
-  .all(protectorMiddleware)
-  .post(postAddEmotion);
-
-<<<<<<< Updated upstream
-=======
-apiRouter
-  .route("/assignment/:assname/issues/:issueId/emotion/delete/:type")
-  .all(protectorMiddleware)
-  .post(postDeleteEmotion);
-
->>>>>>> Stashed changes
 export default apiRouter;

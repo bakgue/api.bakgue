@@ -3,8 +3,6 @@ import Student from "../model/Student";
 import Issue from "../model/Issues";
 
 import {STATUS_CODE} from "./rootController";
-import {async} from "regenerator-runtime";
-import flash from "express-flash";
 
 export const postSaveAss = async (req, res) => {
   const {
@@ -107,102 +105,20 @@ export const postAddIssues = async (req, res) => {
   }
 
   try {
+    console.log("Hello World");
     const createdIssue = await Issue.create({
       content,
       assignment: sameAss._id,
       owner: loggedInUser._id,
     });
 
+    console.log(sameAss.issues);
     sameAss.issues.push(createdIssue._id);
+    console.log(sameAss.issues);
     await sameAss.save();
-
-    console.log(`CREATE ISSUE : ${createdIssue}`);
+    return res.sendStatus(STATUS_CODE.OK_CODE);
   } catch (error) {
-    console.log(`ERROR : ${error}`);
-    return res.sendStatus(STATUS_CODE.BAD_REQUEST_CODE)
-  }
-
-  return res.sendStatus(STATUS_CODE.OK_CODE);
-}
-<<<<<<< Updated upstream
-=======
-
-export const postAddEmotion = async (req, res) => {
-  const {
-    params: { assname, issueId, type },
-    session: { loggedInUser },
-  } = req;
-
-  const sameAss = await Assignment.findOne({ title : assname }).populate({
-    path: "issues",
-    populate: {
-      path: "emotion",
-    }
-  });
-
-  let sameIssue;
-
-  for (let i = 0; i < sameAss.issues.length; i++) {
-    const issue = sameAss.issues[i];
-    if (String(issue._id) === String(issueId)) {
-      sameAss.issues[i].emotion.selected[String(type)] = true;
-      sameAss.issues[i].emotion[String(type)].push(loggedInUser._id);
-      sameIssue = await Issue.findById(issue._id);
-      sameIssue.emotion.selected[String(type)] = true;
-      sameIssue.emotion[String(type)].push(loggedInUser._id);
-    }
-  }
-
-  try {
-    const savedAss = await sameAss.save();
-    const savedIssue = await sameIssue.save();
-    console.log(`SAVE ASSIGNMENT : ${savedAss}`);
-    console.log(`SAVE ISSUE : ${savedIssue}`);
-  } catch (error) {
-    console.log(`ERROR: ${error}`);
+    console.log(error);
     return res.sendStatus(STATUS_CODE.BAD_REQUEST_CODE)
   }
 }
-
-export const postDeleteEmotion = async (req, res) => {
-  const {
-    params: { assname, issueId, type },
-  } = req;
-
-  const sameAss = await Assignment.findOne({ title : assname }).populate({
-    path: "issues",
-    populate: {
-      path: "emotion",
-    },
-  });
-
-  let sameIssue;
-
-  for (let i = 0; i < sameAss.issues.length; i++) {
-    const issue = sameAss.issues[i];
-    if (String(issue._id) === String(issueId)) {
-      sameAss.issues[i].emotion.selected[String(type)] = true;
-      sameAss.issues[i].emotion[String(type)].filter(function(ele) {
-        return ele != value;
-      });
-      sameIssue = await Issue.findById(issue._id);
-      sameIssue.emotion.selected[String(type)] = true;
-      sameIssue.emotion[String(type)].filter(function(ele) {
-        return ele != loggedInUser._id;
-      });
-    }
-  }
- 
-  try {
-    const savedAss = await sameAss.save();
-    const savedIssue = await sameIssue.save();
-    console.log(`SAVE ASSIGNMENT : ${savedAss}`);
-    console.log(`SAVE ISSUE : ${savedIssue}`);
-  } catch (error) {
-    console.log(`ERROR: ${error}`);
-    return res.sendStatus(STATUS_CODE.BAD_REQUEST_CODE)
-  }
-
-  return res.sendStatus(STATUS_CODE.OK_CODE);
-}
->>>>>>> Stashed changes

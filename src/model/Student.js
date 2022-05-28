@@ -16,6 +16,7 @@ const studentSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 3,
     trim: true,
+    unique: true,
   },
   number: {
     type: Number,
