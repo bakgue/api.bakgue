@@ -1,6 +1,8 @@
 import Assignment from "../model/Assignment";
 import Student from "../model/Student";
-import { STATUS_CODE } from "./rootController";
+import Issue from "../model/Issues";
+
+import {STATUS_CODE} from "./rootController";
 
 export const postSaveAss = async (req, res) => {
   const {
@@ -91,9 +93,32 @@ export const postCheckSaveAss = async (req, res) => {
 };
 
 export const postAddIssues = async (req, res) => {
-  return res.status(STATUS_CODE.OK_CODE);
-};
+  const {
+    params: { assname, content },
+    session: { loggedInUser },
+  } = req;
 
-export const postDeleteIssues = async (req, res) => {
-  return res.status(STATUS_CODE.OK_CODE);
-};
+  const sameAss = await Assignment.findOne({ title: assname });
+
+  if (!sameAss) {
+    return res.sendStatus(STATUS_CODE.NOT_FOUND_CODE);
+  }
+
+  try {
+    console.log("Hello World");
+    const createdIssue = await Issue.create({
+      content,
+      assignment: sameAss._id,
+      owner: loggedInUser._id,
+    });
+
+    console.log(sameAss.issues);
+    sameAss.issues.push(createdIssue._id);
+    console.log(sameAss.issues);
+    await sameAss.save();
+    return res.sendStatus(STATUS_CODE.OK_CODE);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(STATUS_CODE.BAD_REQUEST_CODE)
+  }
+}

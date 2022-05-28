@@ -1,5 +1,6 @@
 extends ../base/base
 include ../components/page-top
+include ../components/issues
 
 block content
   +pageTop(`Watch : ${ass.title}`)
@@ -61,8 +62,18 @@ block content
             i.fa-solid.fa-delete-left
             span Delete
 
+  .ass-issue#assName(data-name=ass.title)
+    .ass-issue__show
+      for issue in ass.issues
+        +issues(issue)
+      else
+        +notIssuesFound()
+    .ass-issue__create
+      +createIssues()
+
 block scripts
   script(src="/static/js/watchScreenController.js")
   script(src="/static/js/markdown.js")
   script(src="/static/js/saveAss.js")
   script(src="/static/js/copyLink.js")
+  script(src="/static/js/createIssue.js")

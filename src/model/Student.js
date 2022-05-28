@@ -16,6 +16,7 @@ const studentSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 3,
     trim: true,
+    unique: true,
   },
   number: {
     type: Number,
@@ -47,6 +48,12 @@ const studentSchema = new mongoose.Schema({
       ref: "Assignment",
     },
   ],
+  createIssues: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Issue",
+    }
+  ]
 });
 
 studentSchema.pre("save", async function () {

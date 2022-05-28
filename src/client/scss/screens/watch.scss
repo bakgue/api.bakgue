@@ -9,17 +9,12 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin: {
-    right: 5vw;
-    left: 5vw;
-  }
   &__main {
     width: 70vw;
     height: min-content;
     border: 1px solid #5b5b5b;
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
-    margin-right: auto;
     #assignment {
       padding: 20px;
       .markdown-body {

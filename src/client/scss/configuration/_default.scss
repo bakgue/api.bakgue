@@ -20,6 +20,10 @@ html {
     input[type="button"] {
       cursor: pointer;
     }
+    input::placeholder,
+    textarea::placeholder {
+      color: $description-color;
+    }
     ::selection {
       background-color: blue;
       color: white;
@@ -38,6 +42,11 @@ html {
     main {
       width: $--vw;
       min-height: 100vh;
+      max-width: 1216px;
+      padding: {
+        right: 15px;
+        left: 15px;
+      };
     }
     select {
       background-color: #484747;
