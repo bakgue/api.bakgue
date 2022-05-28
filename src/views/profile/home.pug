@@ -1,0 +1,8 @@
+extends ../base/base
+include ../components/page-top
+
+block content
+  +pageTop("Your Profile", `이 페이지에서는 ${loggedInUser.name} 님의 정보들을 확인하실 수 있습니다.`)
+
+  .profile
+    span Hello World
