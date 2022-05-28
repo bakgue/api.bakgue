@@ -1,5 +1,5 @@
 mixin issues(issue)
-  #issue
+  #issue(data-id=issue._id)
     .issue__top
       .issue__top__owner
         span=issue.owner.number
@@ -13,23 +13,6 @@ mixin issues(issue)
     .issue__main
       .issue__main__content
         p=issue.content
-
-      .issue__main__emotion
-        .issue__emotion
-          .issue__emotion__emoji
-            span 👍
-          .issue__emotion__num
-            span=issue.emotion.heart.length
-        .issue__emotion
-          .issue__emotion__emoji
-            span ❤️ 
-          .issue__emotion__num
-            span=issue.emotion.heart.length
-        .issue__emotion
-          .issue__emotion__emoji
-            span 😃
-          .issue__emotion__num
-            span=issue.emotion.smile.length
 
 mixin notIssuesFound()
   #issue

@@ -62,7 +62,7 @@ block content
             i.fa-solid.fa-delete-left
             span Delete
 
-  .ass-issue
+  .ass-issue#assName(data-name=ass.title)
     .ass-issue__show
       for issue in ass.issues
         +issues(issue)

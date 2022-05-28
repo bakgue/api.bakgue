@@ -66,6 +66,7 @@ export const postNewAss = async (req, res) => {
 export const watchAss = async (req, res) => {
   const {
     params: { assname },
+    session: { loggedInUser },
   } = req;
 
   const ass = await Assignment.findOne({ title: assname })
@@ -86,8 +87,6 @@ export const watchAss = async (req, res) => {
   }
 
   const subject = subjectInfo[ass.subject];
-
-  console.log(ass);
 
   return res.render(ASS_PUG_PATH + "watch", {
     ass,

@@ -4,6 +4,8 @@ import {
   postCheckSaveAss,
   postSaveAss,
   postAddIssues,
+  postAddEmotion,
+  postDeleteEmotion,
 } from "../controllers/apiController";
 import { protectorMiddleware } from "../middlewares";
 
