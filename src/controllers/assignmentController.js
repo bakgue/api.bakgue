@@ -1,10 +1,9 @@
-import {STATUS_CODE} from "./rootController";
-import {BASE_PUG_PATH} from "./rootController";
+import { STATUS_CODE } from "./rootController";
+import { BASE_PUG_PATH } from "./rootController";
 
 import subjectInfo from "../../json/subject.json";
 
 import Assignment from "../model/Assignment";
-import Student from "../model/Student";
 
 const ASS_PUG_PATH = BASE_PUG_PATH + "assignment/";
 
@@ -19,7 +18,6 @@ export const getAss = async (req, res) => {
 		asss[i].subject = subject;
 	}
 
-	console.log(asss);
 	return res.render(ASS_PUG_PATH + "home", {
 		asss,
 	});

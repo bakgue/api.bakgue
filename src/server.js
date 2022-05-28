@@ -10,6 +10,7 @@ import assignmentRouter from "./routers/assignmentRouter";
 import subjectRouter from "./routers/subjectRouter";
 import apiRouter from "./routers/apiRouter";
 import classRouter from "./routers/classRouter";
+import profileRouter from "./routers/profileRouter";
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use("/", rootRouter);
 app.use("/assignment", assignmentRouter);
 app.use("/class", classRouter);
 app.use("/subject", subjectRouter);
+app.use("/profile", profileRouter);
 app.use("/api", apiRouter);
 
 export default app;
