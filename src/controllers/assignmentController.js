@@ -29,10 +29,10 @@ export const getNewAss = (req, res) => {
 
 export const postNewAss = async (req, res) => {
 	const {
-		body: {title, subject, deadLine},
+		body: { title, subject, deadLine },
 	} = req;
 
-	const sameTitleAss = await Assignment.findOne({title});
+	const sameTitleAss = await Assignment.findOne({ title });
 
 	if (sameTitleAss) {
 		return res
@@ -63,11 +63,11 @@ export const postNewAss = async (req, res) => {
 
 export const watchAss = async (req, res) => {
 	const {
-		params: {assname},
-		session: {loggedInUser},
+		params: { assname },
+		session: { loggedInUser },
 	} = req;
 
-	const ass = await Assignment.findOne({title: assname})
+	const ass = await Assignment.findOne({ title: assname })
 		.populate("owner")
 		.populate({
 			path: "issues",
@@ -94,10 +94,10 @@ export const watchAss = async (req, res) => {
 
 export const getEditAss = async (req, res) => {
 	const {
-		params: {assname},
+		params: { assname },
 	} = req;
 
-	const ass = await Assignment.findOne({title: assname});
+	const ass = await Assignment.findOne({ title: assname });
 	if (!ass) {
 		return res
 			.status(STATUS_CODE.NOT_FOUND_CODE)
@@ -119,11 +119,11 @@ export const getEditAss = async (req, res) => {
 
 export const postEditAss = async (req, res) => {
 	const {
-		params: {assname},
-		body: {title, subject, content, deadLine},
+		params: { assname },
+		body: { title, subject, content, deadLine },
 	} = req;
 
-	const ass = await Assignment.findOne({title: assname});
+	const ass = await Assignment.findOne({ title: assname });
 
 	if (String(ass.owner._id) !== String(req.session.loggedInUser._id)) {
 		return res
@@ -131,7 +131,7 @@ export const postEditAss = async (req, res) => {
 			.render(BASE_PUG_PATH + "root/not-allow");
 	}
 
-	const sameTitleAss = await Assignment.findOne({title});
+	const sameTitleAss = await Assignment.findOne({ title });
 
 	if (sameTitleAss) {
 		if (sameTitleAss.title !== title) {
@@ -168,10 +168,10 @@ export const postEditAss = async (req, res) => {
 
 export const getDeleteAss = async (req, res) => {
 	const {
-		params: {assname},
+		params: { assname },
 	} = req;
 
-	const ass = await Assignment.findOne({title: assname});
+	const ass = await Assignment.findOne({ title: assname });
 
 	if (!ass) {
 		return res
@@ -194,11 +194,11 @@ export const getDeleteAss = async (req, res) => {
 
 export const postDeleteAss = async (req, res) => {
 	const {
-		params: {assname},
-		body: {check},
+		params: { assname },
+		body: { check },
 	} = req;
 
-	const ass = await Assignment.findOne({title: assname});
+	const ass = await Assignment.findOne({ title: assname });
 
 	if (!ass) {
 		return res
@@ -217,7 +217,7 @@ export const postDeleteAss = async (req, res) => {
 	}
 
 	try {
-		const deletedAss = await Assignment.findOneAndDelete({title: assname});
+		const deletedAss = await Assignment.findOneAndDelete({ title: assname });
 		console.log(`DELETE : ${deletedAss}`);
 		return res.status(STATUS_CODE.UPDATED_CODE).redirect("/assignment");
 	} catch (error) {

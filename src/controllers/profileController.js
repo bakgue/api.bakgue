@@ -1,4 +1,4 @@
-//import { STATUS_CODE } from "./rootController";
+// import { STATUS_CODE } from "./rootController";
 import { BASE_PUG_PATH } from "./rootController";
 
 import Student from "../model/Student";

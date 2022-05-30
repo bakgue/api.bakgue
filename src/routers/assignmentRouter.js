@@ -10,7 +10,7 @@ import {
 	watchAss,
 	getSaveAss,
 } from "../controllers/assignmentController";
-import {protectorMiddleware} from "../middlewares";
+import { protectorMiddleware } from "../middlewares";
 
 const assignmentRouter = express.Router();
 

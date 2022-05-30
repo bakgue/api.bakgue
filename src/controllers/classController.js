@@ -17,11 +17,11 @@ export const getClass = async (req, res) => {
   await timetable.init();
   const schoolList = await timetable.search("늘푸른");
   const targetSchool = schoolList.find((school) => {
-    return school.region === '경기' && school.name === '늘푸른중학교';
+    return school.region === "경기" && school.name === "늘푸른중학교";
   });
   await timetable.setSchool(targetSchool.code);
   const schoolScheduleResult = await timetable.getTimetable();
-  const schoolSchedule = schoolScheduleResult['2']['2'];
+  const schoolSchedule = schoolScheduleResult["2"]["2"];
 
   for (let i = 0; i < schoolSchedule.length; i++) {
     const day = schoolSchedule[i];
@@ -45,37 +45,40 @@ export const getClass = async (req, res) => {
   const date = new Date();
   const mondayNum = date.getDate() - date.getDay() + 1;
 
-  const responseOfSchoolMenu = request(`https://schoolmenukr.ml/api/middle/${process.env.SCHOOL_CODE}`, (err, _res, body) => {
-    const json = JSON.parse(body);
-    const lunchMenu = [];
+  const responseOfSchoolMenu = request(
+    `https://schoolmenukr.ml/api/middle/${process.env.SCHOOL_CODE}`,
+    (err, _res, body) => {
+      const json = JSON.parse(body);
+      const lunchMenu = [];
 
-    let yes = false;
-    let count = 0;
+      let yes = false;
+      let count = 0;
 
-    for (let i = 0; i < json.menu.length; i++) {
-      const element = json.menu[i];
-      if (yes) {
-        if (count >= 5) {
-          continue
+      for (let i = 0; i < json.menu.length; i++) {
+        const element = json.menu[i];
+        if (yes) {
+          if (count >= 5) {
+            continue;
+          } else {
+            lunchMenu.push(element);
+            count += 1;
+          }
         } else {
-          lunchMenu.push(element)
-          count += 1;
-        }
-      } else {
-        if (element.date === String(mondayNum - 1)) {
-          yes = true;
-        } else {
-          continue;
+          if (element.date === String(mondayNum - 1)) {
+            yes = true;
+          } else {
+            continue;
+          }
         }
       }
-   }
 
-    return res.render(CLASS_PUG_PATH + "home", {
-      seatingChartWithStudentObj,
-      schoolSchedule,
-      lunchMenu
-    });
-});
+      return res.render(CLASS_PUG_PATH + "home", {
+        seatingChartWithStudentObj,
+        schoolSchedule,
+        lunchMenu,
+      });
+    }
+  );
 };
 
 function contractStudent(seatingCharts) {
@@ -98,4 +101,3 @@ function contractStudent(seatingCharts) {
   }
   return seatingCharts;
 }
-
