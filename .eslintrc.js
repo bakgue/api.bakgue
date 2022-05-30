@@ -10,21 +10,9 @@ const options = {
 	},
 	rules: {
 		indent: ["error", "tab"],
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-		"linebreak-style": ["error", "unix"],
-		quotes: ["error", "double"],
-		semi: ["error", "always"],
-=======
 		quotes: ["error", "double"],
 		semi: ["error", "always"],
 		"linebreak-style": ["error", "unix"],
->>>>>>> Stashed changes
-=======
-		quotes: ["error", "double"],
-		semi: ["error", "always"],
-		"linebreak-style": ["error", "unix"],
->>>>>>> Stashed changes
 	},
 };
 
