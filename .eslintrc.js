@@ -1,31 +1,19 @@
 const options = {
-	"env": {
-		"browser": true,
-		"es2021": true
+	env: {
+		browser: true,
+		es2021: true,
 	},
-	"extends": "eslint:recommended",
-	"parserOptions": {
-		"ecmaVersion": "latest",
-		"sourceType": "module"
+	extends: "eslint:recommended",
+	parserOptions: {
+		ecmaVersion: "latest",
+		sourceType: "module",
 	},
-	"rules": {
-		"indent": [
-			"error",
-			"tab"
-		],
-		"linebreak-style": [
-			"error",
-			"unix"
-		],
-		"quotes": [
-			"error",
-			"double"
-		],
-		"semi": [
-			"error",
-			"always"
-		]
-	}
+	rules: {
+		indent: ["error", "tab"],
+		"linebreak-style": ["error", "unix"],
+		quotes: ["error", "double"],
+		semi: ["error", "always"],
+	},
 };
 
 module.exports = options;
