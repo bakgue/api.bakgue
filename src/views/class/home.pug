@@ -6,17 +6,17 @@ block content
   +pageTop("Class Information", "이 페이지 에서 학급에 관한 정보들을 확인해 보실 수 있습니다.")
 
   .class
-    nav.class-tabs
-     ul
-      li#seatingChartBtn
-        span 자리 배치도
-      li#scheduleBtn
-        span 시간표
-      li#lunchScheduleBtn
-        span 급식
+    .choose-blocks
+      ul
+        li#chooseElement.seatingChart
+          span 자리 배치도
+        li#chooseElement.schedule
+          span 시간표
+        li#chooseElement.lunchSchedule
+          span 급식
 
     .class-main
-      .class-main__sections.class-main__seating-chart#seatingChart
+      .class-main__sections.class-main__seating-chart#chooseArea.seatingChart
         h2 자리 배치도
         .seating-chart(style="display:flex;")
           for column in seatingChartWithStudentObj
@@ -31,7 +31,7 @@ block content
                     span.seating-chart__column__row__id=row.id
                     span.seating-chart__column__row__name=row.name
 
-      .class-main__sections.class-main__schedule#schedule
+      .class-main__sections.class-main__schedule#chooseArea.schedule
         h2 시간표
         .schedule(style="display:flex;")
           .schedule-day
@@ -44,7 +44,7 @@ block content
                 .schedule-day__subject
                   +subjectCardInSchedule(subject)
 
-      .class-main__sections.class-main__school-lunch#lunchSchedule
+      .class-main__sections.class-main__school-lunch#chooseArea.lunchSchedule
         h2 급식 시간표
         - const weekOfDay = ["월", "화", "수", "목" ,"금"]
         .school-lunch
