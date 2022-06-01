@@ -7,35 +7,6 @@
     text-align: center;
   }
 
-  &-tabs {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    ul {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      padding-bottom: 10px;
-
-      li {
-        border: 1px solid #8f8f8f;
-        padding: 10px 40px;
-        margin-right: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-
-        &:hover {
-          transform: translateY(-6px);
-          background-color: white;
-          color: black;
-        }
-      }
-    }
-  }
-
   &-main {
 
     &__sections {
