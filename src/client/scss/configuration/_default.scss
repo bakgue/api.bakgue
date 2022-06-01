@@ -48,11 +48,11 @@ html {
         left: 15px;
       };
     }
-    select {
+    .selected {
       background-color: #484747;
-      padding: 8px 14px;
-      border-radius: 5px;
-      cursor: pointer;
+    }
+    .nono {
+      color: $description-color;
     }
     #subjectColor {
       width: 8px;

@@ -1,57 +1,46 @@
-const url = "https://schoolmenukr.ml/api/middle/J100005136";
+const buttons = document.querySelectorAll("#chooseElement");
+const areas = document.querySelectorAll("#chooseArea");
+const NONE_DISPLAY_KEY = "none-display";
 
-const tags = {
-  seatingChart: {
-    btn: document.querySelector("#seatingChartBtn"),
-    area: document.querySelector("#seatingChart"),
-  },
-  schedule: {
-    btn: document.querySelector("#scheduleBtn"),
-    area: document.querySelector("#schedule"),
-  },
-  lunchSchedule: {
-    btn: document.querySelector("#lunchScheduleBtn"),
-    area: document.querySelector("#lunchSchedule"),
-  },
-};
+function getOrderOfBtn(className) {
+	for (let i = 0; i < buttons.length; i++) {
+		const btn = buttons[i];
+		const haveClassName = btn.classList.contains(className);
 
-function showSection(areaName) {
-  for (const section in tags) {
-    if (Object.hasOwnProperty.call(tags, section)) {
-      const element = tags[section];
-      if (String(areaName) === String(section)) {
-        element.area.classList.remove("none-display");
-      } else {
-        element.area.classList.add("none-display");
-      }
-    }
-  }
+		if (haveClassName) {
+			return i;
+		} else {
+			continue;
+		}
+	}
 }
 
-function handleGetLunch(error, res, html) {
-  if (error) {
-    throw error;
-  }
-  console.log(html);
+function getAreaByOrder(order) {
+	try {
+		return areas[order];
+	} catch (error) {
+		return -1;
+	}
 }
 
-async function getLunchSchedule() {
-  // const hello = request(url, handleGetLunch);
-  const response = await fetch(url, {
-    method: "GET",
-  });
+function showOnlyOneSection(area) {
+	for (let i = 0; i < areas.length; i++) {
+		const areaInAreas = areas[i];
+		areaInAreas.classList.add(NONE_DISPLAY_KEY);
+	}
 
-  const data = await response.json();
-  const menu = data.menu;
-  console.log(menu);
+	area.classList.remove(NONE_DISPLAY_KEY);
 }
 
-for (const key in tags) {
-  if (Object.hasOwnProperty.call(tags, key)) {
-    const element = tags[key];
-    element.btn.addEventListener("click", () => {
-      showSection(key);
-    });
-  }
+function handleClickButtons() {
+	const order = getOrderOfBtn(this.classList[this.classList.length - 1]);
+	const area = getAreaByOrder(order);
+
+	showOnlyOneSection(area);
 }
-getLunchSchedule();
+
+for (let i = 0; i < buttons.length; i++) {
+	const btn = buttons[i];
+
+	btn.addEventListener("click", handleClickButtons);
+}
