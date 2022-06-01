@@ -30,6 +30,25 @@
         flex-direction: column;
       }
     }
+
+    &__edit {
+      .profile-side-bar__element {
+        &:not(:first-child) {
+          display: flex;
+          flex-direction: column;
+
+          label {
+            margin-bottom: 5px;
+          }
+
+          input {
+            padding: 10px 15px;
+            border: 1px solid $description-color;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
   }
 
   &-main {
@@ -67,7 +86,7 @@
     flex-direction: column;
 
     &-side-bar{
-      width: 100%;
+      display: none;
     }
 
     &-main {
