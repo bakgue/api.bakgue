@@ -129,3 +129,7 @@ export const postAddIssues = async (req, res) => {
 		return res.sendStatus(STATUS_CODE.BAD_REQUEST_CODE);
 	}
 };
+
+export const postEditProfile = (req, res) => {
+	return res.sendStatus(STATUS_CODE.OK_CODE);
+};

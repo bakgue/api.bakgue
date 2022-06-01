@@ -32,6 +32,11 @@ const studentSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	bio: {
+		type: String,
+		maxlength: 50,
+		required: false,
+	},
 	key: {
 		type: String,
 		required: true,
