@@ -48,7 +48,7 @@ const studentSchema = new mongoose.Schema({
 			ref: "Assignment",
 		},
 	],
-	createIssues: [
+	createdIssues: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Issue",

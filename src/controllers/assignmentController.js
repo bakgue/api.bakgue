@@ -4,17 +4,16 @@ import { BASE_PUG_PATH } from "./rootController";
 import subjectInfo from "../../json/subject.json";
 
 import Assignment from "../model/Assignment";
+import Student from "../model/Student";
 
 const ASS_PUG_PATH = BASE_PUG_PATH + "assignment/";
 
 export const getAss = async (req, res) => {
-	const assInDB = await Assignment.find({});
-	const asss = JSON.parse(JSON.stringify(assInDB));
+	const asss = JSON.parse(JSON.stringify(await Assignment.find({})));
 
 	for (let i = 0; i < asss.length; i++) {
 		const ass = asss[i];
 		const subject = subjectInfo[ass.subject];
-		asss[i].createdAt = new Date(ass.createdAt);
 		asss[i].subject = subject;
 	}
 
@@ -29,7 +28,8 @@ export const getNewAss = (req, res) => {
 
 export const postNewAss = async (req, res) => {
 	const {
-		body: { title, subject, deadLine },
+		body: { title, deadLine },
+		session: { loggedInUser },
 	} = req;
 
 	const sameTitleAss = await Assignment.findOne({ title });
@@ -38,17 +38,23 @@ export const postNewAss = async (req, res) => {
 		return res
 			.status(STATUS_CODE.ALEADY_TAKEN_CODE)
 			.render(ASS_PUG_PATH + "new", {
-				errorMessage: "이미 존재하는 이름입니다. 다른 이름으로 바꾸세요.",
+				errorMessage:
+          "이미 존재하는 이름입니다. 다른 이름으로 바꾸어 주기기 바랍니다.",
 			});
 	}
 
 	try {
 		const createdAssignment = await Assignment.create({
 			title,
-			subject,
 			deadLine,
 			content: `# ${title}`,
 			owner: req.session.loggedInUser._id,
+		});
+
+		const updatedUser = await Student.findByIdAndUpdate(loggedInUser._id, {
+			$push: {
+				createdAssignments: createdAssignment._id,
+			},
 		});
 
 		return res.redirect(`/assignment/${title}/edit`);
@@ -152,7 +158,6 @@ export const postEditAss = async (req, res) => {
 			deadLine,
 		});
 
-		console.log(updatedAss);
 		return res
 			.status(STATUS_CODE.UPDATED_CODE)
 			.redirect(`/assignment/${title}`);
@@ -196,6 +201,7 @@ export const postDeleteAss = async (req, res) => {
 	const {
 		params: { assname },
 		body: { check },
+		session: { loggedInUser },
 	} = req;
 
 	const ass = await Assignment.findOne({ title: assname });
@@ -218,7 +224,12 @@ export const postDeleteAss = async (req, res) => {
 
 	try {
 		const deletedAss = await Assignment.findOneAndDelete({ title: assname });
-		console.log(`DELETE : ${deletedAss}`);
+		const updatedUser = await Student.findByIdAndUpdate(loggedInUser._id, {
+			$pull: {
+				createdAssignments: deletedAss._id,
+			},
+		});
+
 		return res.status(STATUS_CODE.UPDATED_CODE).redirect("/assignment");
 	} catch (error) {
 		return res

@@ -1,4 +1,3 @@
-// import { STATUS_CODE } from "./rootController";
 import { BASE_PUG_PATH } from "./rootController";
 
 import Student from "../model/Student";
@@ -10,7 +9,10 @@ export const getProfile = async (req, res) => {
 		session: { loggedInUser },
 	} = req;
 
-	const userProfile = await Student.findById(loggedInUser._id);
+	const userProfile = await Student.findById(loggedInUser._id)
+		.populate("createdAssignments")
+		.populate("savedAssignments")
+		.populate("createdIssues");
 
 	return res.render(PROFILE_PUG_PATH + "home", {
 		userProfile,

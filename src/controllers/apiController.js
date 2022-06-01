@@ -105,17 +105,24 @@ export const postAddIssues = async (req, res) => {
 	}
 
 	try {
-		console.log("Hello World");
 		const createdIssue = await Issue.create({
 			content,
 			assignment: sameAss._id,
 			owner: loggedInUser._id,
 		});
 
-		console.log(sameAss.issues);
-		sameAss.issues.push(createdIssue._id);
-		console.log(sameAss.issues);
-		await sameAss.save();
+		const updatedAssignment = await Assignment.findByIdAndUpdate(sameAss._id, {
+			$push: {
+				issues: createdIssue._id,
+			},
+		});
+
+		const updatedUser = await Student.findByIdAndUpdate(loggedInUser._id, {
+			$push: {
+				createdIssues: createdIssue._id,
+			},
+		});
+
 		return res.sendStatus(STATUS_CODE.OK_CODE);
 	} catch (error) {
 		console.log(error);
