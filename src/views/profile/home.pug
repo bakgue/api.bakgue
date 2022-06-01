@@ -9,21 +9,26 @@ block content
   .profile
 
     .profile-side-bar
-      .profile-side-bar__big
-        h1=userProfile.number
-        h2=userProfile.name
-      .profile-side-bar__small
-        .profile-side-bar__small__element
-          span=userProfile.number
-        .profile-side-bar__small__element
-          span=userProfile.name
-        .profile-side-bar__small__element
-          span=userProfile.username
-        .profile-side-bar__small__element
+      .profile-side-bar__element
+        h4 Your Information
+      .profile-side-bar__element
+        label Number
+        span=userProfile.number
+      .profile-side-bar__element
+        label Name
+        span=userProfile.name
+      .profile-side-bar__element
+        label Username
+        span=userProfile.username
+      .profile-side-bar__element
+        label Bio
+        if userProfile.bio
           span=userProfile.bio
-        .profile-side-bar__small__element
-          input(type="button", value="Edit Profile")
-
+        else
+          span.nono Here is no bio.
+      .profile-side-bar__small__element
+        input.submit-btn(type="button", value="Edit Profile")              
+    
     .profile-main
       .profile-main__navbar
         .choose-blocks

@@ -24,6 +24,10 @@
         background-color: white;
         color: black;
       }
+
+      &:last-child {
+        margin-right: 0px;
+      }
     }
   }
 }
