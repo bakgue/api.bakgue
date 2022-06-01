@@ -46,7 +46,11 @@
             border: 1px solid $description-color;
             border-radius: 5px;
           }
+
         }
+      }
+      #edit, #cancel {
+        margin-right: 10px;
       }
     }
   }

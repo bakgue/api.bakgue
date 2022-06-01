@@ -9,7 +9,7 @@ block content
   .profile
 
     .profile-side-bar
-      .profile-side-bar__show
+      .profile-side-bar__show#profileShow
         .profile-side-bar__element
           h4 Your Information
         .profile-side-bar__element
@@ -30,15 +30,15 @@ block content
         .profile-side-bar__small__element
           input.submit-btn#editProfile(type="button", value="Edit Profile")              
     
-      .profile-side-bar__edit.none-display
+      .profile-side-bar__edit.none-display#profileEdit
         .profile-side-bar__element
           h4 Your Information
         .profile-side-bar__element
           label Username
-          input(type="text", value=userProfile.username, maxlength=20, placeholder="Username")
+          input#usernameInput(type="text", value=userProfile.username, maxlength=20, placeholder="Username")
         .profile-side-bar__element
           label Bio
-          input(type="text", value=userProfile.bio, maxlength=50, placeholder="Bio")
+          input#bioInput(type="text", value=userProfile.bio, maxlength=50, placeholder="Bio")
         .profile-side-bar__small__element
           input.submit-btn#edit(type="button", value="Save Changes!")
           input.disabled-btn#cancel(type="button", value="Cancel")
