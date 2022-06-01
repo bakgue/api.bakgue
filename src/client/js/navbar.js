@@ -1,7 +1,7 @@
 const main = document.querySelector("#main");
 const hamburger = document.querySelector("#hamburger");
 const ul = document.querySelector("#header nav ul");
-const navElementArr = document.querySelectorAll(".nav-elemenet");
+const navElementArr = document.querySelectorAll(".nav-element");
 
 const maxWidth = 730;
 let mode = false;
