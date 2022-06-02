@@ -1,5 +1,4 @@
 extends ../base/base
-include ../components/subject-cards
 include ../components/page-top
 
 block content
@@ -13,15 +12,12 @@ block content
       .form__element
         label(for="title") Title
         input(type="text", name="title", id="title", placeholder="7월 중순에 볼 국어 집필 평가", required).long
-
+        
       .form__element
-        +subjectOptions()
-
-      .form__element.from-to-form
         label Deadline
         input(type="text", name="deadLine", placeholder="5 월 20 일 부터 3주간", minLength=5).long
 
       input(type="submit", value="Create!").submit-btn#submitBtn
-
+  
 block scripts
   script(src="/static/js/checkNewAss.js")

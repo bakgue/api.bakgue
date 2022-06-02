@@ -29,15 +29,17 @@ block content
         label 이런 가로 길이가 너무 작습니다. 더 큰화면으로 편집해주세요!
 
       .form__element
-        .form__element__title
-        label(for="title") Title
-        input(type="text", name="title", id="title", value=ass.title, required).long
-        .form__element__subject
-        +subjectOptions(ass.subject)
+        .form__element
+          label(for="title") Title
+          input(type="text", name="title", id="title", value=ass.title, required).long
+      
+        .form__element.from-to-form
+          label(for="deadline") Deadline
+          input(type="text", name="deadLine", value=ass.deadLine).long
 
-      .form__element.from-to-form
-        label Deadline
-        input(type="text", name="deadLine", value=ass.deadLine).long
+        .form__element
+          label Subject
+          +subjectOptions(ass.subject)
 
         .ass-edit__form__element__submit
           input(type="submit", value="Save Changes!").submit-btn#submitBtn

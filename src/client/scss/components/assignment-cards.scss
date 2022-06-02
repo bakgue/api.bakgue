@@ -1,20 +1,15 @@
 #assignmentsCard {
-  background-color: $card-background-color;
-  border: 2px solid $card-border-color;
+  border: 2px solid $brand-color-light;
   border-radius: 10px;
-  padding: 10px 15px;
   margin-top: 15px;
   transition: all 0.3s ease-in-out;
+  padding-top: 0px;
   width: 100%;
-  @media screen and (max-width: 750px) {
-    min-width: 90vw;
-  }
+
   &:hover {
-    transform: translateY(-15px);
-    margin-top: 25px;
-    -webkit-box-shadow: 0px 5px 20px 1px rgba(255, 255, 255, 0.54);
-    box-shadow: 0px 5px 20px 1px rgba(255, 255, 255, 0.54);
+    border: 1.5px solid $brand-color-light;
   }
+
   div {
     margin: 5px 0px;
   }
@@ -22,35 +17,46 @@
   .assignments-card__top {
     display: flex;
     align-items: center;
-    i {
-      font-size: 15px;
+    justify-content: space-between;
+    padding: 5px 12px;
+    border-bottom: 1px solid $brand-color-light;
+    margin: 0px;
+
+    &__left {
+      display: flex;
+      align-items: center;
+
+      i {
+        font-size: 15px;
+      }
+      h4 {
+        font-size: 20px;
+      }
     }
-    h4 {
-      font-size: 20px;
+
+    &__right {
+      display: flex;
+      padding: 5px 0px;
+
+      i {
+        font-size: 20px;
+      }
+      div {
+        margin-right: 7px;
+        padding: 0px;
+      }
     }
   }
-  .assignments-card__mid {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 10px;
-    i {
-      font-size: 20px;
-    }
-    div {
-      margin-right: 7px;
-    }
-  }
+
   .assignments-card__bottom {
     color: $description-color;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 4px 10px;
+  
     i {
       margin-right: 7px;
     }
   }
-}
-
-#assignment {
 }

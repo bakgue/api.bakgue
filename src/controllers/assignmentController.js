@@ -9,7 +9,9 @@ import Student from "../model/Student";
 const ASS_PUG_PATH = BASE_PUG_PATH + "assignment/";
 
 export const getAss = async (req, res) => {
-	const asss = JSON.parse(JSON.stringify(await Assignment.find({})));
+	const asss = JSON.parse(
+		JSON.stringify(await Assignment.find({}).populate("owner"))
+	);
 
 	for (let i = 0; i < asss.length; i++) {
 		const ass = asss[i];
