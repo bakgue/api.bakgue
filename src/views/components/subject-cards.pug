@@ -21,10 +21,7 @@ mixin subjectCardInSchedule(subjectObj)
         h4=subjectObj.name
 
 mixin subjectOptions(select)
-  //- 나중에 refactoring
-  label(for="subject") Subject
-
-  select(id="subject", name="subject", required)
+  select.long(id="subject", name="subject", required)
 
     if select == "class-room"
       option(value="Class-Room", selected) Class Room
