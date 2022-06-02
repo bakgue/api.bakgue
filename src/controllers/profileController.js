@@ -13,8 +13,18 @@ export const getProfile = async (req, res) => {
 	const userProfile = JSON.parse(
 		JSON.stringify(
 			await Student.findById(loggedInUser._id)
-				.populate("createdAssignments")
-				.populate("savedAssignments")
+				.populate({
+					path: "createdAssignments",
+					populate: {
+						path: "owner",
+					},
+				})
+				.populate({
+					path: "savedAssignments",
+					populate: {
+						path: "owner",
+					},
+				})
 				.populate({
 					path: "createdIssues",
 					populate: {
